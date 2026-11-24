@@ -163,7 +163,7 @@ export const TOP_LEVEL_SHELVES: TopLevelShelfMeta[] = [
   {
     id: 'pokemon-tcg',
     name: 'Pokémon TCG',
-    subtitle: `${POKEMON_SETS.length} English Sets · ${POKEMON_TOTAL_GM_CARDS.toLocaleString()} Grand Master Cards`,
+    subtitle: `${POKEMON_SETS.length} Sets · ${POKEMON_TOTAL_GM_CARDS.toLocaleString()} Grand Master Cards`,
     maker: 'The Pokémon Company',
     accent: '#D94862',
     accentSoft: '#FDECEF',
