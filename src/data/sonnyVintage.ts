@@ -1,0 +1,891 @@
+import type { CatalogItem, CollectionMeta } from '../types';
+
+export const SONNY_VINTAGE_COLLECTIONS: CollectionMeta[] = [
+  {
+    "id": "sonny-vin-christmas-series-2011",
+    "name": "Sonny Angel \u00b7 Christmas Series (2011)",
+    "shortName": "Christmas Series (2011)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 1 Secret)",
+    "maker": "Dreams Inc.",
+    "accent": "#C94A4A",
+    "accentSoft": "#FDECEC",
+    "accentText": "#8C2727",
+    "emoji": "\ud83c\udf84"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012",
+    "name": "Sonny Angel \u00b7 Christmas Series (2012)",
+    "shortName": "Christmas Series (2012)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 1 Secret)",
+    "maker": "Dreams Inc.",
+    "accent": "#C94A4A",
+    "accentSoft": "#FDECEC",
+    "accentText": "#8C2727",
+    "emoji": "\ud83c\udf84"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013",
+    "name": "Sonny Angel \u00b7 Christmas Series (2013)",
+    "shortName": "Christmas Series (2013)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 1 Secret)",
+    "maker": "Dreams Inc.",
+    "accent": "#D45D79",
+    "accentSoft": "#FDEEF2",
+    "accentText": "#912F47",
+    "emoji": "\ud83c\udf84"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014",
+    "name": "Sonny Angel \u00b7 Christmas Series (2014)",
+    "shortName": "Christmas Series (2014)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 3 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#4A86B8",
+    "accentSoft": "#EBF4FA",
+    "accentText": "#25537A",
+    "emoji": "\u2744\ufe0f"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015",
+    "name": "Sonny Angel \u00b7 Christmas Series (2015)",
+    "shortName": "Christmas Series (2015)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#B85C4A",
+    "accentSoft": "#FBF0ED",
+    "accentText": "#7D3426",
+    "emoji": "\ud83d\udd6f\ufe0f"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012",
+    "name": "Sonny Angel \u00b7 Halloween Series (2012)",
+    "shortName": "Halloween Series (2012)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 1 Secret)",
+    "maker": "Dreams Inc.",
+    "accent": "#D9772B",
+    "accentSoft": "#FDF2E6",
+    "accentText": "#8F4812",
+    "emoji": "\ud83c\udf83"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014",
+    "name": "Sonny Angel \u00b7 Halloween Series (2014)",
+    "shortName": "Halloween Series (2014)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#7E57A6",
+    "accentSoft": "#F3EEFA",
+    "accentText": "#4E2E70",
+    "emoji": "\ud83c\udf83"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015",
+    "name": "Sonny Angel \u00b7 Halloween Series (2015)",
+    "shortName": "Halloween Series (2015)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#6B4E8E",
+    "accentSoft": "#F1ECF7",
+    "accentText": "#422B5E",
+    "emoji": "\ud83e\udd87"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016",
+    "name": "Sonny Angel \u00b7 Halloween Series (2016)",
+    "shortName": "Halloween Series (2016)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#C96A2B",
+    "accentSoft": "#FCF1E8",
+    "accentText": "#853E12",
+    "emoji": "\ud83d\udd77\ufe0f"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018",
+    "name": "Sonny Angel \u00b7 Dreamy Halloween (2018)",
+    "shortName": "Dreamy Halloween (2018)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#B084CC",
+    "accentSoft": "#F7F0FC",
+    "accentText": "#6D448A",
+    "emoji": "\ud83d\udc7b"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016",
+    "name": "Sonny Angel \u00b7 Easter Series (2016)",
+    "shortName": "Easter Series (2016)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#7AB87E",
+    "accentSoft": "#EEF8EF",
+    "accentText": "#3F7343",
+    "emoji": "\ud83d\udc23"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017",
+    "name": "Sonny Angel \u00b7 Easter Series (2017)",
+    "shortName": "Easter Series (2017)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 3 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#85B86E",
+    "accentSoft": "#F0F8EC",
+    "accentText": "#477533",
+    "emoji": "\ud83d\udc30"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Sonny Angel \u00b7 Easter Series (2018) \u00b7 Egg Paint",
+    "shortName": "Easter Series (2018) \u00b7 Egg Paint",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets)",
+    "maker": "Dreams Inc.",
+    "accent": "#E089A4",
+    "accentSoft": "#FDEFF4",
+    "accentText": "#99425E",
+    "emoji": "\ud83c\udfa8"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Sonny Angel \u00b7 Valentine's Chocolate (2016)",
+    "shortName": "Valentine's Chocolate (2016)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#8C5843",
+    "accentSoft": "#F7EFEA",
+    "accentText": "#593222",
+    "emoji": "\ud83c\udf6b"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Sonny Angel \u00b7 Caribbean Sea Summer (2016)",
+    "shortName": "Caribbean Sea Summer (2016)",
+    "sonnyCategory": "vintage",
+    "subtitle": "Vintage Seasonal (4 + 2 Secrets/Robby)",
+    "maker": "Dreams Inc.",
+    "accent": "#3E9CB8",
+    "accentSoft": "#E9F6FA",
+    "accentText": "#1D6175",
+    "emoji": "\ud83c\udfdd\ufe0f"
+  }
+];
+
+export const SONNY_VINTAGE_ITEMS: CatalogItem[] = [
+  {
+    "id": "sonny-vin-christmas-series-2011-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2011",
+    "name": "Santa Claus",
+    "series": "Christmas Series (2011)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2011-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2011-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2011",
+    "name": "Reindeer",
+    "series": "Christmas Series (2011)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2011-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2011-christmas-tree",
+    "collectionId": "sonny-vin-christmas-series-2011",
+    "name": "Christmas Tree",
+    "series": "Christmas Series (2011)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2011-christmas-tree.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2011-snowman",
+    "collectionId": "sonny-vin-christmas-series-2011",
+    "name": "Snowman",
+    "series": "Christmas Series (2011)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2011-snowman.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2011-christmas-2011-secret",
+    "collectionId": "sonny-vin-christmas-series-2011",
+    "name": "Christmas 2011 Secret",
+    "series": "Christmas Series (2011)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2011-christmas-2011-secret.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2012",
+    "name": "Santa Claus",
+    "series": "Christmas Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2012-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2012",
+    "name": "Reindeer",
+    "series": "Christmas Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2012-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012-christmas-tree",
+    "collectionId": "sonny-vin-christmas-series-2012",
+    "name": "Christmas Tree",
+    "series": "Christmas Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2012-christmas-tree.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012-christmas-cake",
+    "collectionId": "sonny-vin-christmas-series-2012",
+    "name": "Christmas Cake",
+    "series": "Christmas Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2012-christmas-cake.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2012-limited-gold-santa",
+    "collectionId": "sonny-vin-christmas-series-2012",
+    "name": "Limited Gold Santa",
+    "series": "Christmas Series (2012)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2012-limited-gold-santa.svg"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2013",
+    "name": "Santa Claus",
+    "series": "Christmas Series (2013)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2013-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2013",
+    "name": "Reindeer",
+    "series": "Christmas Series (2013)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2013-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013-snowman",
+    "collectionId": "sonny-vin-christmas-series-2013",
+    "name": "Snowman",
+    "series": "Christmas Series (2013)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2013-snowman.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013-moose",
+    "collectionId": "sonny-vin-christmas-series-2013",
+    "name": "Moose",
+    "series": "Christmas Series (2013)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2013-moose.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2013-pearl-pink-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2013",
+    "name": "Pearl Pink Santa Claus",
+    "series": "Christmas Series (2013)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2013-pearl-pink-santa-claus.svg"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Santa Claus",
+    "series": "Christmas Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2014-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Reindeer",
+    "series": "Christmas Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2014-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-poinsettia",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Poinsettia",
+    "series": "Christmas Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2014-poinsettia.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-chocolate-cake",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Chocolate Cake",
+    "series": "Christmas Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2014-chocolate-cake.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-blue-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Blue Santa Claus",
+    "series": "Christmas Series (2014)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2014-blue-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-blue-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Blue Reindeer",
+    "series": "Christmas Series (2014)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2014-blue-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2014-blue-snow-robby-angel",
+    "collectionId": "sonny-vin-christmas-series-2014",
+    "name": "Blue Snow Robby Angel",
+    "series": "Christmas Series (2014)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2014-blue-snow-robby-angel.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-santa-claus",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Santa Claus",
+    "series": "Christmas Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2015-santa-claus.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Reindeer",
+    "series": "Christmas Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2015-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-christmas-tree",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Christmas Tree",
+    "series": "Christmas Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2015-christmas-tree.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-candle",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Candle",
+    "series": "Christmas Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-christmas-series-2015-candle.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-glitter-reindeer",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Glitter Reindeer",
+    "series": "Christmas Series (2015)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2015-glitter-reindeer.webp"
+  },
+  {
+    "id": "sonny-vin-christmas-series-2015-robby-angel-christmas-2015",
+    "collectionId": "sonny-vin-christmas-series-2015",
+    "name": "Robby Angel (Christmas 2015)",
+    "series": "Christmas Series (2015)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-christmas-series-2015-robby-angel-christmas-2015.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012-witch",
+    "collectionId": "sonny-vin-halloween-series-2012",
+    "name": "Witch",
+    "series": "Halloween Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2012-witch.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012-vampire",
+    "collectionId": "sonny-vin-halloween-series-2012",
+    "name": "Vampire",
+    "series": "Halloween Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2012-vampire.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012-mummy",
+    "collectionId": "sonny-vin-halloween-series-2012",
+    "name": "Mummy",
+    "series": "Halloween Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2012-mummy.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012-pumpkin",
+    "collectionId": "sonny-vin-halloween-series-2012",
+    "name": "Pumpkin",
+    "series": "Halloween Series (2012)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2012-pumpkin.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2012-glow-in-the-dark-vampire",
+    "collectionId": "sonny-vin-halloween-series-2012",
+    "name": "Glow-in-the-Dark Vampire",
+    "series": "Halloween Series (2012)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2012-glow-in-the-dark-vampire.svg"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-pumpkin",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Pumpkin",
+    "series": "Halloween Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2014-pumpkin.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-ghost",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Ghost",
+    "series": "Halloween Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2014-ghost.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-purple-cat",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Purple Cat",
+    "series": "Halloween Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2014-purple-cat.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-devil",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Devil",
+    "series": "Halloween Series (2014)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2014-devil.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-secret-ghost",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Secret Ghost",
+    "series": "Halloween Series (2014)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2014-secret-ghost.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2014-pumpkin-robby-angel",
+    "collectionId": "sonny-vin-halloween-series-2014",
+    "name": "Pumpkin Robby Angel",
+    "series": "Halloween Series (2014)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2014-pumpkin-robby-angel.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-pumpkin",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Pumpkin",
+    "series": "Halloween Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2015-pumpkin.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-witch",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Witch",
+    "series": "Halloween Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2015-witch.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-vampire",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Vampire",
+    "series": "Halloween Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2015-vampire.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-werewolf",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Werewolf",
+    "series": "Halloween Series (2015)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2015-werewolf.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-glow-in-the-dark-vampire",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Glow-in-the-Dark Vampire",
+    "series": "Halloween Series (2015)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2015-glow-in-the-dark-vampire.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2015-skeleton-robby-angel",
+    "collectionId": "sonny-vin-halloween-series-2015",
+    "name": "Skeleton Robby Angel",
+    "series": "Halloween Series (2015)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2015-skeleton-robby-angel.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-pumpkin",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Pumpkin",
+    "series": "Halloween Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2016-pumpkin.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-witch",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Witch",
+    "series": "Halloween Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2016-witch.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-spider",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Spider",
+    "series": "Halloween Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2016-spider.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-bat",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Bat",
+    "series": "Halloween Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-halloween-series-2016-bat.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-secret-witch-variant",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Secret Witch Variant",
+    "series": "Halloween Series (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2016-secret-witch-variant.webp"
+  },
+  {
+    "id": "sonny-vin-halloween-series-2016-zombie-robby-angel",
+    "collectionId": "sonny-vin-halloween-series-2016",
+    "name": "Zombie Robby Angel",
+    "series": "Halloween Series (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-halloween-series-2016-zombie-robby-angel.webp"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-pastel-pumpkin",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Pastel Pumpkin",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-pastel-pumpkin.svg"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-pastel-witch",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Pastel Witch",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-pastel-witch.svg"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-pastel-ghost",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Pastel Ghost",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-pastel-ghost.svg"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-pastel-owl-witch",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Pastel Owl Witch",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-pastel-owl-witch.svg"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-pastel-purple-ghost",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Pastel Purple Ghost",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-pastel-purple-ghost.svg"
+  },
+  {
+    "id": "sonny-vin-dreamy-halloween-2018-dreamy-robby-angel",
+    "collectionId": "sonny-vin-dreamy-halloween-2018",
+    "name": "Dreamy Robby Angel",
+    "series": "Dreamy Halloween (2018)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-dreamy-halloween-2018-dreamy-robby-angel.svg"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-rabbit",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter Rabbit",
+    "series": "Easter Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2016-easter-rabbit.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-egg",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter Egg",
+    "series": "Easter Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2016-easter-egg.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-chick",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter Chick",
+    "series": "Easter Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2016-easter-chick.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-lily",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter Lily",
+    "series": "Easter Series (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2016-easter-lily.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-2016-secret",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter 2016 Secret",
+    "series": "Easter Series (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2016-easter-2016-secret.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2016-easter-robby-angel-2016",
+    "collectionId": "sonny-vin-easter-series-2016",
+    "name": "Easter Robby Angel (2016)",
+    "series": "Easter Series (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2016-easter-robby-angel-2016.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-easter-lamb",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Easter Lamb",
+    "series": "Easter Series (2017)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2017-easter-lamb.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-easter-clover",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Easter Clover",
+    "series": "Easter Series (2017)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2017-easter-clover.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-easter-bunny",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Easter Bunny",
+    "series": "Easter Series (2017)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2017-easter-bunny.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-easter-egg",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Easter Egg",
+    "series": "Easter Series (2017)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2017-easter-egg.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-pink-easter-bunny",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Pink Easter Bunny",
+    "series": "Easter Series (2017)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2017-pink-easter-bunny.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-bird-nest-egg-bonnet",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Bird Nest Egg Bonnet",
+    "series": "Easter Series (2017)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2017-bird-nest-egg-bonnet.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2017-easter-robby-angel-2017",
+    "collectionId": "sonny-vin-easter-series-2017",
+    "name": "Easter Robby Angel (2017)",
+    "series": "Easter Series (2017)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2017-easter-robby-angel-2017.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-easter-bunny",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Easter Bunny",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-easter-bunny.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-hatched-egg",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Hatched Egg",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-hatched-egg.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-easter-cow",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Easter Cow",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-easter-cow.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-easter-lamb",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Easter Lamb",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-easter-lamb.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-easter-bunny-secret",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Easter Bunny Secret",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-easter-bunny-secret.webp"
+  },
+  {
+    "id": "sonny-vin-easter-series-2018-egg-paint-easter-egg-secret",
+    "collectionId": "sonny-vin-easter-series-2018-egg-paint",
+    "name": "Easter Egg Secret",
+    "series": "Easter Series (2018) \u00b7 Egg Paint",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-easter-series-2018-egg-paint-easter-egg-secret.webp"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-strawberry-chocolate",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Strawberry Chocolate",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-strawberry-chocolate.svg"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-kiwi-chocolate",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Kiwi Chocolate",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-kiwi-chocolate.svg"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-berry-chocolate",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Berry Chocolate",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-berry-chocolate.svg"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-orange-chocolate",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Orange Chocolate",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-orange-chocolate.svg"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-white-chocolate-secret",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "White Chocolate Secret",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-white-chocolate-secret.svg"
+  },
+  {
+    "id": "sonny-vin-valentine-s-chocolate-2016-chocolate-robby-angel",
+    "collectionId": "sonny-vin-valentine-s-chocolate-2016",
+    "name": "Chocolate Robby Angel",
+    "series": "Valentine's Chocolate (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-valentine-s-chocolate-2016-chocolate-robby-angel.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Yellow Straw Hat",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-blue-straw-hat",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Blue Straw Hat",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-blue-straw-hat.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-orange-panama-hat",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Orange Panama Hat",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-orange-panama-hat.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-tropical-beach",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Tropical Beach",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Special",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-tropical-beach.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-pirate-captain",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Pirate Captain",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-pirate-captain.svg"
+  },
+  {
+    "id": "sonny-vin-caribbean-sea-summer-2016-pirate-robby-angel",
+    "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+    "name": "Pirate Robby Angel",
+    "series": "Caribbean Sea Summer (2016)",
+    "rarity": "Secret",
+    "image": "/images/sonny-vin-caribbean-sea-summer-2016-pirate-robby-angel.webp"
+  }
+];

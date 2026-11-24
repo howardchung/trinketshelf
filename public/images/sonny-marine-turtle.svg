@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="40%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#EFF8F6"/>
+    </radialGradient>
+    <filter id="sh" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#5C4D42" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#g)"/>
+  <ellipse cx="256" cy="456" rx="76" ry="14" fill="#E6DDD2" opacity="0.7"/>
+  <g filter="url(#sh)">
+    
+      
+    <!-- Little cherub body -->
+    <path d="M214 282 Q212 356 218 438 Q232 448 244 438 L248 378 L264 378 L268 438 Q280 448 294 438 Q300 356 298 282 Z" fill="#F8D8C0"/>
+    <!-- Arms -->
+    <path d="M216 292 Q184 324 176 346 Q182 356 194 348 L220 318 Z" fill="#F8D8C0"/>
+    <path d="M296 292 Q328 324 336 346 Q330 356 318 348 L292 318 Z" fill="#F8D8C0"/>
+    
+    <!-- Head base -->
+    <ellipse cx="256" cy="232" rx="56" ry="54" fill="#FCE0CA"/>
+    <!-- Iconic Sonny side-glancing eyes & sweet smile -->
+    <ellipse cx="234" cy="232" rx="9" ry="10.5" fill="#231D1A"/>
+    <circle cx="231" cy="228" r="3" fill="#FFFFFF"/>
+    <ellipse cx="278" cy="232" rx="9" ry="10.5" fill="#231D1A"/>
+    <circle cx="275" cy="228" r="3" fill="#FFFFFF"/>
+    <ellipse cx="218" cy="248" rx="11" ry="6.5" fill="#F4A5B2" opacity="0.55"/>
+    <ellipse cx="294" cy="248" rx="11" ry="6.5" fill="#F4A5B2" opacity="0.55"/>
+    <path d="M247 254 Q256 261 265 254" fill="none" stroke="#C58875" stroke-width="3" stroke-linecap="round"/>
+    
+      <!-- Turtle Green Shell Hat -->
+      <path d="M188 214 Q188 134 256 134 Q324 134 324 214 Q298 190 256 190 Q214 190 188 214 Z" fill="#4D9C6D"/>
+      <polygon points="256,144 284,162 276,188 236,188 228,162" fill="#77C291" stroke="#367550" stroke-width="4"/>
+      <ellipse cx="256" cy="204" rx="68" ry="12" fill="#E6D28B"/>
+    
+  </g>
+</svg>

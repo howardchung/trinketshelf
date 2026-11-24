@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="studio" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F2F7FC"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5C4D42" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#studio)"/>
+  <ellipse cx="256" cy="436" rx="112" ry="20" fill="#E8DFD3" opacity="0.65"/>
+  <g filter="url(#softShadow)">
+    
+  <!-- Pastel Blue Party Romper -->
+  <path d="M196 312 Q256 296 316 312 L328 426 Q256 440 184 426 Z" fill="#7EB6E0"/>
+  <circle cx="256" cy="344" r="7" fill="#FFFFFF"/>
+  <circle cx="256" cy="374" r="7" fill="#FFFFFF"/>
+  <ellipse cx="190" cy="348" rx="22" ry="18" fill="#3B3533"/>
+  <ellipse cx="322" cy="348" rx="22" ry="18" fill="#3B3533"/>
+  <!-- Panda Ears -->
+  <circle cx="182" cy="158" r="30" fill="#3B3533"/>
+  <circle cx="330" cy="158" r="30" fill="#3B3533"/>
+  <!-- Head -->
+  <ellipse cx="256" cy="224" rx="86" ry="76" fill="#FFFFFF" stroke="#ECE6DC" stroke-width="3"/>
+  <!-- Eye Patches -->
+  <ellipse cx="220" cy="222" rx="22" ry="26" transform="rotate(-14 220 222)" fill="#3B3533"/>
+  <ellipse cx="292" cy="222" rx="22" ry="26" transform="rotate(14 292 222)" fill="#3B3533"/>
+  <!-- Eyes inside patches -->
+  <circle cx="222" cy="218" r="7.5" fill="#FFFFFF"/>
+  <circle cx="222" cy="218" r="4.5" fill="#1E1917"/>
+  <circle cx="290" cy="218" r="7.5" fill="#FFFFFF"/>
+  <circle cx="290" cy="218" r="4.5" fill="#1E1917"/>
+  <ellipse cx="200" cy="242" rx="14" ry="8" fill="#F4A8B8" opacity="0.6"/>
+  <ellipse cx="312" cy="242" rx="14" ry="8" fill="#F4A8B8" opacity="0.6"/>
+  <ellipse cx="256" cy="234" rx="10" ry="7" fill="#3B3533"/>
+  <path d="M245 246 Q256 254 267 246" fill="none" stroke="#3B3533" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Party Hat -->
+  <polygon points="214,158 256,64 298,158" fill="#F472B6"/>
+  <line x1="226" y1="130" x2="286" y2="130" stroke="#FDE047" stroke-width="9"/>
+  <circle cx="256" cy="60" r="14" fill="#FDE047"/>
+  <!-- Cake Slice -->
+  <polygon points="332,370 398,354 398,402 332,402" fill="#FFF1D6" stroke="#D9A86C" stroke-width="3"/>
+  <rect x="332" y="366" width="66" height="10" rx="4" fill="#F472B6"/>
+  <circle cx="364" cy="356" r="9" fill="#E84A5F"/>
+
+  </g>
+</svg>

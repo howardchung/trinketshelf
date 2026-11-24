@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="studio" cx="50%" cy="42%" r="58%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F8F2"/>
+    </radialGradient>
+    <filter id="softShadow" x="-20%" y="-10%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#5C4D42" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="url(#studio)"/>
+  <ellipse cx="256" cy="436" rx="112" ry="20" fill="#E8DFD3" opacity="0.65"/>
+  <g filter="url(#softShadow)">
+    
+  <!-- Sage Dress -->
+  <path d="M196 312 Q256 294 316 312 L334 426 Q256 442 178 426 Z" fill="#8BB68E"/>
+  <path d="M206 322 Q256 340 306 322" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-dasharray="10 8" stroke-linecap="round"/>
+  <ellipse cx="192" cy="348" rx="21" ry="17" fill="#FAF2E4"/>
+  <ellipse cx="320" cy="348" rx="21" ry="17" fill="#FAF2E4"/>
+  <!-- Floppy Bunny Ears -->
+  <ellipse cx="164" cy="238" rx="24" ry="72" transform="rotate(14 164 238)" fill="#F7EAD6"/>
+  <ellipse cx="164" cy="244" rx="12" ry="50" transform="rotate(14 164 244)" fill="#F5C6CE"/>
+  <ellipse cx="348" cy="238" rx="24" ry="72" transform="rotate(-14 348 238)" fill="#F7EAD6"/>
+  <ellipse cx="348" cy="244" rx="12" ry="50" transform="rotate(-14 348 244)" fill="#F5C6CE"/>
+  <!-- Head -->
+  <ellipse cx="256" cy="222" rx="84" ry="74" fill="#FAF2E4"/>
+  <!-- Flower Crown -->
+  <path d="M188 168 Q256 144 324 168" fill="none" stroke="#6B9E70" stroke-width="10" stroke-linecap="round"/>
+  <g fill="#FFFFFF" stroke="#E8DFD3" stroke-width="1.5">
+    <circle cx="204" cy="160" r="16"/>
+    <circle cx="256" cy="148" r="19"/>
+    <circle cx="308" cy="160" r="16"/>
+  </g>
+  <circle cx="204" cy="160" r="7" fill="#FBBF24"/>
+  <circle cx="256" cy="148" r="8" fill="#F472B6"/>
+  <circle cx="308" cy="160" r="7" fill="#FBBF24"/>
+  
+    <circle cx="222" cy="222" r="9.5" fill="#2A221E"/>
+    <circle cx="219" cy="219" r="3" fill="#FFFFFF"/>
+    <circle cx="290" cy="222" r="9.5" fill="#2A221E"/>
+    <circle cx="287" cy="219" r="3" fill="#FFFFFF"/>
+    <ellipse cx="206" cy="238" rx="15" ry="9" fill="#F4A8B8" opacity="0.55"/>
+    <ellipse cx="306" cy="238" rx="15" ry="9" fill="#F4A8B8" opacity="0.55"/>
+    <polygon points="247,232 265,232 256,242" fill="#E0949E" stroke="#E0949E" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M 245 248 Q 256 256 267 248" fill="none" stroke="#5B463C" stroke-width="3.5" stroke-linecap="round"/>
+    
+
+  </g>
+</svg>
