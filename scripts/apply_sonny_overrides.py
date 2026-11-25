@@ -136,6 +136,15 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-dinosaur-2024-robby.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_52ea886f-55da-4c31-8b24-e7dd7e2891c4.jpg?v=1726207508",
     ),
+    # Cat Life Series (2023) Secret (Happy Pink Lucky Cat)
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cat-life-2023-secret",
+        "Lucky Cat Secret",
+        "sonny-lim-cat-life-2023-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/15_d478d699-f0e5-48c5-a1bd-860571f633ff.jpg?v=1698777015",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
