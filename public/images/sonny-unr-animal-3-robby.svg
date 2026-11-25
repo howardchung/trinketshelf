@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#FAF8F5"/>
+  <ellipse cx="256" cy="412" rx="86" ry="14" fill="#000000" opacity="0.08"/>
+  <!-- Left & right ears (no base!) -->
+  <ellipse cx="222" cy="112" rx="22" ry="48" transform="rotate(-8 222 112)" fill="#7D8E4E" stroke="#607038" stroke-width="5"/>
+  <ellipse cx="290" cy="112" rx="22" ry="48" transform="rotate(8 290 112)" fill="#7D8E4E" stroke="#607038" stroke-width="5"/>
+  <!-- Outstretched stubby arms -->
+  <path d="M198 260 C168 278 152 302 160 314 C168 324 190 314 206 296 Z" fill="#7D8E4E" stroke="#607038" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M314 260 C344 278 360 302 352 314 C344 324 322 314 306 296 Z" fill="#7D8E4E" stroke="#607038" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Body & legs (standing directly on ground, no base) -->
+  <path d="M200 250 C194 306 196 350 206 392 C209 404 224 408 238 408 C246 408 250 400 252 384 L260 384 C262 400 266 408 274 408 C288 408 303 404 306 392 C316 350 318 306 312 250 Z" fill="#7D8E4E" stroke="#607038" stroke-width="5" stroke-linejoin="round"/>
+  <!-- Head -->
+  <ellipse cx="256" cy="196" rx="66" ry="72" fill="#7D8E4E" stroke="#607038" stroke-width="5"/>
+  <!-- Subtle snout highlight -->
+  <ellipse cx="256" cy="226" rx="34" ry="24" fill="#FFFFFF" opacity="0.12"/>
+  <!-- Eyes (classic Robby side-glancing eyes with lashes) -->
+  <ellipse cx="226" cy="184" rx="18" ry="21" fill="#FFFFFF" stroke="#221E1C" stroke-width="3"/>
+  <circle cx="230" cy="186" r="11" fill="#1E1B1A"/>
+  <circle cx="234" cy="181" r="3.5" fill="#FFFFFF"/>
+  <path d="M210 172 L203 166 M215 166 L211 159" stroke="#1E1B1A" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="286" cy="184" rx="18" ry="21" fill="#FFFFFF" stroke="#221E1C" stroke-width="3"/>
+  <circle cx="290" cy="186" r="11" fill="#1E1B1A"/>
+  <circle cx="294" cy="181" r="3.5" fill="#FFFFFF"/>
+  <path d="M302 172 L309 166 M297 166 L301 159" stroke="#1E1B1A" stroke-width="3" stroke-linecap="round"/>
+  <!-- Black oval Robby nose -->
+  <ellipse cx="256" cy="234" rx="13" ry="10" fill="#1E1B1A"/>
+  <ellipse cx="253" cy="231" rx="4" ry="2.5" fill="#FFFFFF" opacity="0.45"/>
+  <!-- Subtle label -->
+  <text x="256" y="456" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="600" fill="#6B6058">Animal 3 Unrefined · No Base</text>
+</svg>
