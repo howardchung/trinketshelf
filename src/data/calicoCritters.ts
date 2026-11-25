@@ -314,30 +314,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-other-blind-bag-figures-baby-recital-series-6-toy-poodle-accordion.webp"
   },
   {
-    "id": "cc-sp-01-baby-band-used-maple-cat-trumpet",
-    "collectionId": "cc-sp-01-baby-band",
-    "name": "[used] Maple Cat Trumpet",
-    "series": "Series 1 \u00b7 Baby Band",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-7-maple-cat-trumpet.webp"
-  },
-  {
-    "id": "cc-sp-01-baby-band-used-charcoal-cat-piano",
-    "collectionId": "cc-sp-01-baby-band",
-    "name": "[used] Charcoal Cat Piano",
-    "series": "Series 1 \u00b7 Baby Band",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-5-charcoal-cat-piano.webp"
-  },
-  {
-    "id": "cc-sp-01-baby-band-used-bear-cymbal",
-    "collectionId": "cc-sp-01-baby-band",
-    "name": "[used] Bear Cymbal",
-    "series": "Series 1 \u00b7 Baby Band",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-3-bear-cymbal.webp"
-  },
-  {
     "id": "cc-sp-01-baby-band-squirrel-tambourine",
     "collectionId": "cc-sp-01-baby-band",
     "name": "Squirrel Tambourine",
@@ -416,46 +392,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "series": "Series 2 \u00b7 Baby Shopping",
     "rarity": "Regular",
     "image": "/images/sf-bag-baby-shopping-series-fluffy-dream-collection-white-bear.webp"
-  },
-  {
-    "id": "cc-sp-02-baby-shopping-used-fluffy-dream-collection-marshmallowmouse",
-    "collectionId": "cc-sp-02-baby-shopping",
-    "name": "[used] Fluffy Dream Collection Marshmallowmouse",
-    "series": "Series 2 \u00b7 Baby Shopping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-marshmallowmouse.webp"
-  },
-  {
-    "id": "cc-sp-02-baby-shopping-used-fluffy-dream-collection-silk-cat",
-    "collectionId": "cc-sp-02-baby-shopping",
-    "name": "[used] Fluffy Dream Collection Silk Cat",
-    "series": "Series 2 \u00b7 Baby Shopping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-silk-cat.webp"
-  },
-  {
-    "id": "cc-sp-02-baby-shopping-used-fluffy-dream-collection-koara",
-    "collectionId": "cc-sp-02-baby-shopping",
-    "name": "[used] Fluffy Dream Collection Koara",
-    "series": "Series 2 \u00b7 Baby Shopping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-koara.webp"
-  },
-  {
-    "id": "cc-sp-02-baby-shopping-used-fluffy-dream-collection-chocolate-rabbit",
-    "collectionId": "cc-sp-02-baby-shopping",
-    "name": "[used] Fluffy Dream Collection Chocolate Rabbit",
-    "series": "Series 2 \u00b7 Baby Shopping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-chocolate-rabbit.webp"
-  },
-  {
-    "id": "cc-sp-02-baby-shopping-used-fluffy-dream-collection-white-bear",
-    "collectionId": "cc-sp-02-baby-shopping",
-    "name": "[used] Fluffy Dream Collection White Bear",
-    "series": "Series 2 \u00b7 Baby Shopping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-white-bear.webp"
   },
   {
     "id": "cc-sp-02-baby-shopping-fluffy-dream-collection-charcoal-cat",
@@ -690,30 +626,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-other-blind-bag-figures-baby-sweets-series-otter-baby.webp"
   },
   {
-    "id": "cc-sp-05-baby-treats-used-deer-baby",
-    "collectionId": "cc-sp-05-baby-treats",
-    "name": "[used] Deer Baby",
-    "series": "Series 5 \u00b7 Baby Treats",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-deer-baby.webp"
-  },
-  {
-    "id": "cc-sp-05-baby-treats-used-marshmallow-mouse-baby-cake",
-    "collectionId": "cc-sp-05-baby-treats",
-    "name": "[used] Marshmallow Mouse Baby Cake",
-    "series": "Series 5 \u00b7 Baby Treats",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-marshmallow-mouse-baby-cake.webp"
-  },
-  {
-    "id": "cc-sp-05-baby-treats-used-koala-baby",
-    "collectionId": "cc-sp-05-baby-treats",
-    "name": "[used] Koala Baby",
-    "series": "Series 5 \u00b7 Baby Treats",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-koala-baby.webp"
-  },
-  {
     "id": "cc-sp-06-baby-camping-chocolate-rabbit-baby-with-pan",
     "collectionId": "cc-sp-06-baby-camping",
     "name": "Chocolate Rabbit Baby With Pan",
@@ -752,14 +664,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "series": "Series 6 \u00b7 Baby Camping",
     "rarity": "Regular",
     "image": "/images/sf-bag-baby-camping-series-charcoal-cat-baby-with-bucket.webp"
-  },
-  {
-    "id": "cc-sp-06-baby-camping-used-persian-cat-baby-with-lamp",
-    "collectionId": "cc-sp-06-baby-camping",
-    "name": "[used] Persian Cat Baby with Lamp",
-    "series": "Series 6 \u00b7 Baby Camping",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-camping-series-used-persian-cat-baby-with-lamp.webp"
   },
   {
     "id": "cc-sp-06-baby-camping-cottontail-rabbit-baby-with-scarf",
@@ -1082,14 +986,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-other-blind-bag-figures-baby-dreamy-marine-series-turtle-milk-rabbit-baby.webp"
   },
   {
-    "id": "cc-sp-09-baby-seashore-used-series-baby-white-rabbit-with-fish-bag",
-    "collectionId": "cc-sp-09-baby-seashore",
-    "name": "[used]  Series Baby White Rabbit With Fish Bag",
-    "series": "Series 9 \u00b7 Baby Seashore Friends",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sea-friends-series-baby-white-rabbit-with-fish-bag.webp"
-  },
-  {
     "id": "cc-sp-09-baby-seashore-baby-little-otter-baby",
     "collectionId": "cc-sp-09-baby-seashore",
     "name": "Baby Little Otter Baby",
@@ -1394,14 +1290,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-other-blind-bag-figures-baby-cake-party-series-walnut-squirrel-with-a-cake-hat.webp"
   },
   {
-    "id": "cc-sp-12-baking-party-used-walnut-squirrel-with-a-cake-hat",
-    "collectionId": "cc-sp-12-baking-party",
-    "name": "[used] Walnut Squirrel with a Cake Hat",
-    "series": "Series 12 \u00b7 Baking Baby Party",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-cake-party-series-walnut-squirrel-with-a-cake-hat.webp"
-  },
-  {
     "id": "cc-sp-12-baking-party-little-latte-cat-with-a-cream-hat",
     "collectionId": "cc-sp-12-baking-party",
     "name": "Little Latte Cat with a Cream Hat",
@@ -1656,14 +1544,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "series": "Series 15 \u00b7 Baby Adventure",
     "rarity": "Regular",
     "image": "/images/sf-bag-other-blind-bag-figures-baby-explorers-series-koala.webp"
-  },
-  {
-    "id": "cc-sp-15-baby-adventure-used-milk-rabbit",
-    "collectionId": "cc-sp-15-baby-adventure",
-    "name": "[used] Milk Rabbit",
-    "series": "Series 15 \u00b7 Baby Adventure",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-explorers-series-milk-rabbit.webp"
   },
   {
     "id": "cc-sp-15-baby-adventure-chihuahua",
@@ -1938,14 +1818,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "image": "/images/sf-box-delicious-parade-blind-box-secret-fennec-fox-baby.webp"
   },
   {
-    "id": "cc-sp-delicious-parade-used-secret-fennec-fox-baby",
-    "collectionId": "cc-sp-delicious-parade",
-    "name": "[used] Secret Fennec Fox Baby",
-    "series": "Delicious Parade Friends",
-    "rarity": "Secret",
-    "image": "/images/sf-box-delicious-parade-blind-box-used-secret-fennec-fox-baby.webp"
-  },
-  {
     "id": "cc-sp-happy-sweets-latte-cat",
     "collectionId": "cc-sp-happy-sweets",
     "name": "Latte Cat",
@@ -2176,14 +2048,6 @@ export const CALICO_ITEMS: CatalogItem[] = [
     "series": "Classic Surprise Packs",
     "rarity": "Regular",
     "image": "/images/sf-bag-baby-fruit-party-2-elephant-baby.webp"
-  },
-  {
-    "id": "cc-sp-classic-packs-used-elephant-baby",
-    "collectionId": "cc-sp-classic-packs",
-    "name": "[used]  Elephant Baby",
-    "series": "Classic Surprise Packs",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-fruit-party-2-used-elephant-baby.webp"
   },
   {
     "id": "cc-sp-classic-packs-midnight-cat-small-baby",

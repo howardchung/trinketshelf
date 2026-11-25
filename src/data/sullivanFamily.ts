@@ -445,46 +445,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-baby-shopping-series-fluffy-dream-collection-white-bear.webp"
   },
   {
-    "id": "sf-bag-baby-shopping-series-used-fluffy-dream-collection-marshmallowmouse",
-    "collectionId": "sf-bag-baby-shopping-series",
-    "name": "[used] Fluffy Dream Collection Marshmallowmouse",
-    "series": "Baby Shopping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-marshmallowmouse.webp"
-  },
-  {
-    "id": "sf-bag-baby-shopping-series-used-fluffy-dream-collection-silk-cat",
-    "collectionId": "sf-bag-baby-shopping-series",
-    "name": "[used] Fluffy Dream Collection Silk Cat",
-    "series": "Baby Shopping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-silk-cat.webp"
-  },
-  {
-    "id": "sf-bag-baby-shopping-series-used-fluffy-dream-collection-koara",
-    "collectionId": "sf-bag-baby-shopping-series",
-    "name": "[used] Fluffy Dream Collection Koara",
-    "series": "Baby Shopping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-koara.webp"
-  },
-  {
-    "id": "sf-bag-baby-shopping-series-used-fluffy-dream-collection-chocolate-rabbit",
-    "collectionId": "sf-bag-baby-shopping-series",
-    "name": "[used] Fluffy Dream Collection Chocolate Rabbit",
-    "series": "Baby Shopping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-chocolate-rabbit.webp"
-  },
-  {
-    "id": "sf-bag-baby-shopping-series-used-fluffy-dream-collection-white-bear",
-    "collectionId": "sf-bag-baby-shopping-series",
-    "name": "[used] Fluffy Dream Collection White Bear",
-    "series": "Baby Shopping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-shopping-series-used-fluffy-dream-collection-white-bear.webp"
-  },
-  {
     "id": "sf-bag-baby-shopping-series-fluffy-dream-collection-charcoal-cat",
     "collectionId": "sf-bag-baby-shopping-series",
     "name": "Fluffy Dream Collection Charcoal Cat",
@@ -539,14 +499,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "series": "Baby Camping Series",
     "rarity": "Regular",
     "image": "/images/sf-bag-baby-camping-series-charcoal-cat-baby-with-bucket.webp"
-  },
-  {
-    "id": "sf-bag-baby-camping-series-used-persian-cat-baby-with-lamp",
-    "collectionId": "sf-bag-baby-camping-series",
-    "name": "[used] Persian Cat Baby with Lamp",
-    "series": "Baby Camping Series",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-camping-series-used-persian-cat-baby-with-lamp.webp"
   },
   {
     "id": "sf-bag-baby-camping-series-cottontail-rabbit-baby-with-scarf",
@@ -715,14 +667,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "series": "Delicious Parade (Blind Box)",
     "rarity": "Secret",
     "image": "/images/sf-box-delicious-parade-blind-box-secret-fennec-fox-baby.webp"
-  },
-  {
-    "id": "sf-box-delicious-parade-blind-box-used-secret-fennec-fox-baby",
-    "collectionId": "sf-box-delicious-parade-blind-box",
-    "name": "[used] Secret Fennec Fox Baby",
-    "series": "Delicious Parade (Blind Box)",
-    "rarity": "Secret",
-    "image": "/images/sf-box-delicious-parade-blind-box-used-secret-fennec-fox-baby.webp"
   },
   {
     "id": "sf-bag-baby-adventure-series-tiger",
@@ -1211,14 +1155,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "series": "Baby Fruit Party 2",
     "rarity": "Regular",
     "image": "/images/sf-bag-baby-fruit-party-2-elephant-baby.webp"
-  },
-  {
-    "id": "sf-bag-baby-fruit-party-2-used-elephant-baby",
-    "collectionId": "sf-bag-baby-fruit-party-2",
-    "name": "[used]  Elephant Baby",
-    "series": "Baby Fruit Party 2",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-baby-fruit-party-2-used-elephant-baby.webp"
   },
   {
     "id": "sf-bag-baby-fruit-party-2-midnight-cat-small-baby",
@@ -2037,78 +1973,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "image": "/images/sf-bag-other-blind-bag-figures-baby-stylish-hair-series-sheep-baby.webp"
   },
   {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-sweets-series-deer-baby",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Sweets Series Deer Baby",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-deer-baby.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-sea-friends-series-baby-white-rabbit-with-fish-bag",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Sea Friends Series Baby White Rabbit With Fish Bag",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sea-friends-series-baby-white-rabbit-with-fish-bag.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-cake-party-series-walnut-squirrel-with-a-cake-hat",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Cake Party Series Walnut Squirrel with a Cake Hat",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-cake-party-series-walnut-squirrel-with-a-cake-hat.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-recital-series-7-maple-cat-trumpet",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Recital Series 7 Maple Cat Trumpet",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-7-maple-cat-trumpet.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-sweets-series-marshmallow-mouse-baby-cake",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Sweets Series Marshmallow Mouse Baby Cake",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-marshmallow-mouse-baby-cake.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-recital-series-5-charcoal-cat-piano",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Recital Series 5 Charcoal Cat Piano",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-5-charcoal-cat-piano.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-sweets-series-koala-baby",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Sweets Series Koala Baby",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-sweets-series-koala-baby.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-explorers-series-milk-rabbit",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Explorers Series Milk Rabbit",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-explorers-series-milk-rabbit.webp"
-  },
-  {
-    "id": "sf-bag-other-blind-bag-figures-used-baby-recital-series-3-bear-cymbal",
-    "collectionId": "sf-bag-other-blind-bag-figures",
-    "name": "[used] Baby Recital Series 3 Bear Cymbal",
-    "series": "Other Blind Bag Figures",
-    "rarity": "Regular",
-    "image": "/images/sf-bag-other-blind-bag-figures-used-baby-recital-series-3-bear-cymbal.webp"
-  },
-  {
     "id": "sf-bag-other-blind-bag-figures-baby-dreamy-marine-series-little-otter-baby",
     "collectionId": "sf-bag-other-blind-bag-figures",
     "name": "Baby Dreamy Marine Series Little Otter Baby",
@@ -2379,14 +2243,6 @@ export const SULLIVAN_ITEMS: CatalogItem[] = [
     "series": "Other Blind Box Figures",
     "rarity": "Special",
     "image": "/images/sf-box-other-blind-box-figures-dreamy-parade-series-smaller-husky-dog-baby.webp"
-  },
-  {
-    "id": "sf-box-other-blind-box-figures-used-dreamy-parade-series-husky-dog-baby",
-    "collectionId": "sf-box-other-blind-box-figures",
-    "name": "[used] Dreamy Parade Series Husky Dog Baby",
-    "series": "Other Blind Box Figures",
-    "rarity": "Special",
-    "image": "/images/sf-box-other-blind-box-figures-used-dreamy-parade-series-husky-dog-baby.webp"
   },
   {
     "id": "sf-box-other-blind-box-figures-dreamy-parade-series-silk-cat-baby",
