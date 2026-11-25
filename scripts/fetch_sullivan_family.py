@@ -18,6 +18,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from common import DATA_DIR, IMAGES_DIR, download_and_normalize_image, fetch_json, slugify
 
 SKIP_PACK_PATTERNS = (
+    "[used]",
     "one blind bag",
     "one blind box",
     "blind box contains",

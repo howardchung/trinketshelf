@@ -18,7 +18,12 @@ Python utilities used to fetch official product catalogs, download and normalize
 - `fetch_sonny_secrets_and_lucky.py` — Matches Sonny Angel Secrets, Robby Angels, Lucky Figures, and Vintage Seasonal figures against public collector Shopify feeds (`toysez.com`, `arttoyfamilia.com`, `blinkbox.com.au`) to replace any `.svg` placeholders with real photos.
   ```bash
   python3 scripts/fetch_sonny_secrets_and_lucky.py         # Preview matches
-  python3 scripts/fetch_sonny_secrets_and_lucky.py --apply # Download & update src/data/*.ts
+  python3 scripts/fetch_sonny_secrets_and_lucky.py --apply # Download & update public/data/*.json
+  ```
+- `apply_sonny_overrides.py` — Reproducible Sonny Angel Secret & Robby overrides (refined Regular Robbys with bases, base-less Unrefined Robbys & color-accurate SVGs, non-existent Unrefined Sweets Robby removal, Santa's Little Helper Secret/Robby, Dinosaur 2024 Secret/Robby).
+  ```bash
+  python3 scripts/apply_sonny_overrides.py          # Apply overrides using cached images
+  python3 scripts/apply_sonny_overrides.py --force  # Re-download all pinned photos
   ```
 - `fetch_tinytiny.py` — Fetches all POP MART TinyTiny series (*Prologue*, *Act I: Sugar Therapy Room*, *Mixed Series*, and *Standalone Figures*) with studio photos and regenerates `src/data/tinytiny.ts`.
   ```bash

@@ -15,9 +15,12 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from common import DATA_DIR, PROJECT_ROOT
+from common import PROJECT_ROOT
+import fetch_pokemon_csv4c
+import fetch_pokemon_prices
 
-POKEMON_DATA_DIR = PROJECT_ROOT / "public" / "data" / "pokemon"
+PUBLIC_DATA_DIR = PROJECT_ROOT / "public" / "data"
+POKEMON_DATA_DIR = PUBLIC_DATA_DIR / "pokemon"
 
 ERA_COLORS = {
     "Mega Evolution": ("#D94862", "#FDECEF", "#8F2237", "⚡"),
@@ -275,39 +278,15 @@ def main() -> None:
                 "emoji": emoji,
             })
 
-        out_ts = DATA_DIR / "pokemonSets.ts"
-        out_ts.write_text(
-            "\n".join([
-                "import type { CollectionId } from '../types';",
-                "",
-                "export interface PokemonSetMeta {",
-                "  id: CollectionId;",
-                "  setId: string;",
-                "  name: string;",
-                "  shortName: string;",
-                "  era: string;",
-                "  releaseDate: string;",
-                "  cardCount: number;",
-                "  grandMasterCount: number;",
-                "  estimatedTotal: number;",
-                "  logo: string;",
-                "  symbol: string;",
-                "  subtitle: string;",
-                "  maker: string;",
-                "  accent: string;",
-                "  accentSoft: string;",
-                "  accentText: string;",
-                "  emoji: string;",
-                "}",
-                "",
-                "export const POKEMON_SETS: PokemonSetMeta[] = " + json.dumps(set_metas, indent=2) + ";",
-                "",
-                f"export const POKEMON_TOTAL_GM_CARDS = {total_gm_cards};",
-                "",
-            ]),
-            encoding="utf-8",
-        )
+        out_json = PUBLIC_DATA_DIR / "pokemon-sets.json"
+        out_json.write_text(json.dumps(set_metas), encoding="utf-8")
         print(f"Generated {len(set_metas)} English Pokémon TCG sets with {total_gm_cards:,} Grand Master cards!")
+
+        print("\n--- Adding Simplified Chinese Reward Round (CSV4C) Master Set ---")
+        fetch_pokemon_csv4c.main()
+
+        print("\n--- Applying Real TCGplayer Market Prices ---")
+        fetch_pokemon_prices.main()
     finally:
         shutil.rmtree(tmp_dir, ignore_errors=True)
 
