@@ -557,7 +557,7 @@ export const SONNY_UNREFINED_ITEMS: CatalogItem[] = [
     "name": "Robby Angel (Animal 4 Unrefined)",
     "series": "Animal Series 4 (~2018)",
     "rarity": "Secret",
-    "image": "/images/sonny-animal-4-robby.webp"
+    "image": "/images/sonny-unr-animal-4-robby.webp"
   },
   {
     "id": "sonny-unr-sweets-series-2018-pancake",
@@ -781,7 +781,7 @@ export const SONNY_UNREFINED_ITEMS: CatalogItem[] = [
     "name": "Robby Angel (Marine Unrefined)",
     "series": "Marine Series (~2019)",
     "rarity": "Secret",
-    "image": "/images/sonny-marine-robby.webp"
+    "image": "/images/sonny-unr-marine-robby.webp"
   },
   {
     "id": "sonny-unr-vegetable-series-2019-carrot",
@@ -893,7 +893,7 @@ export const SONNY_UNREFINED_ITEMS: CatalogItem[] = [
     "name": "Robby Angel (Vegetable Unrefined)",
     "series": "Vegetable Series (~2019)",
     "rarity": "Secret",
-    "image": "/images/sonny-vegetable-robby.webp"
+    "image": "/images/sonny-unr-vegetable-robby.webp"
   },
   {
     "id": "sonny-unr-fruit-series-2019-mangosteen",
@@ -1005,7 +1005,7 @@ export const SONNY_UNREFINED_ITEMS: CatalogItem[] = [
     "name": "Robby Angel (Fruit Unrefined)",
     "series": "Fruit Series (~2019)",
     "rarity": "Secret",
-    "image": "/images/sonny-fruit-robby.webp"
+    "image": "/images/sonny-unr-fruit-robby.webp"
   },
   {
     "id": "sonny-unr-flower-series-2019-rose",
@@ -1117,7 +1117,7 @@ export const SONNY_UNREFINED_ITEMS: CatalogItem[] = [
     "name": "Robby Angel (Flower Unrefined)",
     "series": "Flower Series (~2019)",
     "rarity": "Secret",
-    "image": "/images/sonny-flower-robby.webp"
+    "image": "/images/sonny-unr-flower-robby.webp"
   }
 ];
 
