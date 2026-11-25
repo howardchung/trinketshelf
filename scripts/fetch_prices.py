@@ -267,6 +267,14 @@ def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> f
             if s_hit == 0 or s_ratio < 0.5:
                 continue
             score = s_ratio * 12.0 + s_hit * 2.5 + n_ratio * 8.0 + n_hit * 2.0
+            # Refined Regular-series Robbys have a pedestal base; avoid matching unrefined
+            # color-coded listings (e.g. "White Robby", "Purple Robby", "Blackish Green Robby", "Brown Robby")
+            if is_robby and "unrefined" not in series.lower() and not any(y in series for y in ("2011", "2012", "2013", "2014", "2015", "2016", "2017", "2018")):
+                unrefined_color_toks = {"white", "purple", "blackish", "brown"}
+                if ptoks & unrefined_color_toks:
+                    score -= 6.0
+                if "2019" in ptoks:
+                    score += 1.5
             min_thresh = 13.0
         else:
             if n_hit == 0 or n_ratio < 0.6:
