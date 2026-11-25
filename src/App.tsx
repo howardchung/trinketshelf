@@ -1057,7 +1057,7 @@ export default function App() {
                   ? `Search all ${subSeriesGroups.length} ${activeTopShelf.name} series...`
                   : activeTopShelf
                   ? `Search ${activeTopShelf.name}...`
-                  : `Search all ${TOP_LEVEL_SHELVES.length} collections (e.g., Strawberry, Croissant, Robby)...`
+                  : `Search all ${TOP_LEVEL_SHELVES.length} collections...`
               }
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}

@@ -1,22 +1,37 @@
 #!/usr/bin/env python3
-"""Verify that every catalog item image referenced in src/data/*.ts exists on disk."""
+"""Verify that every catalog item image referenced in public/data/*.json exists on disk."""
 
 from __future__ import annotations
 
-import re
+import json
 import sys
 
-from common import DATA_DIR, PROJECT_ROOT
+from common import PROJECT_ROOT
+
+PUBLIC_DATA_DIR = PROJECT_ROOT / "public" / "data"
+
+
+def extract_items(data: object) -> list[dict]:
+    if isinstance(data, dict):
+        items: list[dict] = []
+        for k, v in data.items():
+            if k.lower().endswith("items") and isinstance(v, list):
+                items.extend(v)
+        return items
+    return []
 
 
 def main() -> None:
-    ts_files = sorted(DATA_DIR.glob("*.ts"))
+    json_files = sorted(PUBLIC_DATA_DIR.glob("*.json"))
     all_imgs: list[str] = []
-    for path in ts_files:
-        txt = path.read_text(encoding="utf-8")
-        found = re.findall(r'"?image"?:\s*[\'"](/images/[^\'"]+)[\'"]', txt)
+    for path in json_files:
+        if path.name in ("prices.json", "pokemon-sets.json"):
+            continue
+        data = json.loads(path.read_text(encoding="utf-8"))
+        items = extract_items(data)
+        found = [it["image"] for it in items if isinstance(it.get("image"), str) and it["image"].startswith("/images/")]
         all_imgs.extend(found)
-        print(f"  {path.name:20s}: {len(found):4d} items")
+        print(f"  {path.name:26s}: {len(found):4d} items")
 
     missing = [
         img

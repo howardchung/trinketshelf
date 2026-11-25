@@ -227,13 +227,9 @@ def main() -> None:
     if 158 in base_by_num:
         logo_img = upgrade_pc_image(base_by_num[158].get("imageUri", ""))
 
-    # Update src/data/pokemonSets.ts
-    sets_ts_path = DATA_DIR / "pokemonSets.ts"
-    raw_ts = sets_ts_path.read_text(encoding="utf-8")
-    m = re.search(r"export const POKEMON_SETS: PokemonSetMeta\[\] = (\[.*\]);", raw_ts, re.S)
-    if not m:
-        raise RuntimeError("Could not parse POKEMON_SETS from src/data/pokemonSets.ts")
-    set_metas: list[dict[str, Any]] = json.loads(m.group(1))
+    # Update public/data/pokemon-sets.json
+    sets_json_path = PROJECT_ROOT / "public" / "data" / "pokemon-sets.json"
+    set_metas: list[dict[str, Any]] = json.loads(sets_json_path.read_text(encoding="utf-8"))
 
     new_meta = {
         "id": COL_ID,
@@ -258,18 +254,7 @@ def main() -> None:
     set_metas = [s for s in set_metas if s["setId"] != SET_ID]
     set_metas.append(new_meta)
     set_metas.sort(key=lambda s: s.get("releaseDate", ""), reverse=True)
-
-    total_gm_cards = sum(int(s["grandMasterCount"]) for s in set_metas)
-    updated_ts = (
-        raw_ts[: m.start(1)]
-        + json.dumps(set_metas, indent=2)
-        + re.sub(
-            r"export const POKEMON_TOTAL_GM_CARDS = \d+;",
-            f"export const POKEMON_TOTAL_GM_CARDS = {total_gm_cards};",
-            raw_ts[m.end(1) :],
-        )
-    )
-    sets_ts_path.write_text(updated_ts, encoding="utf-8")
+    sets_json_path.write_text(json.dumps(set_metas), encoding="utf-8")
 
     missing_img = sum(1 for c in cards_out if not c["image"])
     print(

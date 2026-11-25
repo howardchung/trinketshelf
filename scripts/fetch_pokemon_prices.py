@@ -370,12 +370,8 @@ def build_group_price_index(
 
 
 def main() -> None:
-    sets_ts_path = DATA_DIR / "pokemonSets.ts"
-    raw_ts = sets_ts_path.read_text(encoding="utf-8")
-    m = re.search(r"export const POKEMON_SETS: PokemonSetMeta\[\] = (\[.*\]);", raw_ts, re.S)
-    if not m:
-        raise RuntimeError("Could not parse POKEMON_SETS from src/data/pokemonSets.ts")
-    set_metas: list[dict[str, Any]] = json.loads(m.group(1))
+    sets_json_path = PROJECT_ROOT / "public" / "data" / "pokemon-sets.json"
+    set_metas: list[dict[str, Any]] = json.loads(sets_json_path.read_text(encoding="utf-8"))
 
     print("Fetching TCGplayer Pokémon groups from tcgcsv.com...")
     all_groups = fetch_json(f"{BASE_URL}/groups")["results"]
@@ -492,10 +488,8 @@ def main() -> None:
         sm["estimatedTotal"] = round(set_total, 2)
         total_gm_cards += len(cards)
 
-    # Write updated src/data/pokemonSets.ts
-    prefix = raw_ts[: m.start(1)]
-    suffix = raw_ts[m.end(1) :]
-    sets_ts_path.write_text(prefix + json.dumps(set_metas, indent=2) + suffix, encoding="utf-8")
+    # Write updated public/data/pokemon-sets.json
+    sets_json_path.write_text(json.dumps(set_metas), encoding="utf-8")
 
     pct = (matched_cards / total_cards * 100) if total_cards else 0
     print(
