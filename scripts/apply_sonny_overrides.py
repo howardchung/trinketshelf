@@ -516,21 +516,21 @@ def main(force_download: bool = False) -> None:
                 entry["imageSourceUrl"] = url
             limited["items"].append(entry)
 
-    # 3d. Sky Color Series (Special) Secret (Aurora) & Sky Color Robby Angel
+    # 3d. Sky Color Series (2017 Special) Secret (Aurora 2017) & Sky Color Robby Angel (2017)
     sky_spc_extra = [
         (
             "sonny-spc-sky-color-series-secret",
             "Aurora (Secret)",
-            "/images/sonny-lim-sky-color-series-2020-secret.webp",
-            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/1_381ce16d-74e5-4191-a4eb-ab5c5be999a8.jpg?v=1699388624",
-            238.81,
+            "sonny-spc-sky-color-series-secret.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_2_018b61a0-fb21-4890-a61c-db1adf2dbe80.jpg?v=1776179439",
+            185.07,
         ),
         (
             "sonny-spc-sky-color-series-robby",
             "Sky Color Robby Angel",
-            "/images/sonny-lim-sky-color-series-2020-robby.webp",
-            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/37_a7391c5f-df68-4dde-85b9-e6e4abc7459e.jpg?v=1699388584",
-            507.46,
+            "sonny-spc-sky-color-series-robby.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/5_69271af6-37e4-473a-9965-7e9dcd8c2ed7.jpg?v=1701106572",
+            298.51,
         ),
     ]
     for it in limited.get("items", []):
@@ -538,16 +538,25 @@ def main(force_download: bool = False) -> None:
             it["name"] = "Aurora (Secret)"
         elif it["id"] == "sonny-lim-sky-color-series-2020-robby":
             it["name"] = "Sky Color Robby Angel"
-    existing_spc_ids = {it["id"] for it in archive.get("specialItems", [])}
-    for iid, name, img, url, _ in sky_spc_extra:
-        if iid not in existing_spc_ids:
+    spc_by_id = {it["id"]: it for it in archive.get("specialItems", [])}
+    for iid, name, fname, url, _ in sky_spc_extra:
+        out_path = IMAGES_DIR / fname
+        if force_download or not out_path.is_file():
+            if out_path.exists():
+                out_path.unlink()
+            download_and_normalize_image(url, out_path)
+        if iid in spc_by_id:
+            spc_by_id[iid]["name"] = name
+            spc_by_id[iid]["image"] = f"/images/{fname}"
+            spc_by_id[iid]["imageSourceUrl"] = url
+        else:
             archive["specialItems"].append({
                 "id": iid,
                 "collectionId": "sonny-spc-sky-color-series",
                 "name": name,
                 "series": "Sky Color Series",
                 "rarity": "Secret",
-                "image": img,
+                "image": f"/images/{fname}",
                 "imageSourceUrl": url,
             })
 
