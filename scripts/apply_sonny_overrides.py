@@ -19,9 +19,12 @@ Applies all verified manual corrections so the catalog can be cleanly reconstruc
 from __future__ import annotations
 
 import argparse
+import io
 import json
+import urllib.request
 from pathlib import Path
 
+from PIL import Image
 from common import IMAGES_DIR, PROJECT_ROOT, download_and_normalize_image
 
 PUBLIC_DATA_DIR = PROJECT_ROOT / "public" / "data"
@@ -257,7 +260,54 @@ def main(force_download: bool = False) -> None:
         if it["id"] in svg_map:
             it["image"] = svg_map[it["id"]]
 
-    # 3. Strip non-existent items across all loaded Sonny JSON files
+    # 3. Halloween (2021) 2022 re-release: 3 additional Secret & Robby colors (Purple, Green, Pink)
+    hw_url = "https://www.sonnyangel.com/renewal/wp-content/uploads/2022/09/img_halloween2022_01.png"
+    hw_source_page = "https://www.sonnyangel.com/en/2022/09/09/halloween2022/"
+    hw_variants = [
+        ("sonny-lim-halloween-series-2021-secret-purple", "Pumpkin Rabbit (Purple)", "sonny-lim-halloween-series-2021-secret-purple.webp", 0, "rabbit", 169.55),
+        ("sonny-lim-halloween-series-2021-robby-purple", "Pumpkin Pants Robby (Purple)", "sonny-lim-halloween-series-2021-robby-purple.webp", 0, "robby", 537.31),
+        ("sonny-lim-halloween-series-2021-secret-green", "Pumpkin Rabbit (Green)", "sonny-lim-halloween-series-2021-secret-green.webp", 1, "rabbit", 169.55),
+        ("sonny-lim-halloween-series-2021-robby-green", "Pumpkin Pants Robby (Green)", "sonny-lim-halloween-series-2021-robby-green.webp", 1, "robby", 537.31),
+        ("sonny-lim-halloween-series-2021-secret-pink", "Pumpkin Rabbit (Pink)", "sonny-lim-halloween-series-2021-secret-pink.webp", 2, "rabbit", 169.55),
+        ("sonny-lim-halloween-series-2021-robby-pink", "Pumpkin Pants Robby (Pink)", "sonny-lim-halloween-series-2021-robby-pink.webp", 2, "robby", 537.31),
+    ]
+    need_hw_crop = force_download or any(not (IMAGES_DIR / v[2]).is_file() for v in hw_variants)
+    if need_hw_crop:
+        req = urllib.request.Request(hw_url, headers={"User-Agent": "Mozilla/5.0"})
+        hw_img = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=20).read()))
+        w, h = hw_img.size
+        pw = w / 3.0
+        for _, _, fname, panel, kind, _ in hw_variants:
+            if kind == "rabbit":
+                box = (int(panel * pw + 0.02 * pw), int(0.18 * h), int(panel * pw + 0.50 * pw), int(0.95 * h))
+            else:
+                box = (int(panel * pw + 0.51 * pw), int(0.32 * h), int(panel * pw + 0.99 * pw), int(0.95 * h))
+            sub = hw_img.crop(box).convert("RGB")
+            canvas = Image.new("RGB", (512, 512), (255, 255, 255))
+            sub.thumbnail((476, 476), Image.Resampling.LANCZOS)
+            canvas.paste(sub, ((512 - sub.width) // 2, (512 - sub.height) // 2))
+            canvas.save(IMAGES_DIR / fname, "WEBP", quality=88)
+
+    limited = get_json("sonny-limited.json")
+    existing_lim_ids = {it["id"] for it in limited.get("items", [])}
+    for it in limited.get("items", []):
+        if it["id"] == "sonny-lim-halloween-series-2021-secret":
+            it["name"] = "Pumpkin Rabbit (Orange)"
+        elif it["id"] == "sonny-lim-halloween-series-2021-robby":
+            it["name"] = "Pumpkin Pants Robby (Orange)"
+    for iid, name, fname, _, _, _ in hw_variants:
+        if iid not in existing_lim_ids:
+            limited["items"].append({
+                "id": iid,
+                "collectionId": "sonny-lim-halloween-series-2021",
+                "name": name,
+                "series": "Halloween Series(2021)",
+                "rarity": "Secret",
+                "image": f"/images/{fname}",
+                "sourceUrl": hw_source_page,
+            })
+
+    # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
         for k, v in list(data.items()):
             if k.lower().endswith("items") and isinstance(v, list):
@@ -266,7 +316,7 @@ def main(force_download: bool = False) -> None:
     for fname, data in loaded.items():
         (PUBLIC_DATA_DIR / fname).write_text(json.dumps(data), encoding="utf-8")
 
-    # Also clean removed IDs from prices.json
+    # Also clean removed IDs and add prices for added variants in prices.json
     prices_path = PUBLIC_DATA_DIR / "prices.json"
     if prices_path.is_file():
         prices = json.loads(prices_path.read_text(encoding="utf-8"))
@@ -274,6 +324,10 @@ def main(force_download: bool = False) -> None:
         for rid in REMOVED_ITEM_IDS:
             if rid in prices:
                 prices.pop(rid, None)
+                changed = True
+        for iid, _, _, _, _, default_p in hw_variants:
+            if iid not in prices:
+                prices[iid] = default_p
                 changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
