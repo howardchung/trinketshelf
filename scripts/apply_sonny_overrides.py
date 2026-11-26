@@ -183,6 +183,32 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-bug-s-world-2022-robby.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/56_cdad5ed7-71e8-4593-977d-fe578a361ea0.jpg?v=1699159335",
     ),
+    # Sonny Angel in Wonderland Series (2020) Drink Me Robby Angel
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-in-wonderland-series-2020-robby",
+        "Drink Me Robby Angel",
+        "sonny-lim-in-wonderland-series-2020-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/7_3e6f98b6-e771-4870-85df-1cd583aa108d.jpg?v=1699383370",
+    ),
+    # Cactus Series (2020) Secret Cactus & Cactus Robby Angel
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cactus-series-2020-secret",
+        "Secret Cactus",
+        "sonny-lim-cactus-series-2020-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9680.jpg?v=1702391419",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cactus-series-2020-robby",
+        "Cactus Robby Angel",
+        "sonny-lim-cactus-series-2020-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9701.jpg?v=1702393043",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -307,6 +333,30 @@ def main(force_download: bool = False) -> None:
                 "sourceUrl": hw_source_page,
             })
 
+    # 3b. Cactus Series (2020) 4 Lucky Color Variants (Monkey, Mouse, Parrot, Rabbit)
+    cactus_lucky = [
+        ("sonny-lim-cactus-series-2020-lucky-monkey", "Lucky Monkey", "sonny-lim-cactus-series-2020-lucky-monkey.webp", "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9689.jpg?v=1702392330", 447.76),
+        ("sonny-lim-cactus-series-2020-lucky-mouse", "Lucky Mouse", "sonny-lim-cactus-series-2020-lucky-mouse.webp", "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9691.jpg?v=1702392499", 447.76),
+        ("sonny-lim-cactus-series-2020-lucky-parrot", "Lucky Parrot", "sonny-lim-cactus-series-2020-lucky-parrot.webp", "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9693.jpg?v=1702392698", 268.66),
+        ("sonny-lim-cactus-series-2020-lucky-rabbit", "Lucky Rabbit", "sonny-lim-cactus-series-2020-lucky-rabbit.webp", "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9696.jpg?v=1702392804", 298.51),
+    ]
+    for iid, name, fname, url, _ in cactus_lucky:
+        out_path = IMAGES_DIR / fname
+        if force_download or not out_path.is_file():
+            if out_path.exists():
+                out_path.unlink()
+            download_and_normalize_image(url, out_path)
+        if iid not in existing_lim_ids:
+            limited["items"].append({
+                "id": iid,
+                "collectionId": "sonny-lim-cactus-series-2020",
+                "name": name,
+                "series": "Cactus Series (2020)",
+                "rarity": "Lucky",
+                "image": f"/images/{fname}",
+                "imageSourceUrl": url,
+            })
+
     # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
         for k, v in list(data.items()):
@@ -329,6 +379,13 @@ def main(force_download: bool = False) -> None:
             if iid not in prices:
                 prices[iid] = default_p
                 changed = True
+        for iid, _, _, _, default_p in cactus_lucky:
+            if iid not in prices:
+                prices[iid] = default_p
+                changed = True
+        prices["sonny-lim-cactus-series-2020-secret"] = 89.55
+        prices["sonny-lim-cactus-series-2020-robby"] = 298.51
+        changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
 
