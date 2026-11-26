@@ -209,6 +209,15 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-cactus-series-2020-robby.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/IMG_9701.jpg?v=1702393043",
     ),
+    # Circus Series (2019) Secret Rabbit (distinct from 2022 Join the Circus Merry-Go-Round)
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-circus-series-secret",
+        "Circus Rabbit (Secret)",
+        "sonny-lim-circus-series-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/52_3fa39198-afc8-4b62-a8bd-28d3ab852e23.jpg?v=1699454395",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -385,6 +394,7 @@ def main(force_download: bool = False) -> None:
                 changed = True
         prices["sonny-lim-cactus-series-2020-secret"] = 89.55
         prices["sonny-lim-cactus-series-2020-robby"] = 298.51
+        prices["sonny-lim-circus-series-secret"] = 59.70
         changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
