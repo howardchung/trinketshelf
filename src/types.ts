@@ -67,6 +67,8 @@ export interface CatalogItem {
   rarity: ItemRarity;
   image: string;
   price?: number;
+  sourceUrl?: string;
+  imageSourceUrl?: string;
   isCustom?: boolean;
 }
 

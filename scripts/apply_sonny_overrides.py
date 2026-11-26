@@ -217,6 +217,7 @@ def main(force_download: bool = False) -> None:
                 if new_name:
                     it["name"] = new_name
                 it["image"] = f"/images/{img_name}"
+                it["imageSourceUrl"] = url
 
     # 2. Color-accurate base-less SVG placeholders for remaining Unrefined Robbys
     archive = get_json("sonny-archive.json")
