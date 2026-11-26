@@ -163,6 +163,23 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-harvest-series-2021-secret.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/10_2eb369c7-c176-4d30-af42-49feabecc1d8.jpg?v=1699272605",
     ),
+    # Bug's World Series (2022) Secret (Bumblebee) & Bee Robby Angel
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-bug-s-world-2022-secret",
+        "Bumblebee",
+        "sonny-lim-bug-s-world-2022-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/60_5ef78407-e045-463f-85d7-cd64e62d3323.jpg?v=1699159272",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-bug-s-world-2022-robby",
+        "Bee Robby Angel",
+        "sonny-lim-bug-s-world-2022-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/56_cdad5ed7-71e8-4593-977d-fe578a361ea0.jpg?v=1699159335",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
