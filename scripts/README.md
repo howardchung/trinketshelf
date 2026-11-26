@@ -41,9 +41,9 @@ Python utilities used to fetch official product catalogs, download and normalize
   ```bash
   python3 scripts/fetch_zsiga.py
   ```
-- `fetch_sullivan_family.py` — Fetches Sylvanian Families Blind Bag series and Blind Box series (Doki Doki Collection, FamilyMart, Lottery) with individual studio photos and regenerates `src/data/sullivanFamily.ts`.
+- `fetch_sylvanian_families.py` — Fetches Sylvanian Families Blind Bag series and Blind Box series (Doki Doki Collection, FamilyMart, Lottery) with individual studio photos.
   ```bash
-  python3 scripts/fetch_sullivan_family.py
+  python3 scripts/fetch_sylvanian_families.py
   ```
 - `build_calico_surprise_packs.py` — Maps North American Calico Critters Surprise Pack Series (Series 1–15 + Classic Surprise Packs) to the cached studio photos and generates `src/data/calicoCritters.ts`.
   ```bash
