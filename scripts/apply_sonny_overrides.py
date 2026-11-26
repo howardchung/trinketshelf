@@ -167,6 +167,8 @@ UNREFINED_ROBBY_SVGS = [
 REMOVED_ITEM_IDS = {
     "sonny-unr-sweets-series-2018-robby",
     "sonny-lim-creatures-series-2022-robby",
+    "sonny-lim-summer-festival-series-2021-robby",
+    "sonny-lim-harvest-series-2021-robby",
 }
 
 
