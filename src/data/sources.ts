@@ -25,7 +25,10 @@ export function getItemSourceLinks(
 
   if (item.sourceUrl) {
     links.push({ label: 'Source', url: item.sourceUrl, kind: 'source' });
-  } else if (cid === 'pkmn-csv4c') {
+    return links;
+  }
+
+  if (cid === 'pkmn-csv4c') {
     const numMatch = item.name.match(/^#0*(\d+)/);
     const q = numMatch ? `csv4c ${qName} #${numMatch[1]}` : `csv4c ${qName}`;
     links.push({
@@ -34,11 +37,17 @@ export function getItemSourceLinks(
       kind: 'source',
     });
   } else if (cid.startsWith('pkmn-')) {
+    const setId = cid.replace(/^pkmn-/, '');
     const setShort = collection.shortName ?? collection.name.replace(/^Pokémon TCG · /, '');
     links.push({
       label: 'TCGplayer',
       url: `https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=${enc(`${qName} ${setShort}`)}&view=grid`,
       kind: 'source',
+    });
+    links.push({
+      label: 'Pokémon TCG Data',
+      url: `https://github.com/PokemonTCG/pokemon-tcg-data/blob/master/cards/en/${enc(setId)}.json`,
+      kind: 'image',
     });
   } else if (cid.startsWith('sonny-')) {
     const officialUrl = cid.startsWith('sonny-hip-')
@@ -49,11 +58,18 @@ export function getItemSourceLinks(
       ? 'https://www.sonnyangel.com/en/products/artist-collection/'
       : 'https://www.sonnyangel.com/en/products/mini-figure/';
     links.push({ label: 'Sonny Angel Official', url: officialUrl, kind: 'source' });
-    if (item.rarity === 'Secret' || item.rarity === 'Lucky') {
+
+    if (item.imageSourceUrl?.includes('0561/4606/7644') || item.rarity === 'Secret' || item.rarity === 'Lucky') {
       links.push({
         label: 'Toysez',
         url: `https://toysez.com/search?q=${enc(`Sonny Angel ${qName}`)}`,
-        kind: 'source',
+        kind: 'image',
+      });
+    } else if (item.imageSourceUrl?.includes('0866/2535/4046')) {
+      links.push({
+        label: 'Art Toy Familia',
+        url: `https://arttoyfamilia.com/search?q=${enc(`Sonny Angel ${qName}`)}`,
+        kind: 'image',
       });
     }
   } else if (cid.startsWith('sp-')) {
@@ -89,17 +105,6 @@ export function getItemSourceLinks(
     links.push({
       label: 'Baby Cubby',
       url: `https://www.babycubby.com/search?q=${enc(`Jellycat ${qName}`)}`,
-      kind: 'source',
-    });
-  }
-
-  // Image source link: only link to an actual external upstream image URL (never local /images/ paths)
-  const upstreamImgUrl =
-    item.imageSourceUrl || (item.image.startsWith('http') ? item.image : '');
-  if (upstreamImgUrl) {
-    links.push({
-      label: 'Image Source',
-      url: upstreamImgUrl,
       kind: 'image',
     });
   }
