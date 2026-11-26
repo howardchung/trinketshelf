@@ -145,6 +145,15 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-cat-life-2023-secret.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/15_d478d699-f0e5-48c5-a1bd-860571f633ff.jpg?v=1698777015",
     ),
+    # Creatures Series (2022) Secret (Donna Wilson Peanut)
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-creatures-series-2022-secret",
+        "Peanut (Secret)",
+        "sonny-lim-creatures-series-2022-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/1_1f3a9e43-7250-4fb4-a745-55e771fdaa21.jpg?v=1698215319",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -157,6 +166,7 @@ UNREFINED_ROBBY_SVGS = [
 # Non-existent items to strip if regenerated
 REMOVED_ITEM_IDS = {
     "sonny-unr-sweets-series-2018-robby",
+    "sonny-lim-creatures-series-2022-robby",
 }
 
 
@@ -218,10 +228,11 @@ def main(force_download: bool = False) -> None:
         if it["id"] in svg_map:
             it["image"] = svg_map[it["id"]]
 
-    # 3. Strip non-existent items
-    archive["unrefinedItems"] = [
-        it for it in archive.get("unrefinedItems", []) if it["id"] not in REMOVED_ITEM_IDS
-    ]
+    # 3. Strip non-existent items across all loaded Sonny JSON files
+    for data in loaded.values():
+        for k, v in list(data.items()):
+            if k.lower().endswith("items") and isinstance(v, list):
+                data[k] = [it for it in v if it["id"] not in REMOVED_ITEM_IDS]
 
     for fname, data in loaded.items():
         (PUBLIC_DATA_DIR / fname).write_text(json.dumps(data), encoding="utf-8")
