@@ -316,6 +316,55 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-valentine-s-day-series-2017-robby.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/51_b17ebf77-60da-495f-9857-fd96330eb039.jpg?v=1699526793",
     ),
+    # Vintage: Valentine's Chocolate (2016) — all 6 real Toysez photos
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-strawberry-chocolate",
+        None,
+        "sonny-vin-valentine-s-chocolate-2016-strawberry-chocolate.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/3_1_7cf89990-64a7-4b7d-ba6e-53e0e2fd363e.jpg?v=1776156929",
+    ),
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-kiwi-chocolate",
+        None,
+        "sonny-vin-valentine-s-chocolate-2016-kiwi-chocolate.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/4_2_cbad695a-e7f2-475a-9322-27347c6482e8.jpg?v=1776156929",
+    ),
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-berry-chocolate",
+        None,
+        "sonny-vin-valentine-s-chocolate-2016-berry-chocolate.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/5_3_634cb801-67f1-42b0-b962-4603b30839b3.jpg?v=1776156929",
+    ),
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-orange-chocolate",
+        None,
+        "sonny-vin-valentine-s-chocolate-2016-orange-chocolate.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_2_919d1030-0fb2-4a5c-828d-cb843ca18c1c.jpg?v=1776156929",
+    ),
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-white-chocolate-secret",
+        "Kiwi Chocolate Secret",
+        "sonny-vin-valentine-s-chocolate-2016-white-chocolate-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/6_2_2c6510cd-c003-4c5d-94dd-1893b33e5e39.jpg?v=1776156929",
+    ),
+    (
+        "sonny-vintage.json",
+        "items",
+        "sonny-vin-valentine-s-chocolate-2016-chocolate-robby-angel",
+        "Cherry Robby Angel",
+        "sonny-vin-valentine-s-chocolate-2016-chocolate-robby-angel.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_8eeca6d6-4868-46eb-99c0-8c2dfbde6a8e.jpg?v=1701103506",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -559,6 +608,52 @@ def main(force_download: bool = False) -> None:
                 "image": f"/images/{fname}",
                 "imageSourceUrl": url,
             })
+
+    # 3e. Vintage: Caribbean Sea Summer (2016) & Dreamy Halloween (2018) cropped from official sonnyangel.com announcements
+    vintage = get_json("sonny-vintage.json")
+    vin_by_id = {it["id"]: it for it in vintage.get("items", [])}
+
+    vintage_crops = [
+        (
+            "https://www.sonnyangel.com/renewal/wp-content/uploads/2018/10/news_sa_summer2016.png",
+            "https://www.sonnyangel.com/en/2016/06/17/sonny-angel-summer-series-caribbean-sea-version-%e7%99%ba%e5%a3%b2%e6%b1%ba%e5%ae%9a%ef%bc%81/",
+            [
+                ("sonny-vin-caribbean-sea-summer-2016-orange-panama-hat", "sonny-vin-caribbean-sea-summer-2016-orange-panama-hat.webp", (0.01, 0.49, 0.175, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-blue-straw-hat", "sonny-vin-caribbean-sea-summer-2016-blue-straw-hat.webp", (0.175, 0.50, 0.33, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-tropical-beach", "sonny-vin-caribbean-sea-summer-2016-tropical-beach.webp", (0.33, 0.49, 0.485, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-pirate-captain", "sonny-vin-caribbean-sea-summer-2016-pirate-captain.webp", (0.64, 0.49, 0.795, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat", "sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat.webp", (0.76, 0.36, 0.995, 0.84)),
+            ],
+        ),
+        (
+            "https://www.sonnyangel.com/renewal/wp-content/uploads/2018/10/news_sa_halloween.png",
+            "https://www.sonnyangel.com/en/2018/08/30/sonny-angel-%e3%83%8f%e3%83%ad%e3%82%a6%e3%82%a3%e3%83%b3%e3%82%b7%e3%83%aa%e3%83%bc%e3%82%ba%e7%99%ba%e5%a3%b2%e6%b1%ba%e5%ae%9a%ef%bc%81/",
+            [
+                ("sonny-vin-dreamy-halloween-2018-pastel-witch", "sonny-vin-dreamy-halloween-2018-pastel-witch.webp", (0.04, 0.35, 0.285, 0.83)),
+                ("sonny-vin-dreamy-halloween-2018-pastel-pumpkin", "sonny-vin-dreamy-halloween-2018-pastel-pumpkin.webp", (0.275, 0.39, 0.49, 0.83)),
+                ("sonny-vin-dreamy-halloween-2018-pastel-ghost", "sonny-vin-dreamy-halloween-2018-pastel-ghost.webp", (0.485, 0.40, 0.735, 0.83)),
+                ("sonny-vin-dreamy-halloween-2018-pastel-owl-witch", "sonny-vin-dreamy-halloween-2018-pastel-owl-witch.webp", (0.73, 0.37, 0.96, 0.83)),
+            ],
+        ),
+    ]
+    for sheet_url, src_page, specs in vintage_crops:
+        need_sheet = force_download or any(not (IMAGES_DIR / s[1]).is_file() for s in specs)
+        sheet_img = None
+        if need_sheet:
+            req = urllib.request.Request(sheet_url, headers={"User-Agent": "Mozilla/5.0"})
+            sheet_img = Image.open(io.BytesIO(urllib.request.urlopen(req, timeout=20).read()))
+        for iid, fname, (fx0, fy0, fx1, fy1) in specs:
+            out_path = IMAGES_DIR / fname
+            if sheet_img is not None and (force_download or not out_path.is_file()):
+                sw, sh = sheet_img.size
+                sub = sheet_img.crop((int(fx0 * sw), int(fy0 * sh), int(fx1 * sw), int(fy1 * sh))).convert("RGB")
+                canvas = Image.new("RGB", (512, 512), (255, 255, 255))
+                sub.thumbnail((476, 476), Image.Resampling.LANCZOS)
+                canvas.paste(sub, ((512 - sub.width) // 2, (512 - sub.height) // 2))
+                canvas.save(out_path, "WEBP", quality=88)
+            if iid in vin_by_id:
+                vin_by_id[iid]["image"] = f"/images/{fname}"
+                vin_by_id[iid]["sourceUrl"] = src_page
 
     # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
