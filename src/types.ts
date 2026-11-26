@@ -36,7 +36,7 @@ export type TopLevelShelfId =
   | 'sonny-angel'
   | 'skullpanda'
   | 'tinytiny'
-  | 'sullivan-family'
+  | 'sylvanian-families'
   | 'zsiga'
   | 'jellycat'
   | 'pokemon-tcg';
@@ -48,7 +48,7 @@ export interface CollectionMeta {
   parentShelf?: 'sonny-angel';
   sonnyCategory?: 'regular' | 'limited' | 'hippers' | 'unrefined' | 'artist' | 'special' | 'vintage';
   skullpandaCategory?: 'blind-box' | 'plush' | 'mixed';
-  sullivanCategory?: 'blind-bag' | 'blind-box';
+  sylvanianCategory?: 'blind-bag' | 'blind-box';
   subtitle: string;
   maker: string;
   accent: string;

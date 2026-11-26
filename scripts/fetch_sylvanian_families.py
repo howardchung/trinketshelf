@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Fetch Sullivan Family / Sylvanian Families Blind Bags & Blind Boxes with studio photos.
+"""Fetch Sylvanian Families Blind Bags & Blind Boxes with studio photos.
 
 Source:
   - store.kobeejapan.net/collections/blind-bag (individual confirmed figures across
     BB-01..BB-16 Blind Bag series and Doki Doki / FamilyMart / Lottery Blind Box series)
 
-Writes src/data/sullivanFamily.ts and downloads normalized 512x512 WebP photos into public/images/.
+Writes src/data/sylvanian-families.json and downloads normalized 512x512 WebP photos into public/images/.
 """
 
 from __future__ import annotations
@@ -132,7 +132,7 @@ def classify_product(title: str) -> tuple[str, str, str, str] | None:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Fetch Sullivan Family / Sylvanian Families Blind Bags & Blind Boxes")
+    parser = argparse.ArgumentParser(description="Fetch Sylvanian Families Blind Bags & Blind Boxes")
     parser.add_argument("--overwrite", action="store_true", help="Overwrite existing WebP images")
     args = parser.parse_args()
 
@@ -213,7 +213,7 @@ def main() -> None:
             "id": col_id,
             "name": f"Sylvanian Families · {info['series_name']}",
             "shortName": info["series_name"],
-            "sullivanCategory": info["cat"],
+            "sylvanianCategory": info["cat"],
             "subtitle": f"{kind_lbl} ({cnt} figures)",
             "maker": "Sylvanian Families / Epoch",
             "accent": accent,
@@ -223,7 +223,7 @@ def main() -> None:
         })
         items.extend(info["items"])
 
-    print(f"Downloading {len(tasks)} Sullivan Family photos across {len(collections)} series...")
+    print(f"Downloading {len(tasks)} Sylvanian Families photos across {len(collections)} series...")
     ok = 0
     failed = 0
     with ThreadPoolExecutor(max_workers=16) as pool:
@@ -246,14 +246,14 @@ def main() -> None:
 
     valid_items = [i for i in items if (IMAGES_DIR.parent / i["image"].lstrip("/")).is_file()]
 
-    out_ts = DATA_DIR / "sullivanFamily.ts"
+    out_ts = DATA_DIR / "sylvanian-families.json"
     out_ts.write_text(
         "\n".join([
             "import type { CatalogItem, CollectionMeta } from '../types';",
             "",
-            "export const SULLIVAN_COLLECTIONS: CollectionMeta[] = " + json.dumps(collections, indent=2) + ";",
+            "export const SYLVANIAN_COLLECTIONS: CollectionMeta[] = " + json.dumps(collections, indent=2) + ";",
             "",
-            "export const SULLIVAN_ITEMS: CatalogItem[] = " + json.dumps(valid_items, indent=2) + ";",
+            "export const SYLVANIAN_ITEMS: CatalogItem[] = " + json.dumps(valid_items, indent=2) + ";",
             "",
         ]),
         encoding="utf-8",
@@ -261,7 +261,7 @@ def main() -> None:
     print(f"Wrote {out_ts}: {len(collections)} series, {len(valid_items)} items (downloaded {ok}, failed {failed})")
     for c in collections:
         cnt = sum(1 for i in valid_items if i["collectionId"] == c["id"])
-        print(f"  [{c['sullivanCategory']:9s}] {c['shortName']:30s}: {cnt} figures")
+        print(f"  [{c['sylvanianCategory']:9s}] {c['shortName']:30s}: {cnt} figures")
 
 
 if __name__ == "__main__":

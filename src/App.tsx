@@ -22,7 +22,7 @@ import {
   SONNY_SPECIAL_IDS,
   SONNY_UNREFINED_IDS,
   SONNY_VINTAGE_IDS,
-  SULLIVAN_SERIES_IDS,
+  SYLVANIAN_SERIES_IDS,
   TINYTINY_SERIES_IDS,
   TOP_LEVEL_SHELVES,
   ZSIGA_SERIES_IDS,
@@ -43,7 +43,7 @@ type ActiveShelf = 'overview' | TopLevelShelfId;
 type ActiveSubSeries = 'all' | CollectionId;
 type SonnySeriesTab = 'all' | 'regular' | 'hippers' | 'limited' | 'vintage' | 'unrefined' | 'artist' | 'special';
 type SkullpandaTab = 'all' | 'blind-box' | 'plush' | 'mixed';
-type SullivanTab = 'all' | 'blind-bag' | 'blind-box';
+type SylvanianTab = 'all' | 'blind-bag' | 'blind-box';
 type PokemonEraTab =
   | 'all'
   | 'Simplified Chinese'
@@ -88,7 +88,7 @@ const SKULLPANDA_ID_SET = new Set<CollectionId>(SKULLPANDA_SERIES_IDS);
 const TINYTINY_ID_SET = new Set<CollectionId>(TINYTINY_SERIES_IDS);
 const JELLYCAT_ID_SET = new Set<CollectionId>(JELLYCAT_SERIES_IDS);
 const ZSIGA_ID_SET = new Set<CollectionId>(ZSIGA_SERIES_IDS);
-const SULLIVAN_ID_SET = new Set<CollectionId>(SULLIVAN_SERIES_IDS);
+const SYLVANIAN_ID_SET = new Set<CollectionId>(SYLVANIAN_SERIES_IDS);
 
 export default function App() {
   const {
@@ -109,7 +109,7 @@ export default function App() {
   const [activeSubSeries, setActiveSubSeries] = useState<ActiveSubSeries>('all');
   const [sonnySeriesTab, setSonnySeriesTab] = useState<SonnySeriesTab>('all');
   const [skullpandaTab, setSkullpandaTab] = useState<SkullpandaTab>('all');
-  const [sullivanTab, setSullivanTab] = useState<SullivanTab>('all');
+  const [sylvanianTab, setSylvanianTab] = useState<SylvanianTab>('all');
   const [pokemonEraTab, setPokemonEraTab] = useState<PokemonEraTab>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
@@ -191,11 +191,11 @@ export default function App() {
         collectionIds: [c.id],
       }));
     }
-    if (activeShelf === 'sullivan-family') {
+    if (activeShelf === 'sylvanian-families') {
       return COLLECTIONS.filter((c) => {
-        if (!SULLIVAN_ID_SET.has(c.id)) return false;
-        if (sullivanTab === 'all') return true;
-        return c.sullivanCategory === sullivanTab;
+        if (!SYLVANIAN_ID_SET.has(c.id)) return false;
+        if (sylvanianTab === 'all') return true;
+        return c.sylvanianCategory === sylvanianTab;
       }).map((c) => ({
         id: c.id,
         name: c.shortName ?? c.name.replace(/^Sylvanian Families · /, ''),
@@ -271,15 +271,15 @@ export default function App() {
       }));
     }
     return [];
-  }, [activeShelf, sonnySeriesTab, skullpandaTab, sullivanTab]);
+  }, [activeShelf, sonnySeriesTab, skullpandaTab, sylvanianTab]);
 
   const scopedCollectionIds = useMemo<Set<CollectionId> | null>(() => {
     if (activeShelf === 'overview') return null;
-    if (activeShelf === 'sullivan-family') {
+    if (activeShelf === 'sylvanian-families') {
       if (activeSubSeries !== 'all') return new Set<CollectionId>([activeSubSeries]);
-      if (sullivanTab === 'all') return SULLIVAN_ID_SET;
+      if (sylvanianTab === 'all') return SYLVANIAN_ID_SET;
       return new Set<CollectionId>(
-        COLLECTIONS.filter((c) => SULLIVAN_ID_SET.has(c.id) && c.sullivanCategory === sullivanTab).map(
+        COLLECTIONS.filter((c) => SYLVANIAN_ID_SET.has(c.id) && c.sylvanianCategory === sylvanianTab).map(
           (c) => c.id
         )
       );
@@ -322,7 +322,7 @@ export default function App() {
       return SONNY_ID_SET;
     }
     return new Set<CollectionId>([activeShelf as CollectionId]);
-  }, [activeShelf, activeSubSeries, sonnySeriesTab, skullpandaTab, sullivanTab]);
+  }, [activeShelf, activeSubSeries, sonnySeriesTab, skullpandaTab, sylvanianTab]);
 
   const stats = useMemo(() => {
     if (activeShelf === 'pokemon-tcg' && activeSubSeries === 'all') {
@@ -572,8 +572,8 @@ export default function App() {
       ? SKULLPANDA_SERIES_IDS[0] ?? 'sonny-animal-1'
       : activeShelf === 'tinytiny'
       ? 'tinytiny-prologue'
-      : activeShelf === 'sullivan-family'
-      ? SULLIVAN_SERIES_IDS[0] ?? 'sonny-animal-1'
+      : activeShelf === 'sylvanian-families'
+      ? SYLVANIAN_SERIES_IDS[0] ?? 'sonny-animal-1'
       : activeShelf === 'zsiga'
       ? ZSIGA_SERIES_IDS[0] ?? 'sonny-animal-1'
       : activeShelf === 'jellycat'
@@ -904,29 +904,29 @@ export default function App() {
               </div>
             )}
 
-            {activeShelf === 'sullivan-family' && (
+            {activeShelf === 'sylvanian-families' && (
               <div className="sonny-mode-bar" role="tablist" aria-label="Sylvanian Families Series Type">
                 {(
                   [
-                    ['all', `All (${SULLIVAN_SERIES_IDS.length})`],
+                    ['all', `All (${SYLVANIAN_SERIES_IDS.length})`],
                     [
                       'blind-bag',
-                      `Blind Bags (${COLLECTIONS.filter((c) => c.sullivanCategory === 'blind-bag').length})`,
+                      `Blind Bags (${COLLECTIONS.filter((c) => c.sylvanianCategory === 'blind-bag').length})`,
                     ],
                     [
                       'blind-box',
-                      `Blind Boxes (${COLLECTIONS.filter((c) => c.sullivanCategory === 'blind-box').length})`,
+                      `Blind Boxes (${COLLECTIONS.filter((c) => c.sylvanianCategory === 'blind-box').length})`,
                     ],
-                  ] as [SullivanTab, string][]
+                  ] as [SylvanianTab, string][]
                 ).map(([mode, label]) => (
                   <button
                     key={mode}
                     type="button"
                     role="tab"
-                    aria-selected={sullivanTab === mode}
-                    className={`sonny-mode-btn ${sullivanTab === mode ? 'active' : ''}`}
+                    aria-selected={sylvanianTab === mode}
+                    className={`sonny-mode-btn ${sylvanianTab === mode ? 'active' : ''}`}
                     onClick={() => {
-                      setSullivanTab(mode);
+                      setSylvanianTab(mode);
                       setActiveSubSeries('all');
                     }}
                   >

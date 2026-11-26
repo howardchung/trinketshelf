@@ -46,7 +46,7 @@ export const SKULLPANDA_SERIES_IDS: CollectionId[] = [];
 export const TINYTINY_SERIES_IDS: CollectionId[] = [];
 export const JELLYCAT_SERIES_IDS: CollectionId[] = [];
 export const ZSIGA_SERIES_IDS: CollectionId[] = [];
-export const SULLIVAN_SERIES_IDS: CollectionId[] = [];
+export const SYLVANIAN_SERIES_IDS: CollectionId[] = [];
 export const POKEMON_SERIES_IDS: CollectionId[] = [];
 
 export const TOP_LEVEL_SHELVES: TopLevelShelfMeta[] = [];
@@ -122,7 +122,7 @@ export function loadAllCatalogData(): Promise<void> {
 
     replaceArray(SKULLPANDA_SERIES_IDS, skullpanda.collections.map((c) => c.id));
     replaceArray(TINYTINY_SERIES_IDS, tinytiny.collections.map((c) => c.id));
-    replaceArray(SULLIVAN_SERIES_IDS, sylvanian.collections.map((c) => c.id));
+    replaceArray(SYLVANIAN_SERIES_IDS, sylvanian.collections.map((c) => c.id));
     replaceArray(ZSIGA_SERIES_IDS, zsiga.collections.map((c) => c.id));
     replaceArray(JELLYCAT_SERIES_IDS, jellycat.collections.map((c) => c.id));
     replaceArray(POKEMON_SERIES_IDS, POKEMON_SETS.map((s) => s.id));
@@ -162,15 +162,15 @@ export function loadAllCatalogData(): Promise<void> {
         collectionIds: TINYTINY_SERIES_IDS,
       },
       {
-        id: 'sullivan-family',
+        id: 'sylvanian-families',
         name: 'Sylvanian Families',
-        subtitle: `${SULLIVAN_SERIES_IDS.length} Series · Main, Kuji, Lotteries, Bags & Boxes`,
+        subtitle: `${SYLVANIAN_SERIES_IDS.length} Series · Main, Kuji, Lotteries, Bags & Boxes`,
         maker: 'Epoch',
         accent: '#639A67',
         accentSoft: '#EDF6EE',
         accentText: '#356338',
         emoji: '🌼',
-        collectionIds: SULLIVAN_SERIES_IDS,
+        collectionIds: SYLVANIAN_SERIES_IDS,
       },
       {
         id: 'zsiga',
