@@ -621,7 +621,8 @@ def main(force_download: bool = False) -> None:
                 ("sonny-vin-caribbean-sea-summer-2016-orange-panama-hat", "sonny-vin-caribbean-sea-summer-2016-orange-panama-hat.webp", (0.01, 0.49, 0.175, 0.83)),
                 ("sonny-vin-caribbean-sea-summer-2016-blue-straw-hat", "sonny-vin-caribbean-sea-summer-2016-blue-straw-hat.webp", (0.175, 0.50, 0.33, 0.83)),
                 ("sonny-vin-caribbean-sea-summer-2016-tropical-beach", "sonny-vin-caribbean-sea-summer-2016-tropical-beach.webp", (0.33, 0.49, 0.485, 0.83)),
-                ("sonny-vin-caribbean-sea-summer-2016-pirate-captain", "sonny-vin-caribbean-sea-summer-2016-pirate-captain.webp", (0.64, 0.49, 0.795, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-pink-panama-hat", "sonny-vin-caribbean-sea-summer-2016-pink-panama-hat.webp", (0.485, 0.50, 0.64, 0.83)),
+                ("sonny-vin-caribbean-sea-summer-2016-sailor-panama-hat", "sonny-vin-caribbean-sea-summer-2016-sailor-panama-hat.webp", (0.64, 0.49, 0.795, 0.83)),
                 ("sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat", "sonny-vin-caribbean-sea-summer-2016-yellow-straw-hat.webp", (0.76, 0.36, 0.995, 0.84)),
             ],
         ),
@@ -654,6 +655,51 @@ def main(force_download: bool = False) -> None:
             if iid in vin_by_id:
                 vin_by_id[iid]["image"] = f"/images/{fname}"
                 vin_by_id[iid]["sourceUrl"] = src_page
+
+    # Add the 2 missing Caribbean Sea (2016) Panama Hat figures & fix Pirate Captain Secret placeholder
+    carib_src = "https://www.sonnyangel.com/en/2016/06/17/sonny-angel-summer-series-caribbean-sea-version-%e7%99%ba%e5%a3%b2%e6%b1%ba%e5%ae%9a%ef%bc%81/"
+    carib_new = [
+        ("sonny-vin-caribbean-sea-summer-2016-pink-panama-hat", "Pink Panama Hat", "sonny-vin-caribbean-sea-summer-2016-pink-panama-hat.webp", 35.0),
+        ("sonny-vin-caribbean-sea-summer-2016-sailor-panama-hat", "Sailor Panama Hat", "sonny-vin-caribbean-sea-summer-2016-sailor-panama-hat.webp", 35.0),
+    ]
+    for iid, name, fname, _ in carib_new:
+        if iid not in vin_by_id:
+            item_obj = {
+                "id": iid,
+                "collectionId": "sonny-vin-caribbean-sea-summer-2016",
+                "name": name,
+                "series": "Caribbean Sea Summer (2016)",
+                "rarity": "Special",
+                "image": f"/images/{fname}",
+                "sourceUrl": carib_src,
+            }
+            vintage["items"].append(item_obj)
+            vin_by_id[iid] = item_obj
+
+    # Dedicated Pirate Captain Secret SVG placeholder (not Sailor Panama Hat)
+    pirate_svg = IMAGES_DIR / "sonny-vin-caribbean-sea-summer-2016-pirate-captain.svg"
+    pirate_svg.write_text(
+        '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">'
+        '<rect width="512" height="512" fill="#F4F8FB"/>'
+        '<ellipse cx="256" cy="414" rx="80" ry="14" fill="#1F2937" opacity="0.1"/>'
+        '<path d="M138 190 Q256 82 374 190 Q316 214 256 208 Q196 214 138 190 Z" fill="#22272E" stroke="#111418" stroke-width="5"/>'
+        '<path d="M168 184 Q256 140 344 184" fill="none" stroke="#E5B84B" stroke-width="6"/>'
+        '<circle cx="256" cy="146" r="16" fill="#FAF8F5"/>'
+        '<circle cx="256" cy="232" r="56" fill="#F0C6A0" stroke="#C9966B" stroke-width="4"/>'
+        '<circle cx="236" cy="230" r="7" fill="#221E1C"/>'
+        '<circle cx="276" cy="230" r="7" fill="#221E1C"/>'
+        '<path d="M246 252 Q256 260 266 252" fill="none" stroke="#8C5B44" stroke-width="4" stroke-linecap="round"/>'
+        '<path d="M206 286 L306 286 L316 364 L196 364 Z" fill="#B9314F" stroke="#7A1D32" stroke-width="4" stroke-linejoin="round"/>'
+        '<rect x="242" y="288" width="28" height="74" fill="#FAF8F5"/>'
+        '<rect x="218" y="364" width="28" height="44" rx="12" fill="#F0C6A0" stroke="#C9966B" stroke-width="4"/>'
+        '<rect x="266" y="364" width="28" height="44" rx="12" fill="#F0C6A0" stroke="#C9966B" stroke-width="4"/>'
+        '<text x="256" y="458" text-anchor="middle" font-family="system-ui,sans-serif" font-size="18" font-weight="600" fill="#374151">Pirate Captain · Secret (2016)</text>'
+        '</svg>\n',
+        encoding="utf-8",
+    )
+    if "sonny-vin-caribbean-sea-summer-2016-pirate-captain" in vin_by_id:
+        vin_by_id["sonny-vin-caribbean-sea-summer-2016-pirate-captain"]["image"] = "/images/sonny-vin-caribbean-sea-summer-2016-pirate-captain.svg"
+        vin_by_id["sonny-vin-caribbean-sea-summer-2016-pirate-captain"].pop("sourceUrl", None)
 
     # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
@@ -701,6 +747,9 @@ def main(force_download: bool = False) -> None:
                 prices[iid] = default_p
         for iid, _, _, _, default_p in sky_spc_extra:
             prices[iid] = default_p
+        for iid, _, _, default_p in carib_new:
+            if iid not in prices:
+                prices[iid] = default_p
         changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
