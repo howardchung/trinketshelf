@@ -23,7 +23,6 @@ export type CollectionId =
   | 'tinytiny-sugar-therapy'
   | 'tinytiny-mixed'
   | 'tinytiny-standalone'
-  | `cc-${string}`
   | `sf-${string}`
   | `zs-${string}`
   | `jc-${string}`
@@ -37,7 +36,6 @@ export type TopLevelShelfId =
   | 'sonny-angel'
   | 'skullpanda'
   | 'tinytiny'
-  | 'calico-critters'
   | 'sullivan-family'
   | 'zsiga'
   | 'jellycat'

@@ -47,7 +47,6 @@ export const TINYTINY_SERIES_IDS: CollectionId[] = [];
 export const JELLYCAT_SERIES_IDS: CollectionId[] = [];
 export const ZSIGA_SERIES_IDS: CollectionId[] = [];
 export const SULLIVAN_SERIES_IDS: CollectionId[] = [];
-export const CALICO_SERIES_IDS: CollectionId[] = [];
 export const POKEMON_SERIES_IDS: CollectionId[] = [];
 
 export const TOP_LEVEL_SHELVES: TopLevelShelfMeta[] = [];
@@ -81,7 +80,6 @@ export function loadAllCatalogData(): Promise<void> {
       sonnyArchive,
       skullpanda,
       tinytiny,
-      calico,
       sylvanian,
       zsiga,
       jellycat,
@@ -95,7 +93,6 @@ export function loadAllCatalogData(): Promise<void> {
       fetchJson<SonnyArchiveJson>('/data/sonny-archive.json'),
       fetchJson<ShelfJson>('/data/skullpanda.json'),
       fetchJson<ShelfJson>('/data/tinytiny.json'),
-      fetchJson<ShelfJson>('/data/calico-critters.json'),
       fetchJson<ShelfJson>('/data/sylvanian-families.json'),
       fetchJson<ShelfJson>('/data/zsiga.json'),
       fetchJson<ShelfJson>('/data/jellycat.json'),
@@ -125,7 +122,6 @@ export function loadAllCatalogData(): Promise<void> {
 
     replaceArray(SKULLPANDA_SERIES_IDS, skullpanda.collections.map((c) => c.id));
     replaceArray(TINYTINY_SERIES_IDS, tinytiny.collections.map((c) => c.id));
-    replaceArray(CALICO_SERIES_IDS, calico.collections.map((c) => c.id));
     replaceArray(SULLIVAN_SERIES_IDS, sylvanian.collections.map((c) => c.id));
     replaceArray(ZSIGA_SERIES_IDS, zsiga.collections.map((c) => c.id));
     replaceArray(JELLYCAT_SERIES_IDS, jellycat.collections.map((c) => c.id));
@@ -166,20 +162,9 @@ export function loadAllCatalogData(): Promise<void> {
         collectionIds: TINYTINY_SERIES_IDS,
       },
       {
-        id: 'calico-critters',
-        name: 'Calico Critters',
-        subtitle: `${CALICO_SERIES_IDS.length} Surprise Pack Series · Baby Collectibles`,
-        maker: 'Epoch',
-        accent: '#D98A4E',
-        accentSoft: '#FDF2E8',
-        accentText: '#915221',
-        emoji: '🎻',
-        collectionIds: CALICO_SERIES_IDS,
-      },
-      {
         id: 'sullivan-family',
         name: 'Sylvanian Families',
-        subtitle: `${SULLIVAN_SERIES_IDS.length} Series · Blind Bags & Blind Boxes`,
+        subtitle: `${SULLIVAN_SERIES_IDS.length} Series · Main, Kuji, Lotteries, Bags & Boxes`,
         maker: 'Epoch',
         accent: '#639A67',
         accentSoft: '#EDF6EE',
@@ -232,7 +217,6 @@ export function loadAllCatalogData(): Promise<void> {
       ...sonnyArchive.specialCollections,
       ...skullpanda.collections,
       ...tinytiny.collections,
-      ...calico.collections,
       ...sylvanian.collections,
       ...zsiga.collections,
       ...jellycat.collections,
@@ -249,7 +233,6 @@ export function loadAllCatalogData(): Promise<void> {
       ...sonnyArchive.specialItems,
       ...skullpanda.items,
       ...tinytiny.items,
-      ...calico.items,
       ...sylvanian.items,
       ...zsiga.items,
       ...jellycat.items,

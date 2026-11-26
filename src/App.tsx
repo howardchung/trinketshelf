@@ -11,7 +11,6 @@ import {
   Smartphone,
 } from 'lucide-react';
 import {
-  CALICO_SERIES_IDS,
   COLLECTIONS,
   JELLYCAT_SERIES_IDS,
   SKULLPANDA_SERIES_IDS,
@@ -90,7 +89,6 @@ const TINYTINY_ID_SET = new Set<CollectionId>(TINYTINY_SERIES_IDS);
 const JELLYCAT_ID_SET = new Set<CollectionId>(JELLYCAT_SERIES_IDS);
 const ZSIGA_ID_SET = new Set<CollectionId>(ZSIGA_SERIES_IDS);
 const SULLIVAN_ID_SET = new Set<CollectionId>(SULLIVAN_SERIES_IDS);
-const CALICO_ID_SET = new Set<CollectionId>(CALICO_SERIES_IDS);
 
 export default function App() {
   const {
@@ -193,19 +191,6 @@ export default function App() {
         collectionIds: [c.id],
       }));
     }
-    if (activeShelf === 'calico-critters') {
-      return COLLECTIONS.filter((c) => CALICO_ID_SET.has(c.id)).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Calico Critters · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
-    }
     if (activeShelf === 'sullivan-family') {
       return COLLECTIONS.filter((c) => {
         if (!SULLIVAN_ID_SET.has(c.id)) return false;
@@ -290,11 +275,6 @@ export default function App() {
 
   const scopedCollectionIds = useMemo<Set<CollectionId> | null>(() => {
     if (activeShelf === 'overview') return null;
-    if (activeShelf === 'calico-critters') {
-      return activeSubSeries !== 'all'
-        ? new Set<CollectionId>([activeSubSeries])
-        : CALICO_ID_SET;
-    }
     if (activeShelf === 'sullivan-family') {
       if (activeSubSeries !== 'all') return new Set<CollectionId>([activeSubSeries]);
       if (sullivanTab === 'all') return SULLIVAN_ID_SET;
@@ -592,8 +572,6 @@ export default function App() {
       ? SKULLPANDA_SERIES_IDS[0] ?? 'sonny-animal-1'
       : activeShelf === 'tinytiny'
       ? 'tinytiny-prologue'
-      : activeShelf === 'calico-critters'
-      ? CALICO_SERIES_IDS[0] ?? 'cc-sp-01-baby-band'
       : activeShelf === 'sullivan-family'
       ? SULLIVAN_SERIES_IDS[0] ?? 'sonny-animal-1'
       : activeShelf === 'zsiga'
