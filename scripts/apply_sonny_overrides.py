@@ -267,6 +267,55 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-cherry-blossom-peaceful-spring-edition-2022-robby.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_686ca813-c833-49f8-a183-c3b68ba60732.jpg?v=1699163029",
     ),
+    # Valentine's Day Series 2019, 2018, 2017 Secrets & Robbys
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2019-secret",
+        "Secret Rabbit (Valentine 2019)",
+        "sonny-lim-valentine-s-day-series-2019-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/11_7c32555e-d8c0-484d-9cac-5aa585ebc824.jpg?v=1699521747",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2019-robby",
+        "Valentine 2019 Robby Angel",
+        "sonny-lim-valentine-s-day-series-2019-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/4_042cb6fc-4c18-4792-9108-7bfbc836ce0b.jpg?v=1699521683",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2018-secret",
+        "Secret Rose Bouquet",
+        "sonny-lim-valentine-s-day-series-2018-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/19_83bccf1a-52fe-4ca6-a58e-c2ef84b54bad.jpg?v=1699662170",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2018-robby",
+        "Valentine 2018 Robby Angel",
+        "sonny-lim-valentine-s-day-series-2018-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/18_ce2e17f7-d94a-4d45-ad75-161aedcdf708.jpg?v=1699661964",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2017-secret",
+        "Secret Pink Cat",
+        "sonny-lim-valentine-s-day-series-2017-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/50_d00108a9-1cfe-4dea-b8c7-bd7afdba3de8.jpg?v=1699526933",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-valentine-s-day-series-2017-robby",
+        "Valentine 2017 Robby Angel",
+        "sonny-lim-valentine-s-day-series-2017-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/51_b17ebf77-60da-495f-9857-fd96330eb039.jpg?v=1699526793",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -415,6 +464,66 @@ def main(force_download: bool = False) -> None:
                 "imageSourceUrl": url,
             })
 
+    # 3c. Extra Valentine's Day 2018 (2nd Secret) & 2017 (2nd & 3rd Secrets)
+    valentine_extra = [
+        (
+            "sonny-lim-valentine-s-day-series-2018-secret-single-rose",
+            "sonny-lim-valentine-s-day-series-2018",
+            "Secret Single Rose",
+            "Valentine's Day Series 2018",
+            "sonny-lim-valentine-s-day-series-2018-secret-single-rose.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/47_8756ead4-c76e-4dd5-8549-fcebc031c60d.jpg?v=1699662094",
+            53.73,
+        ),
+        (
+            "sonny-lim-valentine-s-day-series-2017-secret-white-bear",
+            "sonny-lim-valentine-s-day-series-2017",
+            "Secret White Bear",
+            "Valentine's Day Series 2017",
+            "sonny-lim-valentine-s-day-series-2017-secret-white-bear.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/39_e2dd701a-0952-4124-854e-bc84f32c3fc4.jpg?v=1699526848",
+            58.20,
+        ),
+        (
+            "sonny-lim-valentine-s-day-series-2017-secret-3",
+            "sonny-lim-valentine-s-day-series-2017",
+            "Valentine 2017 Secret #3",
+            "Valentine's Day Series 2017",
+            "sonny-lim-valentine-s-day-series-2017-secret-3.svg",
+            "",
+            60.00,
+        ),
+    ]
+    for iid, col_id, name, series, fname, url, _ in valentine_extra:
+        out_path = IMAGES_DIR / fname
+        if url:
+            if force_download or not out_path.is_file():
+                if out_path.exists():
+                    out_path.unlink()
+                download_and_normalize_image(url, out_path)
+        elif not out_path.is_file():
+            out_path.write_text(
+                '<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">'
+                '<rect width="512" height="512" fill="#FDF2F5"/>'
+                '<circle cx="256" cy="220" r="96" fill="#E86A8D" opacity="0.18"/>'
+                '<text x="256" y="242" text-anchor="middle" font-size="88">💝</text>'
+                '<text x="256" y="388" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="600" fill="#9E3A58">Valentine 2017 Secret #3</text>'
+                '</svg>\n',
+                encoding="utf-8",
+            )
+        if iid not in existing_lim_ids:
+            entry = {
+                "id": iid,
+                "collectionId": col_id,
+                "name": name,
+                "series": series,
+                "rarity": "Secret",
+                "image": f"/images/{fname}",
+            }
+            if url:
+                entry["imageSourceUrl"] = url
+            limited["items"].append(entry)
+
     # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
         for k, v in list(data.items()):
@@ -450,6 +559,15 @@ def main(force_download: bool = False) -> None:
         prices["sonny-lim-cherry-blossom-night-version-2021-robby"] = 537.31
         prices["sonny-lim-cherry-blossom-peaceful-spring-edition-2022-secret"] = 238.81
         prices["sonny-lim-cherry-blossom-peaceful-spring-edition-2022-robby"] = 537.31
+        prices["sonny-lim-valentine-s-day-series-2019-secret"] = 61.42
+        prices["sonny-lim-valentine-s-day-series-2019-robby"] = 171.42
+        prices["sonny-lim-valentine-s-day-series-2018-secret"] = 62.69
+        prices["sonny-lim-valentine-s-day-series-2018-robby"] = 268.65
+        prices["sonny-lim-valentine-s-day-series-2017-secret"] = 65.67
+        prices["sonny-lim-valentine-s-day-series-2017-robby"] = 161.19
+        for iid, _, _, _, _, _, default_p in valentine_extra:
+            if iid not in prices:
+                prices[iid] = default_p
         changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
