@@ -524,6 +524,41 @@ def main(force_download: bool = False) -> None:
                 entry["imageSourceUrl"] = url
             limited["items"].append(entry)
 
+    # 3d. Sky Color Series (Special) Secret (Aurora) & Sky Color Robby Angel
+    sky_spc_extra = [
+        (
+            "sonny-spc-sky-color-series-secret",
+            "Aurora (Secret)",
+            "/images/sonny-lim-sky-color-series-2020-secret.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/1_381ce16d-74e5-4191-a4eb-ab5c5be999a8.jpg?v=1699388624",
+            238.81,
+        ),
+        (
+            "sonny-spc-sky-color-series-robby",
+            "Sky Color Robby Angel",
+            "/images/sonny-lim-sky-color-series-2020-robby.webp",
+            "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/37_a7391c5f-df68-4dde-85b9-e6e4abc7459e.jpg?v=1699388584",
+            507.46,
+        ),
+    ]
+    for it in limited.get("items", []):
+        if it["id"] == "sonny-lim-sky-color-series-2020-secret":
+            it["name"] = "Aurora (Secret)"
+        elif it["id"] == "sonny-lim-sky-color-series-2020-robby":
+            it["name"] = "Sky Color Robby Angel"
+    existing_spc_ids = {it["id"] for it in archive.get("specialItems", [])}
+    for iid, name, img, url, _ in sky_spc_extra:
+        if iid not in existing_spc_ids:
+            archive["specialItems"].append({
+                "id": iid,
+                "collectionId": "sonny-spc-sky-color-series",
+                "name": name,
+                "series": "Sky Color Series",
+                "rarity": "Secret",
+                "image": img,
+                "imageSourceUrl": url,
+            })
+
     # 4. Strip non-existent items across all loaded Sonny JSON files
     for data in loaded.values():
         for k, v in list(data.items()):
@@ -568,6 +603,8 @@ def main(force_download: bool = False) -> None:
         for iid, _, _, _, _, _, default_p in valentine_extra:
             if iid not in prices:
                 prices[iid] = default_p
+        for iid, _, _, _, default_p in sky_spc_extra:
+            prices[iid] = default_p
         changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
