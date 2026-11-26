@@ -39,7 +39,6 @@ CATALOG_FILES = [
     PUBLIC_DATA_DIR / "skullpanda.json",
     PUBLIC_DATA_DIR / "zsiga.json",
     PUBLIC_DATA_DIR / "sylvanian-families.json",
-    PUBLIC_DATA_DIR / "calico-critters.json",
     PUBLIC_DATA_DIR / "jellycat.json",
 ]
 

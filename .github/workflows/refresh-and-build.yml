@@ -1,0 +1,102 @@
+name: Refresh Catalog & Build
+
+on:
+  schedule:
+    # Weekly refresh every Monday at 06:00 UTC
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      refresh_data:
+        description: 'Refresh Pokémon TCG sets and market prices before building'
+        required: false
+        default: true
+        type: boolean
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-and-build-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build-and-refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Refresh Pokémon TCG sets and market prices
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.refresh_data != false)
+        run: |
+          python3 scripts/fetch_pokemon_tcg.py
+          python3 scripts/fetch_pokemon_csv4c.py
+          python3 scripts/fetch_prices.py
+
+      - name: Bump Service Worker cache version if data changed
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.refresh_data != false)
+        run: |
+          if [ -n "$(git status --porcelain public/data/)" ]; then
+            python3 -c "
+          import re
+          from pathlib import Path
+          p = Path('public/sw.js')
+          txt = p.read_text(encoding='utf-8')
+          m = re.search(r\"trinketshelf-v(\d+)\", txt)
+          if m:
+              nxt = int(m.group(1)) + 1
+              p.write_text(txt.replace(m.group(0), f'trinketshelf-v{nxt}', 1), encoding='utf-8')
+              print(f'Bumped Service Worker cache to trinketshelf-v{nxt}')
+          "
+          fi
+
+      - name: Verify catalog integrity
+        run: python3 scripts/verify_catalog.py
+
+      - name: Lint & build production bundle
+        run: |
+          npm run lint
+          npm run build
+
+      - name: Upload production dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: trinketshelf-dist
+          path: dist/
+          retention-days: 14
+
+      - name: Commit and push refreshed data
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && inputs.refresh_data != false)
+        run: |
+          if [ -n "$(git status --porcelain public/data/ public/sw.js)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add public/data/ public/sw.js
+            git commit -m "chore: weekly catalog & price refresh [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No catalog or price changes to commit."
+          fi
