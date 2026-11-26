@@ -93,12 +93,13 @@ export function getItemSourceLinks(
     });
   }
 
-  // Image link (exact upstream image URL if known, otherwise the served image asset)
-  const imgUrl = item.imageSourceUrl || item.image;
-  if (imgUrl && !imgUrl.startsWith('data:')) {
+  // Image source link: only link to an actual external upstream image URL (never local /images/ paths)
+  const upstreamImgUrl =
+    item.imageSourceUrl || (item.image.startsWith('http') ? item.image : '');
+  if (upstreamImgUrl) {
     links.push({
-      label: item.imageSourceUrl ? 'Image Source' : 'Open Image',
-      url: imgUrl,
+      label: 'Image Source',
+      url: upstreamImgUrl,
       kind: 'image',
     });
   }
