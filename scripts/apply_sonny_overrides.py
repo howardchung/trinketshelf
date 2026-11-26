@@ -218,6 +218,55 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-circus-series-secret.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/52_3fa39198-afc8-4b62-a8bd-28d3ab852e23.jpg?v=1699454395",
     ),
+    # Cherry Blossom Series (2019, 2021 Night Version, 2022 Peaceful Spring) Secrets & Robbys
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-series-secret",
+        "Cherry Blossom Secret (2019)",
+        "sonny-lim-cherry-blossom-series-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/31_70e455dc-1c0b-4f1d-8dd4-0b2c6ab7ea94.jpg?v=1699462207",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-series-robby",
+        "Cherry Blossom Robby Angel (2019)",
+        "sonny-lim-cherry-blossom-series-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/48_c215d7ea-26ec-4a08-b0bf-ed31d7161147.jpg?v=1699462132",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-night-version-2021-secret",
+        "Cherry Blossom Secret (Night)",
+        "sonny-lim-cherry-blossom-night-version-2021-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/9_28851dc7-f755-4546-b155-546fcfb47c3e.jpg?v=1699357760",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-night-version-2021-robby",
+        "Cherry Blossom Robby (Night)",
+        "sonny-lim-cherry-blossom-night-version-2021-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/74_f9376c04-31d9-4014-8377-d67794c8f6de.jpg?v=1699357692",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-peaceful-spring-edition-2022-secret",
+        "Cherry Blossom Secret (Peaceful Spring)",
+        "sonny-lim-cherry-blossom-peaceful-spring-edition-2022-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/33_3dcc2542-8b36-4faf-b80f-1110ee0d512d.jpg?v=1699163077",
+    ),
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-cherry-blossom-peaceful-spring-edition-2022-robby",
+        "Cherry Blossom Robby (Peaceful Spring)",
+        "sonny-lim-cherry-blossom-peaceful-spring-edition-2022-robby.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/2_686ca813-c833-49f8-a183-c3b68ba60732.jpg?v=1699163029",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
@@ -395,6 +444,12 @@ def main(force_download: bool = False) -> None:
         prices["sonny-lim-cactus-series-2020-secret"] = 89.55
         prices["sonny-lim-cactus-series-2020-robby"] = 298.51
         prices["sonny-lim-circus-series-secret"] = 59.70
+        prices["sonny-lim-cherry-blossom-series-secret"] = 202.99
+        prices["sonny-lim-cherry-blossom-series-robby"] = 447.76
+        prices["sonny-lim-cherry-blossom-night-version-2021-secret"] = 208.96
+        prices["sonny-lim-cherry-blossom-night-version-2021-robby"] = 537.31
+        prices["sonny-lim-cherry-blossom-peaceful-spring-edition-2022-secret"] = 238.81
+        prices["sonny-lim-cherry-blossom-peaceful-spring-edition-2022-robby"] = 537.31
         changed = True
         if changed:
             prices_path.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
