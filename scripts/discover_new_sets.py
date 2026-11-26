@@ -93,6 +93,7 @@ SKIP_SONNY_SERIES = (
     "cat christmas",
     "strawberry love",
     "shu uemura",
+    "makeup angel",
 )
 
 JELLYCAT_SKIP = (
