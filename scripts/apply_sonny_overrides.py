@@ -331,6 +331,7 @@ REMOVED_ITEM_IDS = {
     "sonny-lim-creatures-series-2022-robby",
     "sonny-lim-summer-festival-series-2021-robby",
     "sonny-lim-harvest-series-2021-robby",
+    "sonny-lim-valentine-s-day-series-2017-secret-3",
 }
 
 
@@ -483,15 +484,6 @@ def main(force_download: bool = False) -> None:
             "sonny-lim-valentine-s-day-series-2017-secret-white-bear.webp",
             "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/39_e2dd701a-0952-4124-854e-bc84f32c3fc4.jpg?v=1699526848",
             58.20,
-        ),
-        (
-            "sonny-lim-valentine-s-day-series-2017-secret-3",
-            "sonny-lim-valentine-s-day-series-2017",
-            "Valentine 2017 Secret #3",
-            "Valentine's Day Series 2017",
-            "sonny-lim-valentine-s-day-series-2017-secret-3.svg",
-            "",
-            60.00,
         ),
     ]
     for iid, col_id, name, series, fname, url, _ in valentine_extra:
