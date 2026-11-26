@@ -154,6 +154,15 @@ PINNED_PHOTO_OVERRIDES: list[tuple[str, str, str, str | None, str, str]] = [
         "sonny-lim-creatures-series-2022-secret.webp",
         "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/1_1f3a9e43-7250-4fb4-a745-55e771fdaa21.jpg?v=1698215319",
     ),
+    # Harvest Series (2021) Secret (Happiness Hedgehog)
+    (
+        "sonny-limited.json",
+        "items",
+        "sonny-lim-harvest-series-2021-secret",
+        "Happiness (Secret)",
+        "sonny-lim-harvest-series-2021-secret.webp",
+        "https://cdn.shopify.com/s/files/1/0561/4606/7644/files/10_2eb369c7-c176-4d30-af42-49feabecc1d8.jpg?v=1699272605",
+    ),
 ]
 
 # Color-accurate base-less SVG placeholders for Unrefined Robbys without public store photos
