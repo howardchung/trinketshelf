@@ -1,6 +1,11 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DEFAULT_ITEMS } from '../data/catalog';
 import type { CatalogItem, ItemStatus, ItemTrackingState, PersistedStore } from '../types';
+import {
+  readStoreFromOpfs,
+  requestPersistentStorage,
+  writeStoreToOpfs,
+} from '../utils/opfsStorage';
 
 const STORAGE_KEY = 'trinketshelf_store_v1';
 
@@ -25,14 +30,47 @@ function loadStore(): PersistedStore {
   }
 }
 
+function hasStoreData(store: PersistedStore): boolean {
+  return Object.keys(store.tracking).length > 0 || store.customItems.length > 0;
+}
+
 export function useCollectionStore() {
   const [store, setStore] = useState<PersistedStore>(loadStore);
+  const hydratedRef = useRef(false);
+
+  // Request persistent storage & recover from OPFS if localStorage was evicted
+  useEffect(() => {
+    let cancelled = false;
+    void requestPersistentStorage();
+
+    void readStoreFromOpfs().then((opfsStore) => {
+      if (cancelled) return;
+      hydratedRef.current = true;
+      setStore((current) => {
+        if (!hasStoreData(current) && opfsStore && hasStoreData(opfsStore)) {
+          return opfsStore;
+        }
+        // If localStorage has data and OPFS was empty, seed OPFS now
+        if (hasStoreData(current) && !opfsStore) {
+          void writeStoreToOpfs(current);
+        }
+        return current;
+      });
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(store));
     } catch {
-      // Quota exceeded or private browsing — ignore silently
+      // Quota exceeded or private browsing — OPFS still mirrors the store
+    }
+    if (hydratedRef.current || hasStoreData(store)) {
+      void writeStoreToOpfs(store);
     }
   }, [store]);
 
