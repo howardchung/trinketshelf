@@ -1,6 +1,6 @@
-import { Check, Circle, ExternalLink, Heart, Image as ImageIcon, Repeat, Trash2, X } from 'lucide-react';
+import { Check, Circle, Heart, Image as ImageIcon, Repeat, Trash2, X } from 'lucide-react';
 import { formatUsd, getItemPrice } from '../data/prices';
-import { getItemSourceLinks } from '../data/sources';
+import { getItemImageProvenance } from '../data/sources';
 import type { CatalogItem, CollectionMeta, ItemStatus, ItemTrackingState } from '../types';
 
 interface ItemDetailModalProps {
@@ -30,7 +30,7 @@ export function ItemDetailModal({
   const showQty = tracking.status === 'owned' || tracking.status === 'duplicate';
   const defaultPrice = getItemPrice(item.id, undefined, item.price);
   const effectivePrice = getItemPrice(item.id, tracking.customPrice, item.price);
-  const sourceLinks = getItemSourceLinks(item, collection);
+  const imageProvenance = getItemImageProvenance(item);
 
   return (
     <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
@@ -90,25 +90,22 @@ export function ItemDetailModal({
             </span>
           </div>
 
-          {sourceLinks.length > 0 && (
+          {imageProvenance && (
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-              {sourceLinks.map((link) => (
-                <a
-                  key={link.label + link.url}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn"
-                  style={{
-                    fontSize: '0.78rem',
-                    padding: '5px 10px',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {link.kind === 'image' ? <ImageIcon size={13} /> : <ExternalLink size={13} />}
-                  <span>{link.label}</span>
-                </a>
-              ))}
+              <a
+                href={imageProvenance.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  fontSize: '0.78rem',
+                  padding: '5px 10px',
+                  textDecoration: 'none',
+                }}
+              >
+                <ImageIcon size={13} />
+                <span>{imageProvenance.label}</span>
+              </a>
             </div>
           )}
 
