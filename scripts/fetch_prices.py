@@ -100,7 +100,7 @@ def make_entry(label: str, price: float) -> dict:
     }
 
 
-def extract_product_entries(products: list[dict]) -> list[dict]:
+def extract_product_entries(products: list[dict], fx: float = 1.0) -> list[dict]:
     entries: list[dict] = []
     for p in products:
         title = p.get("title", "")
@@ -110,7 +110,7 @@ def extract_product_entries(products: list[dict]) -> list[dict]:
         variants = p.get("variants") or []
         if len(variants) == 1:
             try:
-                price = float(variants[0].get("price", 0))
+                price = round(float(variants[0].get("price", 0)) * fx, 2)
                 if 2.0 <= price <= 5000.0:
                     entries.append(make_entry(title, price))
             except Exception:
@@ -124,7 +124,7 @@ def extract_product_entries(products: list[dict]) -> list[dict]:
                 ):
                     continue
                 try:
-                    price = float(v.get("price", 0))
+                    price = round(float(v.get("price", 0)) * fx, 2)
                     if 2.0 <= price <= 5000.0:
                         entries.append(make_entry(f"{title} {vt}", price))
                 except Exception:
@@ -132,7 +132,7 @@ def extract_product_entries(products: list[dict]) -> list[dict]:
     return entries
 
 
-def fetch_store_prices(base_url: str, max_pages: int = 5) -> list[dict]:
+def fetch_store_prices(base_url: str, max_pages: int = 5, fx: float = 1.0) -> list[dict]:
     products: list[dict] = []
     for page in range(1, max_pages + 1):
         try:
@@ -142,7 +142,7 @@ def fetch_store_prices(base_url: str, max_pages: int = 5) -> list[dict]:
             products.extend(batch)
         except Exception:
             break
-    return extract_product_entries(products)
+    return extract_product_entries(products, fx=fx)
 
 
 def fetch_atf_tinytiny_prices() -> list[dict]:
@@ -310,6 +310,11 @@ def main() -> None:
             fetch_store_prices("https://www.babycubby.com/collections/jellycat/products.json?limit=250&page={}", 3)
             + fetch_store_prices("https://pacifierkids.com/collections/jellycat/products.json?limit=250&page={}", 3)
             + fetch_store_prices("https://faoschwarz.com/collections/jellycat/products.json?limit=250&page={}", 2)
+            + fetch_store_prices("https://www.kidly.co.uk/collections/jellycat/products.json?limit=250&page={}", 3, fx=1.27)
+            + fetch_store_prices("https://www.activebaby.ca/collections/jellycat/products.json?limit=250&page={}", 3, fx=0.72)
+            + fetch_store_prices("https://kolkid.ca/collections/jellycat/products.json?limit=250&page={}", 3, fx=0.72)
+            + fetch_store_prices("https://www.snugglebugz.ca/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.72)
+            + fetch_store_prices("https://www.dearbornbaby.com/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.72)
         ),
         "sylvanian": fetch_store_prices("https://store.kobeejapan.net/collections/blind-bag/products.json?limit=250&page={}", 3),
     }
@@ -329,6 +334,8 @@ def main() -> None:
         for k, v in data.items():
             if k.lower().endswith("items") and isinstance(v, list):
                 file_items.extend(v)
+        f_live = 0
+        f_base = 0
         for it in file_items:
             iid = it["id"]
             col_id = it["collectionId"]
@@ -340,6 +347,8 @@ def main() -> None:
                 secret_total += 1
             if iid in CITY_EXCLUSIVE_PRICES:
                 prices[iid] = CITY_EXCLUSIVE_PRICES[iid]
+                f_live += 1
+                live_matched += 1
                 continue
 
             if col_id.startswith("sonny-"):
@@ -359,10 +368,13 @@ def main() -> None:
             if matched is not None:
                 prices[iid] = matched
                 live_matched += 1
+                f_live += 1
                 if rarity == "Secret":
                     secret_live += 1
             else:
                 prices[iid] = baseline_price(col_id, name, series, rarity)
+                f_base += 1
+        print(f"  {path.name:26s}: {f_live:4d} live | {f_base:4d} baseline")
 
     out_json = PUBLIC_DATA_DIR / "prices.json"
     out_json.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
