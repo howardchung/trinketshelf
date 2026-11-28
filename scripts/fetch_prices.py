@@ -310,11 +310,20 @@ def main() -> None:
             fetch_store_prices("https://www.babycubby.com/collections/jellycat/products.json?limit=250&page={}", 3)
             + fetch_store_prices("https://pacifierkids.com/collections/jellycat/products.json?limit=250&page={}", 3)
             + fetch_store_prices("https://faoschwarz.com/collections/jellycat/products.json?limit=250&page={}", 2)
+            + fetch_store_prices("https://southcoastbabyco.com/collections/jellycat/products.json?limit=250&page={}", 3)
+            + fetch_store_prices("https://fernandfaunaboutique.com/collections/jellycat/products.json?limit=250&page={}", 2)
+            + fetch_store_prices("https://www.babesta.com/collections/jellycat/products.json?limit=250&page={}", 2)
             + fetch_store_prices("https://www.kidly.co.uk/collections/jellycat/products.json?limit=250&page={}", 3, fx=1.27)
+            + fetch_store_prices("https://www.babymori.com/collections/jellycat/products.json?limit=250&page={}", 4, fx=1.27)
+            + fetch_store_prices("https://www.utilitygift.co.uk/collections/jellycat/products.json?limit=250&page={}", 2, fx=1.27)
             + fetch_store_prices("https://www.activebaby.ca/collections/jellycat/products.json?limit=250&page={}", 3, fx=0.72)
             + fetch_store_prices("https://kolkid.ca/collections/jellycat/products.json?limit=250&page={}", 3, fx=0.72)
             + fetch_store_prices("https://www.snugglebugz.ca/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.72)
             + fetch_store_prices("https://www.dearbornbaby.com/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.72)
+            + fetch_store_prices("https://www.cherriebaby.com.au/collections/jellycat-retired/products.json?limit=250&page={}", 10, fx=0.65)
+            + fetch_store_prices("https://www.daisyandhen.com.au/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.65)
+            + fetch_store_prices("https://www.thememo.com.au/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.65)
+            + fetch_store_prices("https://www.littlewhimsy.co.nz/collections/jellycat/products.json?limit=250&page={}", 2, fx=0.60)
         ),
         "sylvanian": fetch_store_prices("https://store.kobeejapan.net/collections/blind-bag/products.json?limit=250&page={}", 3),
     }
