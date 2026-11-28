@@ -1,6 +1,6 @@
-import { Check, Circle, Heart, Image as ImageIcon, Repeat, Trash2, X } from 'lucide-react';
+import { Check, Circle, ExternalLink, Heart, Image as ImageIcon, Repeat, Tag, Trash2, X } from 'lucide-react';
 import { formatUsd, getItemPrice } from '../data/prices';
-import { getItemImageProvenance } from '../data/sources';
+import { getItemProvenanceLinks } from '../data/sources';
 import type { CatalogItem, CollectionMeta, ItemStatus, ItemTrackingState } from '../types';
 
 interface ItemDetailModalProps {
@@ -30,7 +30,7 @@ export function ItemDetailModal({
   const showQty = tracking.status === 'owned' || tracking.status === 'duplicate';
   const defaultPrice = getItemPrice(item.id, undefined, item.price);
   const effectivePrice = getItemPrice(item.id, tracking.customPrice, item.price);
-  const imageProvenance = getItemImageProvenance(item);
+  const provenanceLinks = getItemProvenanceLinks(item);
 
   return (
     <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
@@ -90,22 +90,32 @@ export function ItemDetailModal({
             </span>
           </div>
 
-          {imageProvenance && (
+          {provenanceLinks.length > 0 && (
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-              <a
-                href={imageProvenance.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn"
-                style={{
-                  fontSize: '0.78rem',
-                  padding: '5px 10px',
-                  textDecoration: 'none',
-                }}
-              >
-                <ImageIcon size={13} />
-                <span>{imageProvenance.label}</span>
-              </a>
+              {provenanceLinks.map((link) => (
+                <a
+                  key={link.kind}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title={link.url}
+                  className="btn"
+                  style={{
+                    fontSize: '0.78rem',
+                    padding: '5px 10px',
+                    textDecoration: 'none',
+                  }}
+                >
+                  {link.kind === 'image' ? (
+                    <ImageIcon size={13} />
+                  ) : link.kind === 'price' ? (
+                    <Tag size={13} />
+                  ) : (
+                    <ExternalLink size={13} />
+                  )}
+                  <span>{link.label}</span>
+                </a>
+              ))}
             </div>
           )}
 

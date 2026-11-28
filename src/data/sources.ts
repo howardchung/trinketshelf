@@ -1,6 +1,7 @@
 import type { CatalogItem } from '../types';
 
-export interface ItemImageProvenance {
+export interface ProvenanceLink {
+  kind: 'source' | 'image' | 'price';
   label: string;
   url: string;
 }
@@ -19,8 +20,13 @@ const HOST_LABELS: Record<string, string> = {
   'snugglebugz.ca': 'Snuggle Bugz',
   'indigo.ca': 'Indigo',
   'us.jellycat.com': 'Jellycat',
+  'jellycat-crew.fandom.com': 'Jellycat Crew Wiki',
+  'sylvanianfamilies.fandom.com': 'Sylvanian Wiki',
   'pricecharting.com': 'PriceCharting',
+  'tcgplayer.com': 'TCGplayer',
   'github.com': 'Pokémon TCG Data',
+  'images.pokemontcg.io': 'Pokémon TCG Images',
+  'cdn.shopify.com': 'Shopify CDN',
 };
 
 function labelForUrl(url: string): string {
@@ -28,108 +34,39 @@ function labelForUrl(url: string): string {
     const host = new URL(url).hostname.replace(/^www\./, '');
     return HOST_LABELS[host] ?? host;
   } catch {
-    return 'Image Source';
+    return url;
   }
 }
 
-function cleanQuery(text: string): string {
-  return text
-    .replace(/^#\S+\s+/, '')
-    .replace(/\((?:1st Ed\.|Reverse Holo|Master Ball|Poké Ball|Secret|Unrefined)\)/gi, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
-export function getItemImageProvenance(item: CatalogItem): ItemImageProvenance | null {
-  if (item.image.endsWith('.svg')) {
-    return null;
-  }
-
-  if (item.sourceUrl) {
-    return {
-      label: labelForUrl(item.sourceUrl),
-      url: item.sourceUrl,
-    };
-  }
-
+export function getItemProvenanceLinks(item: CatalogItem): ProvenanceLink[] {
+  const links: ProvenanceLink[] = [];
   const cid = item.collectionId;
-  const qName = cleanQuery(item.name);
-  const enc = encodeURIComponent;
 
-  if (cid === 'pkmn-csv4c') {
-    const numMatch = item.name.match(/^#0*(\d+)/);
-    const q = numMatch ? `csv4c ${qName} #${numMatch[1]}` : `csv4c ${qName}`;
-    return {
-      label: 'PriceCharting',
-      url: `https://www.pricecharting.com/search-products?q=${enc(q)}&type=prices`,
-    };
+  const sourceUrl =
+    item.sourceUrl ??
+    (cid.startsWith('pkmn-') && cid !== 'pkmn-csv4c'
+      ? `https://github.com/PokemonTCG/pokemon-tcg-data/blob/master/cards/en/${encodeURIComponent(cid.replace(/^pkmn-/, ''))}.json`
+      : undefined);
+
+  const imageUrl =
+    item.imageSourceUrl ??
+    (item.image.startsWith('http://') || item.image.startsWith('https://') ? item.image : undefined);
+
+  const priceUrl =
+    item.priceSourceUrl ??
+    (cid.startsWith('pkmn-') && cid !== 'pkmn-csv4c'
+      ? `https://www.tcgplayer.com/search/pokemon/product?productLineName=pokemon&q=${encodeURIComponent(item.name.replace(/^#\S+\s+/, ''))}&view=grid`
+      : undefined);
+
+  if (sourceUrl) {
+    links.push({ kind: 'source', label: `Source: ${labelForUrl(sourceUrl)}`, url: sourceUrl });
+  }
+  if (imageUrl) {
+    links.push({ kind: 'image', label: `Image: ${labelForUrl(imageUrl)}`, url: imageUrl });
+  }
+  if (priceUrl) {
+    links.push({ kind: 'price', label: `Price: ${labelForUrl(priceUrl)}`, url: priceUrl });
   }
 
-  if (cid.startsWith('pkmn-')) {
-    const setId = cid.replace(/^pkmn-/, '');
-    return {
-      label: 'Pokémon TCG Data',
-      url: `https://github.com/PokemonTCG/pokemon-tcg-data/blob/master/cards/en/${enc(setId)}.json`,
-    };
-  }
-
-  if (cid.startsWith('sonny-')) {
-    if (item.imageSourceUrl?.includes('0561/4606/7644') || item.rarity === 'Secret' || item.rarity === 'Lucky') {
-      return {
-        label: 'Toysez',
-        url: `https://toysez.com/search?q=${enc(`Sonny Angel ${qName}`)}`,
-      };
-    }
-    if (item.imageSourceUrl?.includes('0866/2535/4046')) {
-      return {
-        label: 'Art Toy Familia',
-        url: `https://arttoyfamilia.com/search?q=${enc(`Sonny Angel ${qName}`)}`,
-      };
-    }
-    const officialUrl = cid.startsWith('sonny-hip-')
-      ? 'https://www.sonnyangel.com/en/products/hippers/'
-      : cid.startsWith('sonny-lim-')
-      ? 'https://www.sonnyangel.com/en/products/limited-series/'
-      : cid.startsWith('sonny-art-')
-      ? 'https://www.sonnyangel.com/en/products/artist-collection/'
-      : 'https://www.sonnyangel.com/en/products/mini-figure/';
-    return { label: 'Sonny Angel Official', url: officialUrl };
-  }
-
-  if (cid.startsWith('sp-')) {
-    return {
-      label: 'Art Toy Familia',
-      url: `https://arttoyfamilia.com/search?q=${enc(`Skullpanda ${qName}`)}`,
-    };
-  }
-
-  if (cid.startsWith('tinytiny-')) {
-    return {
-      label: 'Art Toy Familia',
-      url: `https://arttoyfamilia.com/search?q=${enc(`Tinytiny ${qName}`)}`,
-    };
-  }
-
-  if (cid.startsWith('zs-')) {
-    return {
-      label: 'Art Toy Familia',
-      url: `https://arttoyfamilia.com/search?q=${enc(`Zsiga ${qName}`)}`,
-    };
-  }
-
-  if (cid.startsWith('sf-')) {
-    return {
-      label: 'Kobee Japan',
-      url: `https://store.kobeejapan.net/search?q=${enc(qName)}`,
-    };
-  }
-
-  if (cid.startsWith('jc-')) {
-    return {
-      label: 'Baby Cubby',
-      url: `https://www.babycubby.com/search?q=${enc(`Jellycat ${qName}`)}`,
-    };
-  }
-
-  return null;
+  return links;
 }
