@@ -50,6 +50,7 @@ export interface CollectionMeta {
   skullpandaCategory?: 'blind-box' | 'plush' | 'mixed';
   sylvanianCategory?: 'blind-bag' | 'blind-box';
   subtitle: string;
+  releaseDate?: string;
   maker: string;
   accent: string;
   accentSoft: string;

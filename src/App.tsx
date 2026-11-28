@@ -167,78 +167,40 @@ export default function App() {
   );
 
   const subSeriesGroups = useMemo<OverviewCardGroup<CollectionId>[]>(() => {
+    const toCardGroup = (c: (typeof COLLECTIONS)[number], namePrefix: RegExp): OverviewCardGroup<CollectionId> => ({
+      id: c.id,
+      name: c.shortName ?? c.name.replace(namePrefix, ''),
+      subtitle: c.subtitle,
+      releaseDate: c.releaseDate,
+      maker: c.maker,
+      accent: c.accent,
+      accentSoft: c.accentSoft,
+      accentText: c.accentText,
+      emoji: c.emoji,
+      collectionIds: [c.id],
+    });
     if (activeShelf === 'skullpanda') {
       return COLLECTIONS.filter((c) => {
         if (!SKULLPANDA_ID_SET.has(c.id)) return false;
         if (skullpandaTab === 'all') return true;
         return c.skullpandaCategory === skullpandaTab;
-      }).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Skullpanda · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
+      }).map((c) => toCardGroup(c, /^Skullpanda · /));
     }
     if (activeShelf === 'sylvanian-families') {
       return COLLECTIONS.filter((c) => {
         if (!SYLVANIAN_ID_SET.has(c.id)) return false;
         if (sylvanianTab === 'all') return true;
         return c.sylvanianCategory === sylvanianTab;
-      }).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Sylvanian Families · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
+      }).map((c) => toCardGroup(c, /^Sylvanian Families · /));
     }
     if (activeShelf === 'zsiga') {
-      return COLLECTIONS.filter((c) => ZSIGA_ID_SET.has(c.id)).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Zsiga · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
+      return COLLECTIONS.filter((c) => ZSIGA_ID_SET.has(c.id)).map((c) => toCardGroup(c, /^Zsiga · /));
     }
     if (activeShelf === 'jellycat') {
-      return COLLECTIONS.filter((c) => JELLYCAT_ID_SET.has(c.id)).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Jellycat · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
+      return COLLECTIONS.filter((c) => JELLYCAT_ID_SET.has(c.id)).map((c) => toCardGroup(c, /^Jellycat · /));
     }
     if (activeShelf === 'tinytiny') {
-      return COLLECTIONS.filter((c) => TINYTINY_ID_SET.has(c.id)).map((c) => ({
-        id: c.id,
-        name: c.shortName ?? c.name.replace(/^Tinytiny · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
-      }));
+      return COLLECTIONS.filter((c) => TINYTINY_ID_SET.has(c.id)).map((c) => toCardGroup(c, /^Tinytiny · /));
     }
     if (activeShelf === 'sonny-angel') {
       return COLLECTIONS.filter((c) => {
@@ -252,15 +214,8 @@ export default function App() {
         if (sonnySeriesTab === 'special') return SONNY_SPECIAL_SET.has(c.id);
         return true;
       }).map((c) => ({
-        id: c.id,
+        ...toCardGroup(c, /^(?:Sonny Angel|Artist Collection) · /),
         name: c.name.replace(/^(?:Sonny Angel|Artist Collection) · /, ''),
-        subtitle: c.subtitle,
-        maker: c.maker,
-        accent: c.accent,
-        accentSoft: c.accentSoft,
-        accentText: c.accentText,
-        emoji: c.emoji,
-        collectionIds: [c.id],
       }));
     }
     return [];
@@ -694,6 +649,7 @@ export default function App() {
                   {activeSubCollection?.name ?? activeTopShelf.name}
                 </h2>
                 <p style={{ margin: '2px 0 0', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                  {activeSubCollection?.releaseDate ? `${activeSubCollection.releaseDate} · ` : ''}
                   {activeSubCollection?.subtitle ?? activeTopShelf.subtitle} ·{' '}
                   {activeSubCollection?.maker ?? activeTopShelf.maker}
                 </p>

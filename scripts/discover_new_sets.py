@@ -233,6 +233,7 @@ def discover_sonny_angel(prices: dict[str, float], tasks: list[tuple[str, str]])
             "name": fig_name,
             "img": p["images"][0]["src"],
             "source_url": f"https://toysez.com/products/{handle}" if handle else "https://toysez.com/collections/sonny-angel",
+            "created_at": p.get("created_at", ""),
             "price": p["variants"][0].get("price") if p.get("variants") else None,
             "secret": "secret" in tl or "robby" in fig_name.lower(),
         })
@@ -250,6 +251,7 @@ def discover_sonny_angel(prices: dict[str, float], tasks: list[tuple[str, str]])
             "parentShelf": "sonny-angel",
             "sonnyCategory": "limited",
             "subtitle": f"Limited Series ({len(figs)} figures)",
+            "releaseDate": (figs[0].get("created_at") or "")[:10] or None,
             "maker": "Dreams Inc.",
             "accent": "#E86A7D",
             "accentSoft": "#FDECEF",
@@ -318,11 +320,13 @@ def discover_popmart_shelf(
         existing_token_sets.append(series_tokens(short))
 
         cid = f"{id_prefix}-{slugify(short)}"
+        rel_date = (p.get("created_at") or "")[:10]
         data["collections"].insert(0, {
             "id": cid,
             "name": f"{shelf_label} · {short}",
             "shortName": short,
             "subtitle": f"Blind Box Series ({len(vars_ok)} figures)",
+            **({"releaseDate": rel_date} if rel_date else {}),
             "maker": "POP MART",
             "accent": "#7C65B8",
             "accentSoft": "#F1EEFA",

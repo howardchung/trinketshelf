@@ -7,6 +7,7 @@ export interface OverviewCardGroup<T extends string = string> {
   id: T;
   name: string;
   subtitle: string;
+  releaseDate?: string;
   maker: string;
   accent: string;
   accentSoft: string;
@@ -65,7 +66,10 @@ export function CollectionOverview<T extends string>({
                   <h2 className="collection-card-title">
                     {group.emoji} {group.name}
                   </h2>
-                  <p className="collection-card-sub">{group.subtitle}</p>
+                  <p className="collection-card-sub">
+                  {group.releaseDate ? `${group.releaseDate} · ` : ''}
+                  {group.subtitle}
+                </p>
                 </div>
                 <span
                   className="collection-badge"
@@ -158,7 +162,10 @@ export function CollectionOverview<T extends string>({
                 <h2 className="collection-card-title">
                   {group.emoji} {group.name}
                 </h2>
-                <p className="collection-card-sub">{group.subtitle}</p>
+                <p className="collection-card-sub">
+                  {group.releaseDate ? `${group.releaseDate} · ` : ''}
+                  {group.subtitle}
+                </p>
               </div>
               <span
                 className="collection-badge"
