@@ -148,13 +148,25 @@ def main() -> None:
                 unique[k] = (cname, sku_href, img_src)
 
     jc = json.loads(JC_JSON.read_text(encoding="utf-8"))
+    if not any(c["id"] == "jc-accessories" for c in jc["collections"]):
+        jc["collections"].append({
+            "id": "jc-accessories",
+            "name": "Jellycat · Accessories, Bags & Books",
+            "shortName": "Accessories, Bags & Books",
+            "subtitle": "Bags, Books, Pins, Stickers & Baby Gear (0)",
+            "maker": "Jellycat London",
+            "accent": "#9B6BB8",
+            "accentSoft": "#F4EEFA",
+            "accentText": "#5E3478",
+            "emoji": "🎒",
+        })
     col_label = {c["id"]: c["shortName"] for c in jc["collections"]}
     used_ids = {it["id"] for it in jc["items"]}
     existing_by_key = {norm_key(it["name"]): it for it in jc["items"]}
 
     upgraded_svgs = 0
     added = 0
-    skipped_non_plush = 0
+    added_acc = 0
 
     for k, (cname, sku_href, img_src) in unique.items():
         # URL-encode any spaces or quotes in the image path while keeping slashes
@@ -175,13 +187,10 @@ def main() -> None:
                 upgraded_svgs += 1
             continue
 
-        # 2. Skip non-plush accessories when adding brand-new entries
+        # 2. Route non-plush accessories into jc-accessories instead of skipping
         tl = cname.lower()
-        if any(bad in tl for bad in SKIP_NON_PLUSH) or tl.endswith(" bag"):
-            skipped_non_plush += 1
-            continue
-
-        cid = classify_series(cname)
+        is_acc = any(bad in tl for bad in SKIP_NON_PLUSH) or tl.endswith(" bag")
+        cid = "jc-accessories" if is_acc else classify_series(cname)
         base_id = f"{cid}-{k}"
         iid = base_id
         n = 2
@@ -207,6 +216,8 @@ def main() -> None:
             "priceSourceUrl": f"https://us.jellycat.com/search?q={urllib.parse.quote(cname)}",
         })
         added += 1
+        if is_acc:
+            added_acc += 1
 
     # Update collection subtitles with new counts
     for c in jc["collections"]:
@@ -218,7 +229,7 @@ def main() -> None:
     rem_svg = sum(1 for it in jc["items"] if it["image"].endswith(".svg"))
     print(
         f"Parsed {len(pages)} pages ({raw_count} raw cards -> {len(unique)} unique). "
-        f"Upgraded {upgraded_svgs} SVGs, added {added} new plushies (skipped {skipped_non_plush} non-plush). "
+        f"Upgraded {upgraded_svgs} SVGs, added {added} items ({added_acc} accessories). "
         f"Jellycat total: {len(jc['items'])} ({rem_svg} SVGs remaining)."
     )
     for c in jc["collections"]:
