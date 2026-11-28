@@ -59,6 +59,7 @@ jobs:
           python3 scripts/fetch_pokemon_tcg.py
           python3 scripts/fetch_pokemon_csv4c.py
           python3 scripts/fetch_prices.py
+          python3 scripts/build_pokemon_cards_bundle.py
 
       - name: Bump Service Worker cache version if data changed
         if: >-

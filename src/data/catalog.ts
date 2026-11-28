@@ -84,6 +84,7 @@ export function loadAllCatalogData(): Promise<void> {
       zsiga,
       jellycat,
       pokemonSets,
+      pokemonCards,
       prices,
     ] = await Promise.all([
       fetchJson<ShelfJson>('/data/sonny-regular.json'),
@@ -97,6 +98,7 @@ export function loadAllCatalogData(): Promise<void> {
       fetchJson<ShelfJson>('/data/zsiga.json'),
       fetchJson<ShelfJson>('/data/jellycat.json'),
       fetchJson<PokemonSetMeta[]>('/data/pokemon-sets.json'),
+      fetchJson<CatalogItem[]>('/data/pokemon-cards.json'),
       fetchJson<Record<string, number>>('/data/prices.json'),
     ]);
 
@@ -236,6 +238,7 @@ export function loadAllCatalogData(): Promise<void> {
       ...sylvanian.items,
       ...zsiga.items,
       ...jellycat.items,
+      ...pokemonCards,
     ]);
   })();
 

@@ -30,7 +30,6 @@ import {
 import { POKEMON_SETS, POKEMON_TOTAL_GM_CARDS, type PokemonSetMeta } from './data/pokemonSets';
 import { formatUsdWhole, getItemPrice } from './data/prices';
 import { useCollectionStore } from './hooks/useCollectionStore';
-import { usePokemonSetLoader } from './hooks/usePokemonSetLoader';
 import { usePwaInstall } from './hooks/usePwaInstall';
 import type { CatalogItem, CollectionId, ItemStatus, TopLevelShelfId } from './types';
 import { CollectionOverview, type OverviewCardGroup } from './components/CollectionOverview';
@@ -119,23 +118,17 @@ export default function App() {
   const [toast, setToast] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const activePokemonSetId =
-    activeShelf === 'pokemon-tcg' && activeSubSeries !== 'all'
-      ? activeSubSeries.replace(/^pkmn-/, '')
-      : null;
-
-  const { cards: pokemonCards, loading: pokemonLoading } =
-    usePokemonSetLoader(activePokemonSetId);
+  const [visibleLimit, setVisibleLimit] = useState(120);
 
   const pokemonOwnedTotal = useMemo(() => {
     let count = 0;
-    for (const [itemId, tr] of Object.entries(trackingMap)) {
-      if (itemId.startsWith('pkmn-') && (tr.status === 'owned' || tr.status === 'duplicate')) {
-        count++;
-      }
+    for (const item of allItems) {
+      if (!item.collectionId.startsWith('pkmn-')) continue;
+      const st = getTracking(item.id).status;
+      if (st === 'owned' || st === 'duplicate') count++;
     }
     return count;
-  }, [trackingMap]);
+  }, [allItems, getTracking]);
 
   const pokemonSetsInEra = useMemo(
     () => POKEMON_SETS.filter((s) => matchesPokemonEra(s, pokemonEraTab)),
@@ -321,75 +314,18 @@ export default function App() {
       if (sonnySeriesTab === 'special') return SONNY_SPECIAL_SET;
       return SONNY_ID_SET;
     }
+    if (activeShelf === 'pokemon-tcg') {
+      return activeSubSeries !== 'all'
+        ? new Set<CollectionId>([activeSubSeries])
+        : new Set<CollectionId>(pokemonSetsInEra.map((s) => s.id));
+    }
     return new Set<CollectionId>([activeShelf as CollectionId]);
-  }, [activeShelf, activeSubSeries, sonnySeriesTab, skullpandaTab, sylvanianTab]);
+  }, [activeShelf, activeSubSeries, sonnySeriesTab, skullpandaTab, sylvanianTab, pokemonSetsInEra]);
 
   const stats = useMemo(() => {
-    if (activeShelf === 'pokemon-tcg' && activeSubSeries === 'all') {
-      const setIdSet = new Set(pokemonSetsInEra.map((s) => s.setId));
-      const total = pokemonSetsInEra.reduce((sum, s) => sum + s.grandMasterCount, 0);
-      let owned = 0;
-      let wishlist = 0;
-      let duplicate = 0;
-      let dupExtraCopies = 0;
-      let ownedValue = 0;
-      let dupValue = 0;
-      let wishlistValue = 0;
-
-      for (const [itemId, tr] of Object.entries(trackingMap)) {
-        if (!itemId.startsWith('pkmn-')) continue;
-        const rest = itemId.slice(5);
-        const dash = rest.indexOf('-');
-        const sid = dash > 0 ? rest.slice(0, dash) : '';
-        if (!setIdSet.has(sid)) continue;
-        const price = tr.customPrice ?? tr.cachedPrice ?? 1;
-        if (tr.status === 'owned') {
-          owned++;
-          const qty = Math.max(1, tr.quantity || 1);
-          ownedValue += price * qty;
-          if (qty > 1) {
-            dupExtraCopies += qty - 1;
-            dupValue += price * (qty - 1);
-          }
-        } else if (tr.status === 'duplicate') {
-          owned++;
-          duplicate++;
-          const qty = Math.max(2, tr.quantity || 2);
-          ownedValue += price * qty;
-          dupExtraCopies += qty - 1;
-          dupValue += price * (qty - 1);
-        } else if (tr.status === 'wishlist') {
-          wishlist++;
-          wishlistValue += price;
-        }
-      }
-      const remainingCount = wishlist;
-      const costToComplete = wishlistValue;
-      const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
-      return {
-        total,
-        owned,
-        wishlist,
-        duplicate,
-        dupExtraCopies,
-        pct,
-        ownedValue,
-        dupValue,
-        wishlistValue,
-        costToComplete,
-        remainingCount,
-      };
-    }
-
-    const scope =
-      activeShelf === 'pokemon-tcg' && activeSubSeries !== 'all'
-        ? [
-            ...pokemonCards,
-            ...allItems.filter((i) => i.collectionId === activeSubSeries),
-          ]
-        : scopedCollectionIds
-        ? allItems.filter((i) => scopedCollectionIds.has(i.collectionId))
-        : allItems;
+    const scope = scopedCollectionIds
+      ? allItems.filter((i) => scopedCollectionIds.has(i.collectionId))
+      : allItems;
     let owned = 0;
     let wishlist = 0;
     let duplicate = 0;
@@ -426,35 +362,7 @@ export default function App() {
         costToComplete += price;
       }
     }
-    let total = scope.length;
-    if (activeShelf === 'overview') {
-      for (const [itemId, tr] of Object.entries(trackingMap)) {
-        if (!itemId.startsWith('pkmn-')) continue;
-        const price = tr.customPrice ?? tr.cachedPrice ?? 1;
-        if (tr.status === 'owned') {
-          owned++;
-          const qty = Math.max(1, tr.quantity || 1);
-          ownedValue += price * qty;
-          if (qty > 1) {
-            dupExtraCopies += qty - 1;
-            dupValue += price * (qty - 1);
-          }
-        } else if (tr.status === 'duplicate') {
-          owned++;
-          duplicate++;
-          const qty = Math.max(2, tr.quantity || 2);
-          ownedValue += price * qty;
-          dupExtraCopies += qty - 1;
-          dupValue += price * (qty - 1);
-        } else if (tr.status === 'wishlist') {
-          wishlist++;
-          wishlistValue += price;
-          remainingCount++;
-          costToComplete += price;
-        }
-      }
-      total += POKEMON_TOTAL_GM_CARDS;
-    }
+    const total = scope.length;
     const pct = total > 0 ? Math.round((owned / total) * 100) : 0;
     return {
       total,
@@ -469,23 +377,14 @@ export default function App() {
       costToComplete,
       remainingCount,
     };
-  }, [
-    activeShelf,
-    activeSubSeries,
-    pokemonSetsInEra,
-    pokemonCards,
-    trackingMap,
-    scopedCollectionIds,
-    allItems,
-    getTracking,
-  ]);
+  }, [scopedCollectionIds, allItems, getTracking]);
 
   const hasActiveFilters =
     searchQuery.trim().length > 0 || statusFilter !== 'all' || secretOnly;
 
   const showTopOverview = activeShelf === 'overview' && !hasActiveFilters;
   const showPokemonSetsOverview =
-    activeShelf === 'pokemon-tcg' && activeSubSeries === 'all';
+    activeShelf === 'pokemon-tcg' && activeSubSeries === 'all' && !hasActiveFilters;
   const showSubOverview =
     isGroupedShelf &&
     activeShelf !== 'pokemon-tcg' &&
@@ -494,20 +393,9 @@ export default function App() {
 
   const filteredItems = useMemo(() => {
     if (showTopOverview || showSubOverview || showPokemonSetsOverview) return [];
-    const sourceItems =
-      activeShelf === 'pokemon-tcg' && activeSubSeries !== 'all'
-        ? [
-            ...pokemonCards,
-            ...allItems.filter((i) => i.collectionId === activeSubSeries),
-          ]
-        : allItems;
     const q = searchQuery.trim().toLowerCase();
-    return sourceItems.filter((item) => {
-      if (
-        activeShelf !== 'pokemon-tcg' &&
-        scopedCollectionIds &&
-        !scopedCollectionIds.has(item.collectionId)
-      ) {
+    return allItems.filter((item) => {
+      if (scopedCollectionIds && !scopedCollectionIds.has(item.collectionId)) {
         return false;
       }
       const tr = getTracking(item.id);
@@ -529,9 +417,6 @@ export default function App() {
     showTopOverview,
     showSubOverview,
     showPokemonSetsOverview,
-    activeShelf,
-    activeSubSeries,
-    pokemonCards,
     scopedCollectionIds,
     allItems,
     getTracking,
@@ -541,11 +426,8 @@ export default function App() {
   ]);
 
   const selectedItem: CatalogItem | null = useMemo(
-    () =>
-      allItems.find((i) => i.id === selectedItemId) ??
-      pokemonCards.find((i) => i.id === selectedItemId) ??
-      null,
-    [allItems, pokemonCards, selectedItemId]
+    () => allItems.find((i) => i.id === selectedItemId) ?? null,
+    [allItems, selectedItemId]
   );
 
   const handleImportFile = (e: ChangeEvent<HTMLInputElement>) => {
@@ -1030,7 +912,7 @@ export default function App() {
                 activeSubCollection
                   ? `Search ${activeSubCollection.name}...`
                   : activeShelf === 'pokemon-tcg'
-                  ? `Search ${pokemonSetsInEra.length} Pokémon TCG sets (e.g., Base Set, 151, Prismatic, Evolving Skies)...`
+                  ? `Search ${pokemonSetsInEra.length} Pokémon TCG sets & cards (e.g., Pikachu, Umbreon, Base Set, 151)...`
                   : isGroupedShelf && activeTopShelf
                   ? `Search all ${subSeriesGroups.length} ${activeTopShelf.name} series...`
                   : activeTopShelf
@@ -1038,7 +920,10 @@ export default function App() {
                   : `Search all ${TOP_LEVEL_SHELVES.length} collections...`
               }
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setVisibleLimit(120);
+              }}
             />
           </div>
 
@@ -1078,7 +963,6 @@ export default function App() {
             groups={TOP_LEVEL_SHELVES}
             allItems={allItems}
             getTracking={getTracking}
-            trackingMap={trackingMap}
             onSelect={(id) => selectTopShelf(id)}
           />
         ) : showPokemonSetsOverview ? (
@@ -1122,15 +1006,6 @@ export default function App() {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           />
-        ) : pokemonLoading ? (
-          <div className="empty-state">
-            <p style={{ margin: 0, fontWeight: 600, fontSize: '1rem', color: 'var(--text)' }}>
-              Loading Grand Master card list...
-            </p>
-            <p style={{ margin: '6px 0 0', fontSize: '0.88rem' }}>
-              Fetching set cards & variants for {activeSubCollection?.shortName ?? 'this set'}.
-            </p>
-          </div>
         ) : filteredItems.length === 0 ? (
           <div className="empty-state">
             <p style={{ margin: 0, fontWeight: 600, fontSize: '1rem', color: 'var(--text)' }}>
@@ -1146,24 +1021,38 @@ export default function App() {
                 setSearchQuery('');
                 setStatusFilter('all');
                 setSecretOnly(false);
+                setVisibleLimit(120);
               }}
             >
               Reset Filters
             </button>
           </div>
         ) : (
-          <div className="items-grid">
-            {filteredItems.map((item) => (
-              <ItemCard
-                key={item.id}
-                item={item}
-                tracking={getTracking(item.id)}
-                onOpenDetail={() => setSelectedItemId(item.id)}
-                onToggleOwned={() => toggleStatusQuick(item.id, 'owned', item.price)}
-                onToggleWishlist={() => toggleStatusQuick(item.id, 'wishlist', item.price)}
-              />
-            ))}
-          </div>
+          <>
+            <div className="items-grid">
+              {filteredItems.slice(0, visibleLimit).map((item) => (
+                <ItemCard
+                  key={item.id}
+                  item={item}
+                  tracking={getTracking(item.id)}
+                  onOpenDetail={() => setSelectedItemId(item.id)}
+                  onToggleOwned={() => toggleStatusQuick(item.id, 'owned', item.price)}
+                  onToggleWishlist={() => toggleStatusQuick(item.id, 'wishlist', item.price)}
+                />
+              ))}
+            </div>
+            {filteredItems.length > visibleLimit && (
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
+                <button
+                  type="button"
+                  className="btn"
+                  onClick={() => setVisibleLimit((n) => n + 120)}
+                >
+                  Show more ({(filteredItems.length - visibleLimit).toLocaleString()} remaining)
+                </button>
+              </div>
+            )}
+          </>
         )}
       </main>
 

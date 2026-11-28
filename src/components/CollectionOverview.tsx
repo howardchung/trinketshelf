@@ -19,7 +19,6 @@ interface CollectionOverviewProps<T extends string> {
   groups: OverviewCardGroup<T>[];
   allItems: CatalogItem[];
   getTracking: (itemId: string) => ItemTrackingState;
-  trackingMap?: Record<string, ItemTrackingState>;
   onSelect: (id: T) => void;
 }
 
@@ -29,7 +28,6 @@ export function CollectionOverview<T extends string>({
   groups,
   allItems,
   getTracking,
-  trackingMap,
   onSelect,
 }: CollectionOverviewProps<T>) {
   return (
@@ -40,14 +38,13 @@ export function CollectionOverview<T extends string>({
         if (isPokemonShelf) {
           let ownedCount = 0;
           let wishlistCost = 0;
-          if (trackingMap) {
-            for (const [itemId, tr] of Object.entries(trackingMap)) {
-              if (!itemId.startsWith('pkmn-')) continue;
-              if (tr.status === 'owned' || tr.status === 'duplicate') {
-                ownedCount++;
-              } else if (tr.status === 'wishlist') {
-                wishlistCost += tr.customPrice ?? tr.cachedPrice ?? 1;
-              }
+          for (const item of allItems) {
+            if (!item.collectionId.startsWith('pkmn-')) continue;
+            const tr = getTracking(item.id);
+            if (tr.status === 'owned' || tr.status === 'duplicate') {
+              ownedCount++;
+            } else if (tr.status === 'wishlist') {
+              wishlistCost += getItemPrice(item.id, tr.customPrice, item.price);
             }
           }
           const totalCount = POKEMON_TOTAL_GM_CARDS;
