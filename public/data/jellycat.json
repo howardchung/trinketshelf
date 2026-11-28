@@ -4276,9 +4276,10 @@
       "name": "Amore Black Cat",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-amore-black-cat.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Amore_Cat_Black_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Amore%20Black%20Cat"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Amore%20Black%20Cat",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Amore_Cat_Black_sm.webp"
     },
     {
       "id": "jc-animals-amore-cream-cat",
@@ -4495,9 +4496,10 @@
       "name": "Amuseables Boiled Egg Chic",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-boiled-egg-chic.svg",
+      "image": "/images/jc-amuseables-amuseables-boiled-egg-chic.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-boiled-egg-chic"
     },
     {
       "id": "jc-amuseables-amuseables-boiled-egg-graduation",
@@ -4527,9 +4529,10 @@
       "name": "Amuseables Boiled Egg Scuba",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-boiled-egg-scuba.svg",
+      "image": "/images/jc-amuseables-amuseables-boiled-egg-scuba.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-boiled-egg-scuba"
     },
     {
       "id": "jc-amuseables-amuseables-bonsai-tree",
@@ -4559,9 +4562,10 @@
       "name": "Amuseables Bubble Tea",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-bubble-tea.svg",
+      "image": "/images/jc-amuseables-amuseables-bubble-tea.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-steepy-tea-bag"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-steepy-tea-bag",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-bubble-tea"
     },
     {
       "id": "jc-amuseables-amuseables-burger",
@@ -4778,9 +4782,10 @@
       "name": "Amuseables Devilled Egg",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-devilled-egg.svg",
+      "image": "/images/jc-amuseables-amuseables-devilled-egg.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-boiled-egg-scientist-outfit",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-devilled-egg"
     },
     {
       "id": "jc-amuseables-amuseables-disco-ball",
@@ -4952,9 +4957,10 @@
       "name": "Amuseables Mince Pie",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-mince-pie.svg",
+      "image": "/images/jc-amuseables-amuseables-mince-pie.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Mince%20Pie"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Mince%20Pie",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-mince-pie"
     },
     {
       "id": "jc-amuseables-amuseables-mistletoe",
@@ -5028,9 +5034,10 @@
       "name": "Amuseables Mushroom",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-mushroom.svg",
+      "image": "/images/jc-amuseables-amuseables-mushroom.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Mushroom"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Mushroom",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-mushroom"
     },
     {
       "id": "jc-amuseables-amuseables-nordic-spruce-christmas-tree",
@@ -5512,7 +5519,8 @@
       "rarity": "Regular",
       "image": "/images/jc-amuseables-amuseables-tomato.svg",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Tomato"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Tomato",
+      "imageSourceUrl": null
     },
     {
       "id": "jc-amuseables-amuseables-tulip-pot",
@@ -5531,9 +5539,10 @@
       "name": "Amuseables Wedding Cake",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-wedding-cake.svg",
+      "image": "/images/jc-amuseables-amuseables-wedding-cake.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-birthday-cake-key-chain-bag-charm"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-amuseables-birthday-cake-key-chain-bag-charm",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-amuseable-wedding-cake"
     },
     {
       "id": "jc-amuseables-amuseables-yule-log",
@@ -5671,9 +5680,10 @@
       "name": "Bartholomew Bear Bat",
       "series": "Bears & Bartholomew",
       "rarity": "Regular",
-      "image": "/images/jc-bears-bartholomew-bear-bat.svg",
+      "image": "/images/jc-bears-bartholomew-bear-bat.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-bat"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-bat",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-bat"
     },
     {
       "id": "jc-bears-bartholomew-bear-bathrobe",
@@ -5694,7 +5704,8 @@
       "rarity": "Regular",
       "image": "/images/jc-bears-bartholomew-bear-eggplant.svg",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bartholomew-bear-musical-pull"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bartholomew-bear-musical-pull",
+      "imageSourceUrl": null
     },
     {
       "id": "jc-bears-bartholomew-bear-heartthrob",
@@ -5702,9 +5713,10 @@
       "name": "Bartholomew Bear 'Heartthrob'",
       "series": "Bears & Bartholomew",
       "rarity": "Regular",
-      "image": "/images/jc-bears-bartholomew-bear-heartthrob.svg",
+      "image": "/images/jc-bears-bartholomew-bear-heartthrob.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-heart"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-heart",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-heart"
     },
     {
       "id": "jc-bears-bartholomew-bear-pumpkin",
@@ -5744,9 +5756,10 @@
       "name": "Bashful Arctic Fox",
       "series": "Bashful Animals",
       "rarity": "Regular",
-      "image": "/images/jc-bashful-animals-bashful-arctic-fox.svg",
+      "image": "/images/jc-bashful-animals-bashful-arctic-fox.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-arctic-fox-original"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-arctic-fox-original",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-arctic-fox-original"
     },
     {
       "id": "jc-bashful-animals-bashful-bee",
@@ -5831,9 +5844,10 @@
       "name": "Bashful Bunny with Christmas Tree",
       "series": "Bashful Bunnies",
       "rarity": "Special",
-      "image": "/images/jc-bashful-bunnies-bashful-bunny-with-christmas-tree.svg",
+      "image": "/images/jc-bashful-bunnies-bashful-bunny-with-christmas-tree.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-bunny-with-christmas-tree"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-bunny-with-christmas-tree",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-bunny-with-christmas-tree"
     },
     {
       "id": "jc-bashful-bunnies-bashful-carrot-bunny",
@@ -5907,9 +5921,10 @@
       "name": "Bashful Evey Bunny",
       "series": "Bashful Bunnies",
       "rarity": "Regular",
-      "image": "/images/jc-bashful-bunnies-bashful-evey-bunny.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Bashful_Ivy_Bunny_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-evey-bunny-original"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-evey-bunny-original",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Bashful_Ivy_Bunny_sm.webp"
     },
     {
       "id": "jc-bashful-animals-bashful-flamingo",
@@ -6069,9 +6084,10 @@
       "name": "Bashful Luxe Bunny Rose",
       "series": "Bashful Bunnies",
       "rarity": "Special",
-      "image": "/images/jc-bashful-bunnies-bashful-luxe-bunny-rose.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Bashful_Luxe_Bunny_Rosa_-_Huge2_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bashful-luxe-bunny-willow-blankie"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bashful-luxe-bunny-willow-blankie",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Bashful_Luxe_Bunny_Rosa_-_Huge2_sm.webp"
     },
     {
       "id": "jc-bashful-bunnies-bashful-luxe-bunny-willow",
@@ -6133,9 +6149,10 @@
       "name": "Bashful Owl",
       "series": "Bashful Animals",
       "rarity": "Regular",
-      "image": "/images/jc-bashful-animals-bashful-owl.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Bashful_Owl_(Original)_-_Medium_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-owl-medium"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-owl-medium",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Bashful_Owl_(Original)_-_Medium_sm.webp"
     },
     {
       "id": "jc-bashful-animals-bashful-panda",
@@ -6176,9 +6193,10 @@
       "name": "Bashful Pegasus",
       "series": "Bashful Animals",
       "rarity": "Regular",
-      "image": "/images/jc-bashful-animals-bashful-pegasus.svg",
+      "image": "/images/jc-bashful-animals-bashful-pegasus.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-pegasus-original"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-pegasus-original",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bashful-pegasus-original"
     },
     {
       "id": "jc-bashful-bunnies-bashful-pink-bunny",
@@ -6449,9 +6467,10 @@
       "name": "Birdling Millard",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-birdling-millard.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Birdling_Mallard_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Birdling%20Millard"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Birdling%20Millard",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Birdling_Mallard_sm.webp"
     },
     {
       "id": "jc-animals-birdling-pigeon",
@@ -6655,9 +6674,10 @@
       "name": "Breezy Butterfly Iris",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-breezy-butterfly-iris.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Breezy_Iris_Butterfly_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Breezy%20Butterfly%20Iris"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Breezy%20Butterfly%20Iris",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Breezy_Iris_Butterfly_sm.webp"
     },
     {
       "id": "jc-animals-breezy-butterfly-poppy",
@@ -6665,9 +6685,10 @@
       "name": "Breezy Butterfly Poppy",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-breezy-butterfly-poppy.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Breezy_Poppy_Butterfly_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Breezy%20Butterfly%20Poppy"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Breezy%20Butterfly%20Poppy",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Breezy_Poppy_Butterfly_sm.webp"
     },
     {
       "id": "jc-animals-brooke-otter",
@@ -6697,9 +6718,10 @@
       "name": "Brynlee Bee",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-brynlee-bee.svg",
+      "image": "/images/jc-animals-brynlee-bee.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-brynlee-bee"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-brynlee-bee",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-brynlee-bee"
     },
     {
       "id": "jc-animals-bryno-dino",
@@ -6806,9 +6828,10 @@
       "name": "Chrissy Crab",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-chrissy-crab.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Chrissie_Crab_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Chrissy%20Crab"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Chrissy%20Crab",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Chrissie_Crab_sm.webp"
     },
     {
       "id": "jc-animals-christmas-grizzo",
@@ -6826,9 +6849,10 @@
       "name": "Christmas Jellycat Jack",
       "series": "Animals & Friends",
       "rarity": "Special",
-      "image": "/images/jc-animals-christmas-jellycat-jack.svg",
+      "image": "/images/jc-animals-christmas-jellycat-jack.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-jellycat-jack"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-jellycat-jack",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-jellycat-jack"
     },
     {
       "id": "jc-animals-christmas-tree-ricky-rain-frog",
@@ -6836,9 +6860,10 @@
       "name": "Christmas Tree Ricky Rain Frog",
       "series": "Animals & Friends",
       "rarity": "Special",
-      "image": "/images/jc-animals-christmas-tree-ricky-rain-frog.svg",
+      "image": "/images/jc-animals-christmas-tree-ricky-rain-frog.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-tree-ricky-rain-frog"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-tree-ricky-rain-frog",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-christmas-tree-ricky-rain-frog"
     },
     {
       "id": "jc-animals-cizi-snake",
@@ -6867,9 +6892,10 @@
       "name": "Cluny Cokerel",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-cluny-cokerel.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Cluny_Cockerel_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Cluny%20Cokerel"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Cluny%20Cokerel",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Cluny_Cockerel_sm.webp"
     },
     {
       "id": "jc-animals-clyde-capybara",
@@ -6910,9 +6936,10 @@
       "name": "Cooper Doodle Dog",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-cooper-doodle-dog.svg",
+      "image": "/images/jc-animals-cooper-doodle-dog.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/cooper-doodle-dog"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/cooper-doodle-dog",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/cooper-doodle-dog"
     },
     {
       "id": "jc-animals-cordy-roy-ducking",
@@ -6920,9 +6947,10 @@
       "name": "Cordy Roy Ducking",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-cordy-roy-ducking.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/cordyroyducksmall.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Cordy%20Roy%20Ducking"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Cordy%20Roy%20Ducking",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/cordyroyducksmall.webp"
     },
     {
       "id": "jc-animals-cordy-roy-fox",
@@ -7083,9 +7111,10 @@
       "name": "Dancing Darcey Pig",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-dancing-darcey-pig.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Dancing_Darcey_Piglet_-_Smaller_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Dancing%20Darcey%20Pig"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Dancing%20Darcey%20Pig",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Dancing_Darcey_Piglet_-_Smaller_sm.webp"
     },
     {
       "id": "jc-animals-daphne-pomeranian",
@@ -7147,9 +7176,10 @@
       "name": "Delia Duck",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-delia-duck.svg",
+      "image": "/images/jc-animals-delia-duck.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-delia-duck"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-delia-duck",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-delia-duck"
     },
     {
       "id": "jc-animals-disco-rainbow-fish",
@@ -7309,9 +7339,10 @@
       "name": "Floofy Sheepdog",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-floofy-sheepdog.svg",
+      "image": "/images/jc-animals-floofy-sheepdog.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Floofy%20Sheepdog"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Floofy%20Sheepdog",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/floofie-sheepdog"
     },
     {
       "id": "jc-animals-floofy-st-bernard",
@@ -7319,9 +7350,10 @@
       "name": "Floofy St Bernard",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-floofy-st-bernard.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Floofie_St_Bernard_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Floofy%20St%20Bernard"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Floofy%20St%20Bernard",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Floofie_St_Bernard_sm.webp"
     },
     {
       "id": "jc-animals-fluffy-chicken",
@@ -7329,9 +7361,10 @@
       "name": "Fluffy Chicken",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-fluffy-chicken.svg",
+      "image": "/images/jc-animals-fluffy-chicken.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-fluffy-chicken"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-fluffy-chicken",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-fluffy-chicken"
     },
     {
       "id": "jc-animals-fluffy-crab",
@@ -7458,9 +7491,10 @@
       "name": "Fossily Brontosaurus",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-fossily-brontosaurus.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Brontosaurus_-_Medium_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Brontosaurus"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Brontosaurus",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Brontosaurus_-_Medium_sm.webp"
     },
     {
       "id": "jc-animals-fossily-pterodactyl",
@@ -7468,9 +7502,10 @@
       "name": "Fossily Pterodactyl",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-fossily-pterodactyl.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Pterodactyl_-_Small_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Pterodactyl"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Pterodactyl",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Pterodactyl_-_Small_sm.webp"
     },
     {
       "id": "jc-animals-fossily-stegosaurus",
@@ -7478,9 +7513,10 @@
       "name": "Fossily Stegosaurus",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-fossily-stegosaurus.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Stegosaurus_-_Small_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Stegosaurus"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Stegosaurus",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Stegosaurus_-_Small_sm.webp"
     },
     {
       "id": "jc-animals-fossily-triceratops",
@@ -7488,9 +7524,10 @@
       "name": "Fossily Triceratops",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-fossily-triceratops.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Triceratops_-_Small_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Triceratops"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Fossily%20Triceratops",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Fossilly_Triceratops_-_Small_sm.webp"
     },
     {
       "id": "jc-animals-fou-fou-ostrich",
@@ -7542,9 +7579,10 @@
       "name": "Frey Pony",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-frey-pony.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Freya_Pony_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Frey%20Pony"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Frey%20Pony",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Freya_Pony_sm.webp"
     },
     {
       "id": "jc-animals-fuddlewuddle-ginger-cat",
@@ -7815,9 +7853,10 @@
       "name": "Honeyhome Bee",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-honeyhome-bee.svg",
+      "image": "/images/jc-animals-honeyhome-bee.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-honeyhome-bee"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-honeyhome-bee",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-honeyhome-bee"
     },
     {
       "id": "jc-animals-horticus-hare",
@@ -7869,9 +7908,10 @@
       "name": "Hugg McSnugg",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-hugg-mcsnugg.svg",
+      "image": "/images/jc-animals-hugg-mcsnugg.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-hugg-mcsnugg"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-hugg-mcsnugg",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-hugg-mcsnugg"
     },
     {
       "id": "jc-animals-iris-siamese-cat",
@@ -7901,9 +7941,10 @@
       "name": "Isodora Unicorn",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-isodora-unicorn.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Isadora_Unicorn_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Isodora%20Unicorn"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Isodora%20Unicorn",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Isadora_Unicorn_sm.webp"
     },
     {
       "id": "jc-animals-jackson-husky",
@@ -8193,9 +8234,10 @@
       "name": "Little Snake",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-little-snake.svg",
+      "image": "/images/jc-animals-little-snake.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.snugglebugz.ca/products/jellycat-little-animal-friends-plush-toy?variant=47734737142039"
+      "priceSourceUrl": "https://www.snugglebugz.ca/products/jellycat-little-animal-friends-plush-toy?variant=47734737142039",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-little-snake"
     },
     {
       "id": "jc-animals-little-tiger",
@@ -8313,9 +8355,10 @@
       "name": "Mack Mudskipper",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-mack-mudskipper.svg",
+      "image": "/images/jc-animals-mack-mudskipper.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-mack-mudskipper"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-mack-mudskipper",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-mack-mudskipper"
     },
     {
       "id": "jc-animals-madison-monkey",
@@ -8432,9 +8475,10 @@
       "name": "Miff Mothman",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-miff-mothman.svg",
+      "image": "/images/jc-animals-miff-mothman.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-miff-mothman"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-miff-mothman",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-miff-mothman"
     },
     {
       "id": "jc-animals-mortimer-fox",
@@ -8660,9 +8704,10 @@
       "name": "Penney Praying Mantis",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-penney-praying-mantis.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Penny_Praying_Mantis_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Penney%20Praying%20Mantis"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Penney%20Praying%20Mantis",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Penny_Praying_Mantis_sm.webp"
     },
     {
       "id": "jc-dragons-persimmon-dragon",
@@ -8756,9 +8801,10 @@
       "name": "Ramsley Sheep",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-ramsley-sheep.svg",
+      "image": "/images/jc-animals-ramsley-sheep.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-ramsley-sheep"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-ramsley-sheep",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-ramsley-sheep"
     },
     {
       "id": "jc-animals-randall-basseet-hound",
@@ -8766,9 +8812,10 @@
       "name": "Randall Basseet Hound",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-randall-basseet-hound.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Randall_Basset_Hound_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Randall%20Basseet%20Hound"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Randall%20Basseet%20Hound",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Randall_Basset_Hound_sm.webp"
     },
     {
       "id": "jc-animals-richie-dromedary",
@@ -8906,9 +8953,10 @@
       "name": "Rumblikin Bear",
       "series": "Bears & Bartholomew",
       "rarity": "Regular",
-      "image": "/images/jc-bears-rumblikin-bear.svg",
+      "image": "/images/jc-bears-rumblikin-bear.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-rumblikin-bear"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-rumblikin-bear",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-rumblikin-bear"
     },
     {
       "id": "jc-animals-rumblikin-elly",
@@ -8960,9 +9008,10 @@
       "name": "Selma Sloth",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-selma-sloth.svg",
+      "image": "/images/jc-animals-selma-sloth.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-selma-sloth"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-selma-sloth",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-selma-sloth"
     },
     {
       "id": "jc-animals-sensational-seafood-crab",
@@ -9047,9 +9096,10 @@
       "name": "Seraphina Pegasus",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-seraphina-pegasus.svg",
+      "image": "/images/jc-animals-seraphina-pegasus.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-seraphina-pegasus"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-seraphina-pegasus",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-seraphina-pegasus"
     },
     {
       "id": "jc-animals-shadow-shark",
@@ -9111,9 +9161,10 @@
       "name": "Skelebat Jim",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-skelebat-jim.svg",
+      "image": "/images/jc-animals-skelebat-jim.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-skelebat-jim"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-skelebat-jim",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-skelebat-jim"
     },
     {
       "id": "jc-animals-skeledog-dan",
@@ -9209,9 +9260,10 @@
       "name": "Snow Owling",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-snow-owling.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Snowy_Owling_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Snow%20Owling"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Snow%20Owling",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Snowy_Owling_sm.webp"
     },
     {
       "id": "jc-animals-snowman-timmy-turtle",
@@ -9282,9 +9334,10 @@
       "name": "Stellan Sabre Tooth Tiger",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-stellan-sabre-tooth-tiger.svg",
+      "image": "/images/jc-animals-stellan-sabre-tooth-tiger.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-stellan-sabre-tooth-tiger"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-stellan-sabre-tooth-tiger",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-stellan-sabre-tooth-tiger"
     },
     {
       "id": "jc-animals-stevie-snake",
@@ -9302,9 +9355,10 @@
       "name": "Sweater French Bulldog Purple",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-sweater-french-bulldog-purple.svg",
+      "image": "/images/jc-animals-sweater-french-bulldog-purple.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-sweater-french-bulldog-purple"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-sweater-french-bulldog-purple",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-sweater-french-bulldog-purple"
     },
     {
       "id": "jc-animals-sweater-sausage-dog",
@@ -9377,9 +9431,10 @@
       "name": "Truffle Sheep",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-truffle-sheep.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/trufflessheep_1.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Truffle%20Sheep"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Truffle%20Sheep",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/trufflessheep_1.webp"
     },
     {
       "id": "jc-animals-tumbletuft-bunny",
@@ -9398,9 +9453,10 @@
       "name": "Tumbletuft Mouse",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-tumbletuft-mouse.svg",
+      "image": "/images/jc-animals-tumbletuft-mouse.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-tumbletuft-mouse"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-tumbletuft-mouse",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-tumbletuft-mouse"
     },
     {
       "id": "jc-animals-tumbletuft-sheep-dog",
@@ -9429,9 +9485,10 @@
       "name": "Tumbletuft Fox",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-tumbletuft-fox.svg",
+      "image": "/images/jc-animals-tumbletuft-fox.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/tumbletuft-fox"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/tumbletuft-fox",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/tumbletuft-fox"
     },
     {
       "id": "jc-animals-under-the-sea-fish",
@@ -9513,9 +9570,10 @@
       "name": "Wanderlust Puppy",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-wanderlust-puppy.svg",
+      "image": "/images/jc-animals-wanderlust-puppy.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-wanderlust-puppy"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-wanderlust-puppy",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-wanderlust-puppy"
     },
     {
       "id": "jc-animals-wavelly-whale",
@@ -9525,7 +9583,8 @@
       "rarity": "Regular",
       "image": "/images/jc-animals-wavelly-whale.svg",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-wavelly-whale-blue"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-wavelly-whale-blue",
+      "imageSourceUrl": null
     },
     {
       "id": "jc-bears-whisper-bear",
@@ -9585,9 +9644,10 @@
       "name": "Winter Warmer Munro Scottie Dog",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-winter-warmer-munro-scottie-dog.svg",
+      "image": "/images/jc-animals-winter-warmer-munro-scottie-dog.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-winter-warmer-munro-scottie-dog"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-winter-warmer-munro-scottie-dog",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-winter-warmer-munro-scottie-dog"
     },
     {
       "id": "jc-animals-winter-warmer-pippa-labrador",
@@ -9692,9 +9752,10 @@
       "name": "Yummy Lamb",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-yummy-lamb.svg",
+      "image": "/images/jc-animals-yummy-lamb.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-lamb"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-lamb",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-lamb"
     },
     {
       "id": "jc-animals-yummy-penguin",
@@ -9713,9 +9774,10 @@
       "name": "Yummy Puppy",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-yummy-puppy.svg",
+      "image": "/images/jc-animals-yummy-puppy.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-puppy"
+      "priceSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-puppy",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-yummy-puppy"
     },
     {
       "id": "jc-animals-zaggy-chameleon",
@@ -9745,9 +9807,10 @@
       "name": "All Kind of Cats Book",
       "series": "Animals & Friends",
       "rarity": "Regular",
-      "image": "/images/jc-animals-all-kind-of-cats-book.svg",
+      "image": "/images/jc-animals-all-kind-of-cats-book.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-all-kinds-of-cats-book"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-all-kinds-of-cats-book",
+      "imageSourceUrl": "https://www.babycubby.com/products/jellycat-all-kinds-of-cats-book"
     },
     {
       "id": "jc-amuseables-amuseables-avocado-bag",
@@ -9777,9 +9840,10 @@
       "name": "Amuseables Avocado Bag Charm 2024",
       "series": "Bag Charms",
       "rarity": "Regular",
-      "image": "/images/jc-bag-charms-amuseables-avocado-bag-charm-2024.svg",
+      "image": "https://jellyjournal.com/assets/images/jellycats/Amuseables_Avocado_Bag_Charm_sm.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Avocado%20Bag%20Charm%202024"
+      "priceSourceUrl": "https://us.jellycat.com/search?q=Amuseables%20Avocado%20Bag%20Charm%202024",
+      "imageSourceUrl": "https://jellyjournal.com/assets/images/jellycats/Amuseables_Avocado_Bag_Charm_sm.webp"
     },
     {
       "id": "jc-amuseables-amuseables-banana-bag",
@@ -9831,9 +9895,10 @@
       "name": "Amuseables Coffee-To-Go Bag",
       "series": "Amuseables",
       "rarity": "Regular",
-      "image": "/images/jc-amuseables-amuseables-coffee-to-go-bag.svg",
+      "image": "/images/jc-amuseables-amuseables-coffee-to-go-bag.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://kolkid.ca/products/amuseable-coffee-to-go-bag-charm"
+      "priceSourceUrl": "https://kolkid.ca/products/amuseable-coffee-to-go-bag-charm",
+      "imageSourceUrl": "https://www.daisyandhen.com.au/products/jellycat-amuseables-bag-coffee-to-go"
     },
     {
       "id": "jc-bag-charms-amuseables-coffee-to-go-bag-charm",
@@ -9942,7 +10007,8 @@
       "rarity": "Regular",
       "image": "/images/jc-bag-charms-amuseables-heart-bag-charm.svg",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.dearbornbaby.com/products/jellycat-amuseables-bag-charm?variant=52049004429681"
+      "priceSourceUrl": "https://www.dearbornbaby.com/products/jellycat-amuseables-bag-charm?variant=52049004429681",
+      "imageSourceUrl": null
     },
     {
       "id": "jc-amuseables-amuseables-moon-bag",
@@ -10100,9 +10166,10 @@
       "name": "Bartholomew Bear Decoration",
       "series": "Bears & Bartholomew",
       "rarity": "Regular",
-      "image": "/images/jc-bears-bartholomew-bear-decoration.svg",
+      "image": "/images/jc-bears-bartholomew-bear-decoration.webp",
       "sourceUrl": "https://jellycat-crew.fandom.com/wiki/Master_List",
-      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bartholomew-bear-winter-warmer-decoration"
+      "priceSourceUrl": "https://www.babycubby.com/products/jellycat-bartholomew-bear-winter-warmer-decoration",
+      "imageSourceUrl": "https://www.cherriebaby.com.au/products/jellycat-bartholomew-bear-decoration"
     },
     {
       "id": "jc-animals-munro-scottie-dog-decoration",
