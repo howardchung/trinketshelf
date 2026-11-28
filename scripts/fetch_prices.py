@@ -57,25 +57,25 @@ STOP = {
 }
 
 CITY_EXCLUSIVE_PRICES = {
-    "jc-city-briggs-beaver": 48.0,
-    "jc-city-maple-leaf": 42.0,
-    "jc-city-fran-pancakes": 55.0,
-    "jc-city-rene-waffle": 55.0,
-    "jc-city-strutton-pigeon": 58.0,
-    "jc-city-bubbeca-milkshake": 55.0,
-    "jc-city-rustic-fries": 45.0,
-    "jc-city-mckenna-burger": 50.0,
-    "jc-city-crember-cheesecake": 55.0,
-    "jc-city-paris-brest": 58.0,
-    "jc-city-chouquettes": 55.0,
-    "jc-city-raspberry-souffle": 55.0,
-    "jc-city-lily-fish": 55.0,
-    "jc-city-mushy-peas": 48.0,
-    "jc-city-leicester-pigeon": 58.0,
-    "jc-city-melbie-peach-cake": 65.0,
-    "jc-city-vividdy-teapot": 68.0,
-    "jc-city-berrity-latte": 60.0,
-    "jc-city-leola-strawberry-cake": 72.0,
+    "jc-animals-briggs-beaver": 48.0,
+    "jc-amuseables-amuseables-maple-leaf": 42.0,
+    "jc-amuseables-amuseables-fran-pancakes": 55.0,
+    "jc-amuseables-amuseables-rene-waffle": 55.0,
+    "jc-animals-strutton-pigeon": 58.0,
+    "jc-amuseables-amuseables-bubbeca-milkshake": 55.0,
+    "jc-amuseables-amuseables-rustic-fries": 45.0,
+    "jc-amuseables-amuseables-mckenna-burger": 50.0,
+    "jc-amuseables-amuseables-crember-cheesecake": 55.0,
+    "jc-amuseables-amuseables-pralinda-paris-brest": 58.0,
+    "jc-amuseables-amuseables-scrump-de-chouquettes": 55.0,
+    "jc-amuseables-amuseables-aeree-raspberry-souffl": 55.0,
+    "jc-animals-lily-fish": 55.0,
+    "jc-amuseables-amuseables-dot-and-peggy-mushy-peas": 48.0,
+    "jc-animals-leicester-pigeon": 58.0,
+    "jc-amuseables-amuseables-melbie-peach-cake": 65.0,
+    "jc-amuseables-amuseables-vividdy-teapot": 68.0,
+    "jc-amuseables-amuseables-berrity-latte": 60.0,
+    "jc-bears-leola-bear-with-strawberry-cake": 72.0,
 }
 
 
@@ -293,7 +293,12 @@ def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> f
 def main() -> None:
     print("Fetching live per-variant USD prices from public collector & retail feeds...")
     pools = {
-        "sonny": fetch_store_prices("https://toysez.com/collections/sonny-angel/products.json?limit=250&page={}", 5),
+        "sonny": (
+            fetch_store_prices("https://toysez.com/collections/sonny-angel/products.json?limit=250&page={}", 5)
+            + fetch_store_prices("https://ri-son.com/collections/sonny-angel/products.json?limit=250&page={}", 3)
+            + fetch_store_prices("https://arttoyfamilia.com/collections/sonny-angel/products.json?limit=250&page={}", 3)
+            + fetch_store_prices("https://gurashies.com/collections/sonny-angel/products.json?limit=250&page={}", 3)
+        ),
         "skullpanda": (
             fetch_store_prices("https://arttoyfamilia.com/collections/skullpanda/products.json?limit=250&page={}", 3)
             + fetch_store_prices("https://toysez.com/collections/skullpanda/products.json?limit=250&page={}", 4)
