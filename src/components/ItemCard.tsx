@@ -1,5 +1,5 @@
 import { Check, Heart, Repeat } from 'lucide-react';
-import { formatUsd, getItemPrice } from '../data/prices';
+import { formatUsd, getItemPrice, isEstimatedPrice } from '../data/prices';
 import type { CatalogItem, ItemTrackingState } from '../types';
 
 interface ItemCardProps {
@@ -21,6 +21,7 @@ export function ItemCard({
   const isDup = tracking.status === 'duplicate';
   const isWishlist = tracking.status === 'wishlist';
   const unitPrice = getItemPrice(item.id, tracking.customPrice, item.price);
+  const isEst = isEstimatedPrice(item.id, tracking.customPrice, item.price);
 
   return (
     <article className={`item-card status-${tracking.status}`}>
@@ -53,7 +54,7 @@ export function ItemCard({
         <div className="item-meta" onClick={onOpenDetail}>
           <div className="item-title-row">
             <h3 className="item-name">{item.name}</h3>
-            <span className="item-price">{formatUsd(unitPrice)}</span>
+            <span className="item-price">{isEst ? 'est. ' : ''}{formatUsd(unitPrice)}</span>
           </div>
           <p className="item-series">{item.series}</p>
         </div>

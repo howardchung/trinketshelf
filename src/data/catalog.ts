@@ -5,7 +5,7 @@ import {
   setPokemonSets,
   type PokemonSetMeta,
 } from './pokemonSets';
-import { setItemPrices } from './prices';
+import { setEstimatedPriceIds, setItemPrices } from './prices';
 
 export interface TopLevelShelfMeta {
   id: TopLevelShelfId;
@@ -86,6 +86,7 @@ export function loadAllCatalogData(): Promise<void> {
       pokemonSets,
       pokemonCards,
       prices,
+      estimatedPriceIds,
     ] = await Promise.all([
       fetchJson<ShelfJson>('/data/sonny-regular.json'),
       fetchJson<ShelfJson>('/data/sonny-hippers.json'),
@@ -100,10 +101,12 @@ export function loadAllCatalogData(): Promise<void> {
       fetchJson<PokemonSetMeta[]>('/data/pokemon-sets.json'),
       fetchJson<CatalogItem[]>('/data/pokemon-cards.json'),
       fetchJson<Record<string, number>>('/data/prices.json'),
+      fetchJson<string[]>('/data/prices-estimated.json').catch(() => [] as string[]),
     ]);
 
     setPokemonSets(pokemonSets);
     setItemPrices(prices);
+    setEstimatedPriceIds(estimatedPriceIds);
 
     replaceArray(SONNY_REGULAR_IDS, sonnyReg.collections.map((c) => c.id));
     replaceArray(SONNY_HIPPERS_IDS, sonnyHippers.collections.map((c) => c.id));

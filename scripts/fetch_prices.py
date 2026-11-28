@@ -332,6 +332,7 @@ def main() -> None:
         print(f"  {k:12s}: {len(v)} variant prices ({sec_n} secret/robby)")
 
     prices: dict[str, float] = {}
+    estimated_ids: list[str] = []
     live_matched = 0
     secret_live = 0
     secret_total = 0
@@ -382,12 +383,15 @@ def main() -> None:
                     secret_live += 1
             else:
                 prices[iid] = baseline_price(col_id, name, series, rarity)
+                estimated_ids.append(iid)
                 f_base += 1
         print(f"  {path.name:26s}: {f_live:4d} live | {f_base:4d} baseline")
 
     out_json = PUBLIC_DATA_DIR / "prices.json"
     out_json.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
-    print(f"Wrote {out_json}: {len(prices)} priced items ({live_matched}/{total} live; Secrets live: {secret_live}/{secret_total})")
+    est_json = PUBLIC_DATA_DIR / "prices-estimated.json"
+    est_json.write_text(json.dumps(sorted(estimated_ids), indent=2) + "\n", encoding="utf-8")
+    print(f"Wrote {out_json}: {len(prices)} priced items ({live_matched}/{total} live, {len(estimated_ids)} estimated; Secrets live: {secret_live}/{secret_total})")
     # Spot-check a few famous secrets
     for sid in [
         "tinytiny-prologue-perfect-gift",

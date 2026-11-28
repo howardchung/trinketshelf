@@ -1,5 +1,5 @@
 import { Check, Circle, ExternalLink, Heart, Image as ImageIcon, Repeat, Trash2, X } from 'lucide-react';
-import { formatUsd, getItemPrice } from '../data/prices';
+import { formatUsd, getItemPrice, isEstimatedPrice } from '../data/prices';
 import { getItemProvenanceLinks } from '../data/sources';
 import type { CatalogItem, CollectionMeta, ItemStatus, ItemTrackingState } from '../types';
 
@@ -30,6 +30,8 @@ export function ItemDetailModal({
   const showQty = tracking.status === 'owned' || tracking.status === 'duplicate';
   const defaultPrice = getItemPrice(item.id, undefined, item.price);
   const effectivePrice = getItemPrice(item.id, tracking.customPrice, item.price);
+  const isDefaultEst = isEstimatedPrice(item.id, undefined, item.price);
+  const isEffectiveEst = isEstimatedPrice(item.id, tracking.customPrice, item.price);
   const provenanceLinks = getItemProvenanceLinks(item);
   const sourceLink = provenanceLinks.find((l) => l.kind === 'source');
   const imageLink = provenanceLinks.find((l) => l.kind === 'image');
@@ -156,7 +158,7 @@ export function ItemDetailModal({
                   gap: 5,
                 }}
               >
-                <span>Est. {formatUsd(effectivePrice)}</span>
+                <span>{isEffectiveEst ? 'est. ' : ''}{formatUsd(effectivePrice)}</span>
                 <ExternalLink size={11} style={{ opacity: 0.65 }} />
               </a>
             ) : (
@@ -164,7 +166,7 @@ export function ItemDetailModal({
                 className="collection-badge"
                 style={{ background: 'var(--surface-muted)', color: 'var(--text)' }}
               >
-                Est. {formatUsd(effectivePrice)}
+                {isEffectiveEst ? 'est. ' : ''}{formatUsd(effectivePrice)}
               </span>
             )}
           </div>
@@ -232,7 +234,7 @@ export function ItemDetailModal({
 
           <div className="field-group">
             <label className="field-label" htmlFor="custom-price">
-              Price / Value (USD) — est. {formatUsd(defaultPrice)}
+              Price / Value (USD) — {isDefaultEst ? 'est. ' : ''}{formatUsd(defaultPrice)}
             </label>
             <input
               id="custom-price"

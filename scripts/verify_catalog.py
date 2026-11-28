@@ -25,7 +25,7 @@ def main() -> None:
     json_files = sorted(PUBLIC_DATA_DIR.glob("*.json"))
     all_imgs: list[str] = []
     for path in json_files:
-        if path.name in ("prices.json", "pokemon-sets.json", "pokemon-cards.json"):
+        if path.name in ("prices.json", "prices-estimated.json", "pokemon-sets.json", "pokemon-cards.json"):
             continue
         data = json.loads(path.read_text(encoding="utf-8"))
         items = extract_items(data)
