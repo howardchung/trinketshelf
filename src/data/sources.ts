@@ -20,6 +20,7 @@ const HOST_LABELS: Record<string, string> = {
   'snugglebugz.ca': 'Snuggle Bugz',
   'indigo.ca': 'Indigo',
   'us.jellycat.com': 'Jellycat',
+  'jellyjournal.com': 'Jelly Journal',
   'jellycat-crew.fandom.com': 'Jellycat Crew Wiki',
   'sylvanianfamilies.fandom.com': 'Sylvanian Wiki',
   'pricecharting.com': 'PriceCharting',

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trinketshelf-v90';
+const CACHE_NAME = 'trinketshelf-v91';
 const APP_SHELL = [
   '/',
   '/index.html',
@@ -27,11 +27,12 @@ self.addEventListener('fetch', (event) => {
 
   const url = new URL(request.url);
 
-  // Cache-first for Pokémon TCG card scans & logos
+  // Cache-first for Pokémon TCG card scans, logos, and Jelly Journal photos
   if (
     url.hostname === 'images.pokemontcg.io' ||
     url.hostname === 'images.scrydex.com' ||
-    url.hostname === 'storage.googleapis.com'
+    url.hostname === 'storage.googleapis.com' ||
+    url.hostname === 'jellyjournal.com'
   ) {
     event.respondWith(
       caches.match(request).then((cached) => {
