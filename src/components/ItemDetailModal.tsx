@@ -1,4 +1,4 @@
-import { Check, Circle, ExternalLink, Heart, Image as ImageIcon, Repeat, Tag, Trash2, X } from 'lucide-react';
+import { Check, Circle, ExternalLink, Heart, Image as ImageIcon, Repeat, Trash2, X } from 'lucide-react';
 import { formatUsd, getItemPrice } from '../data/prices';
 import { getItemProvenanceLinks } from '../data/sources';
 import type { CatalogItem, CollectionMeta, ItemStatus, ItemTrackingState } from '../types';
@@ -31,6 +31,9 @@ export function ItemDetailModal({
   const defaultPrice = getItemPrice(item.id, undefined, item.price);
   const effectivePrice = getItemPrice(item.id, tracking.customPrice, item.price);
   const provenanceLinks = getItemProvenanceLinks(item);
+  const sourceLink = provenanceLinks.find((l) => l.kind === 'source');
+  const imageLink = provenanceLinks.find((l) => l.kind === 'image');
+  const priceLink = provenanceLinks.find((l) => l.kind === 'price');
 
   return (
     <div className="modal-backdrop" onClick={onClose} role="dialog" aria-modal="true">
@@ -53,17 +56,72 @@ export function ItemDetailModal({
         </div>
 
         <div className="modal-body">
-          <div className="detail-photo-frame">
-            <img src={item.image} alt={item.name} />
+          <div className="detail-photo-frame" style={{ position: 'relative' }}>
+            {imageLink ? (
+              <a
+                href={imageLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${imageLink.label} (${imageLink.url})`}
+                style={{ display: 'flex', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}
+              >
+                <img src={item.image} alt={item.name} />
+                <span
+                  style={{
+                    position: 'absolute',
+                    right: 8,
+                    bottom: 8,
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 4,
+                    padding: '3px 7px',
+                    borderRadius: 999,
+                    background: 'rgba(255,255,255,0.88)',
+                    color: 'var(--text-secondary)',
+                    fontSize: '0.7rem',
+                    fontWeight: 600,
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.08)',
+                  }}
+                >
+                  <ImageIcon size={11} />
+                  <span>{imageLink.label.replace(/^Image:\s*/, '')}</span>
+                </span>
+              </a>
+            ) : (
+              <img src={item.image} alt={item.name} />
+            )}
           </div>
 
           <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-            <span
-              className="collection-badge"
-              style={{ background: collection.accentSoft, color: collection.accentText }}
-            >
-              {collection.emoji} {collection.name}
-            </span>
+            {sourceLink ? (
+              <a
+                href={sourceLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${sourceLink.label} (${sourceLink.url})`}
+                className="collection-badge"
+                style={{
+                  background: collection.accentSoft,
+                  color: collection.accentText,
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+              >
+                <span>
+                  {collection.emoji} {collection.name}
+                </span>
+                <ExternalLink size={11} style={{ opacity: 0.75 }} />
+              </a>
+            ) : (
+              <span
+                className="collection-badge"
+                style={{ background: collection.accentSoft, color: collection.accentText }}
+              >
+                {collection.emoji} {collection.name}
+              </span>
+            )}
             <span
               className={`rarity-badge ${
                 item.rarity === 'Secret'
@@ -82,42 +140,34 @@ export function ItemDetailModal({
             >
               {item.rarity}
             </span>
-            <span
-              className="collection-badge"
-              style={{ background: 'var(--surface-muted)', color: 'var(--text)' }}
-            >
-              Est. {formatUsd(effectivePrice)}
-            </span>
+            {priceLink ? (
+              <a
+                href={priceLink.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={`${priceLink.label} (${priceLink.url})`}
+                className="collection-badge"
+                style={{
+                  background: 'var(--surface-muted)',
+                  color: 'var(--text)',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 5,
+                }}
+              >
+                <span>Est. {formatUsd(effectivePrice)}</span>
+                <ExternalLink size={11} style={{ opacity: 0.65 }} />
+              </a>
+            ) : (
+              <span
+                className="collection-badge"
+                style={{ background: 'var(--surface-muted)', color: 'var(--text)' }}
+              >
+                Est. {formatUsd(effectivePrice)}
+              </span>
+            )}
           </div>
-
-          {provenanceLinks.length > 0 && (
-            <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignItems: 'center' }}>
-              {provenanceLinks.map((link) => (
-                <a
-                  key={link.kind}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title={link.url}
-                  className="btn"
-                  style={{
-                    fontSize: '0.78rem',
-                    padding: '5px 10px',
-                    textDecoration: 'none',
-                  }}
-                >
-                  {link.kind === 'image' ? (
-                    <ImageIcon size={13} />
-                  ) : link.kind === 'price' ? (
-                    <Tag size={13} />
-                  ) : (
-                    <ExternalLink size={13} />
-                  )}
-                  <span>{link.label}</span>
-                </a>
-              ))}
-            </div>
-          )}
 
           <div className="field-group">
             <label className="field-label">Collection Status</label>
