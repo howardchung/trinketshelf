@@ -1,4 +1,4 @@
-const CACHE_NAME = 'trinketshelf-v96';
+const CACHE_NAME = 'trinketshelf-v97';
 const APP_SHELL = [
   '/',
   '/index.html',

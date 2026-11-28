@@ -83,7 +83,7 @@ def toks(text: str) -> set[str]:
     return set(re.findall(r"[a-z0-9]+", text.lower())) - STOP
 
 
-def make_entry(label: str, price: float) -> dict:
+def make_entry(label: str, price: float, url: str | None = None) -> dict:
     ll = label.lower()
     is_robby = "robby" in ll
     is_secret = is_robby or any(
@@ -94,25 +94,34 @@ def make_entry(label: str, price: float) -> dict:
         "label": label,
         "toks": toks(label),
         "price": round(price, 2),
+        "url": url,
         "is_secret": is_secret,
         "is_robby": is_robby,
         "is_lucky": is_lucky,
     }
 
 
-def extract_product_entries(products: list[dict], fx: float = 1.0) -> list[dict]:
+def extract_product_entries(
+    products: list[dict], fx: float = 1.0, store_origin: str | None = None
+) -> list[dict]:
     entries: list[dict] = []
     for p in products:
         title = p.get("title", "")
         tl = title.lower()
         if any(skip in tl for skip in ("complete set", "full set", "whole set", "full case", "16 bags", "assorted")):
             continue
+        handle = p.get("handle")
+        prod_url = (
+            f"{store_origin}/products/{urllib.parse.quote(str(handle))}"
+            if (store_origin and handle)
+            else None
+        )
         variants = p.get("variants") or []
         if len(variants) == 1:
             try:
                 price = round(float(variants[0].get("price", 0)) * fx, 2)
                 if 2.0 <= price <= 5000.0:
-                    entries.append(make_entry(title, price))
+                    entries.append(make_entry(title, price, prod_url))
             except Exception:
                 pass
         else:
@@ -126,13 +135,17 @@ def extract_product_entries(products: list[dict], fx: float = 1.0) -> list[dict]
                 try:
                     price = round(float(v.get("price", 0)) * fx, 2)
                     if 2.0 <= price <= 5000.0:
-                        entries.append(make_entry(f"{title} {vt}", price))
+                        vid = v.get("id")
+                        var_url = f"{prod_url}?variant={vid}" if (prod_url and vid) else prod_url
+                        entries.append(make_entry(f"{title} {vt}", price, var_url))
                 except Exception:
                     pass
     return entries
 
 
 def fetch_store_prices(base_url: str, max_pages: int = 5, fx: float = 1.0) -> list[dict]:
+    parsed = urllib.parse.urlparse(base_url)
+    store_origin = f"{parsed.scheme}://{parsed.netloc}" if parsed.scheme and parsed.netloc else None
     products: list[dict] = []
     for page in range(1, max_pages + 1):
         try:
@@ -142,7 +155,7 @@ def fetch_store_prices(base_url: str, max_pages: int = 5, fx: float = 1.0) -> li
             products.extend(batch)
         except Exception:
             break
-    return extract_product_entries(products, fx=fx)
+    return extract_product_entries(products, fx=fx, store_origin=store_origin)
 
 
 def fetch_atf_tinytiny_prices() -> list[dict]:
@@ -159,7 +172,7 @@ def fetch_atf_tinytiny_prices() -> list[dict]:
             products.append(pj)
     except Exception:
         pass
-    return extract_product_entries(products)
+    return extract_product_entries(products, store_origin="https://arttoyfamilia.com")
 
 
 def baseline_price(col_id: str, name: str, series: str, rarity: str) -> float:
@@ -235,7 +248,7 @@ def baseline_price(col_id: str, name: str, series: str, rarity: str) -> float:
     return 15.0
 
 
-def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> float | None:
+def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> tuple[float, str | None] | None:
     is_robby = "robby" in name.lower()
     is_secret = rarity == "Secret"
     is_lucky = rarity == "Lucky"
@@ -247,6 +260,7 @@ def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> f
 
     best_score = 0.0
     best_price: float | None = None
+    best_url: str | None = None
 
     for entry in pool:
         # Strict rarity/robby separation so Secrets NEVER match regular-figure prices
@@ -286,8 +300,11 @@ def match_live_price(pool: list[dict], name: str, series: str, rarity: str) -> f
         if score > best_score:
             best_score = score
             best_price = entry["price"]
+            best_url = entry.get("url")
 
-    return best_price if best_score >= (13.0 if is_secret else 13.5) else None
+    if best_price is not None and best_score >= (13.0 if is_secret else 13.5):
+        return (best_price, best_url)
+    return None
 
 
 def main() -> None:
@@ -351,6 +368,7 @@ def main() -> None:
                 file_items.extend(v)
         f_live = 0
         f_base = 0
+        f_url_updated = 0
         for it in file_items:
             iid = it["id"]
             col_id = it["collectionId"]
@@ -381,7 +399,11 @@ def main() -> None:
 
             matched = match_live_price(pool, name, series, rarity)
             if matched is not None:
-                prices[iid] = matched
+                matched_price, matched_url = matched
+                prices[iid] = matched_price
+                if matched_url and it.get("priceSourceUrl") != matched_url:
+                    it["priceSourceUrl"] = matched_url
+                    f_url_updated += 1
                 live_matched += 1
                 f_live += 1
                 if rarity == "Secret":
@@ -390,7 +412,9 @@ def main() -> None:
                 prices[iid] = baseline_price(col_id, name, series, rarity)
                 estimated_ids.append(iid)
                 f_base += 1
-        print(f"  {path.name:26s}: {f_live:4d} live | {f_base:4d} baseline")
+        if f_url_updated:
+            path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"  {path.name:26s}: {f_live:4d} live | {f_base:4d} baseline | {f_url_updated:4d} product URLs updated")
 
     out_json = PUBLIC_DATA_DIR / "prices.json"
     out_json.write_text(json.dumps(prices, indent=2) + "\n", encoding="utf-8")
