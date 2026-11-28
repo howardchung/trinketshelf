@@ -276,6 +276,7 @@ def discover_sonny_angel(prices: dict[str, float], tasks: list[tuple[str, str]])
                 "image": f"/images/{iid}.webp",
                 "sourceUrl": f["source_url"],
                 "imageSourceUrl": f["img"],
+                **({"priceSourceUrl": f["source_url"]} if f["price"] else {}),
             })
             added += 1
 
@@ -347,6 +348,7 @@ def discover_popmart_shelf(
                 "image": f"/images/{iid}.webp",
                 "sourceUrl": prod_url,
                 "imageSourceUrl": img,
+                **({"priceSourceUrl": prod_url} if price is not None else {}),
             })
             added += 1
 
@@ -402,6 +404,8 @@ def upgrade_jellycat_svgs(prices: dict[str, float], tasks: list[tuple[str, str]]
             handle = p.get("handle", "")
             it["sourceUrl"] = f"https://{host}/products/{handle}" if handle else f"https://{host}/collections/jellycat"
             it["imageSourceUrl"] = imgs[0]["src"]
+            if p.get("variants") and p["variants"][0].get("price"):
+                it["priceSourceUrl"] = it["sourceUrl"]
             if p.get("variants") and p["variants"][0].get("price") and it["id"] not in prices:
                 try:
                     pv = float(p["variants"][0]["price"])

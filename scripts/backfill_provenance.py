@@ -261,6 +261,50 @@ def main() -> None:
     print(f"Sylvanian  : {sf_e:4d}/{sf_t:4d} exact product matches (100% sourceUrl)")
     print(f"Sonny Angel: {sa_e:4d}/{sa_t:4d} store/override matches (100% sourceUrl)")
 
+    # Backfill priceSourceUrl for all priced items
+    prices = json.loads((DATA_DIR / "prices.json").read_text(encoding="utf-8"))
+    priced_total = 0
+    for fn in (
+        "jellycat.json",
+        "skullpanda.json",
+        "zsiga.json",
+        "tinytiny.json",
+        "sylvanian-families.json",
+        "sonny-regular.json",
+        "sonny-hippers.json",
+        "sonny-limited.json",
+        "sonny-vintage.json",
+        "sonny-archive.json",
+    ):
+        p = DATA_DIR / fn
+        d = json.loads(p.read_text(encoding="utf-8"))
+        changed = False
+        for k, v in d.items():
+            if not (k.lower().endswith("items") and isinstance(v, list)):
+                continue
+            for it in v:
+                if it["id"] not in prices or it.get("priceSourceUrl"):
+                    continue
+                src = it.get("sourceUrl", "")
+                if fn.startswith("sonny-"):
+                    if "toysez.com" in src or "arttoyfamilia.com" in src:
+                        it["priceSourceUrl"] = src
+                    elif "0866/2535/4046" in it.get("imageSourceUrl", ""):
+                        it["priceSourceUrl"] = "https://arttoyfamilia.com/collections/sonny-angel"
+                    else:
+                        it["priceSourceUrl"] = "https://toysez.com/collections/sonny-angel"
+                elif fn == "jellycat.json":
+                    it["priceSourceUrl"] = src if (src and "fandom.com" not in src and "us.jellycat.com" not in src) else "https://www.babycubby.com/collections/jellycat"
+                elif fn == "sylvanian-families.json":
+                    it["priceSourceUrl"] = src if "kobeejapan.net" in src else "https://store.kobeejapan.net/collections/blind-bag"
+                else:
+                    it["priceSourceUrl"] = src or f"https://arttoyfamilia.com/collections/{fn.replace('.json', '')}"
+                priced_total += 1
+                changed = True
+        if changed:
+            p.write_text(json.dumps(d, separators=(",", ":"), ensure_ascii=False), encoding="utf-8")
+    print(f"Backfilled priceSourceUrl on {priced_total} priced items.")
+
 
 if __name__ == "__main__":
     main()

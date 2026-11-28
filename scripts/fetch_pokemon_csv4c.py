@@ -175,6 +175,7 @@ def main() -> None:
             "image": img,
             "sourceUrl": pc_url,
             "imageSourceUrl": img,
+            "priceSourceUrl": pc_url,
             "price": price,
         })
         est_total += price

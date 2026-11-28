@@ -67,6 +67,7 @@ export interface CatalogItem {
   price?: number;
   sourceUrl?: string;
   imageSourceUrl?: string;
+  priceSourceUrl?: string;
   isCustom?: boolean;
 }
 
