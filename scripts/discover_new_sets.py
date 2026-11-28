@@ -228,9 +228,11 @@ def discover_sonny_angel(prices: dict[str, float], tasks: list[tuple[str, str]])
         fig_name = m.group(2).strip()
         if not (p.get("images") or [{}])[0].get("src"):
             continue
+        handle = p.get("handle", "")
         grouped.setdefault(series_raw, []).append({
             "name": fig_name,
             "img": p["images"][0]["src"],
+            "source_url": f"https://toysez.com/products/{handle}" if handle else "https://toysez.com/collections/sonny-angel",
             "price": p["variants"][0].get("price") if p.get("variants") else None,
             "secret": "secret" in tl or "robby" in fig_name.lower(),
         })
@@ -272,6 +274,7 @@ def discover_sonny_angel(prices: dict[str, float], tasks: list[tuple[str, str]])
                 "series": series_name,
                 "rarity": "Secret" if f["secret"] else "Regular",
                 "image": f"/images/{iid}.webp",
+                "sourceUrl": f["source_url"],
                 "imageSourceUrl": f["img"],
             })
             added += 1
@@ -325,6 +328,8 @@ def discover_popmart_shelf(
             "accentText": "#4D3885",
             "emoji": "✨",
         })
+        handle = p.get("handle", "")
+        prod_url = f"https://arttoyfamilia.com/products/{handle}" if handle else f"https://arttoyfamilia.com/collections/{shelf_slug}"
         for vt, img, price in vars_ok:
             iid = f"{cid}-{slugify(vt)}"
             if iid in used_ids:
@@ -340,6 +345,8 @@ def discover_popmart_shelf(
                 "series": short,
                 "rarity": "Secret" if "secret" in vt.lower() else "Regular",
                 "image": f"/images/{iid}.webp",
+                "sourceUrl": prod_url,
+                "imageSourceUrl": img,
             })
             added += 1
 
@@ -391,6 +398,10 @@ def upgrade_jellycat_svgs(prices: dict[str, float], tasks: list[tuple[str, str]]
             if old_svg.exists():
                 old_svg.unlink()
             it["image"] = f"/images/{it['id']}.webp"
+            host = url.split("/")[2]
+            handle = p.get("handle", "")
+            it["sourceUrl"] = f"https://{host}/products/{handle}" if handle else f"https://{host}/collections/jellycat"
+            it["imageSourceUrl"] = imgs[0]["src"]
             if p.get("variants") and p["variants"][0].get("price") and it["id"] not in prices:
                 try:
                     pv = float(p["variants"][0]["price"])

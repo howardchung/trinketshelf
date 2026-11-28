@@ -215,14 +215,15 @@ def main() -> None:
         "https://faoschwarz.com/collections/jellycat/products.json?limit=250&page={}",
     ]
 
-    raw_products: list[dict] = []
+    raw_products: list[tuple[str, dict]] = []
     for base in stores:
+        host = base.split("/")[2]
         for page in range(1, 5):
             try:
                 batch = fetch_json(base.format(page)).get("products", [])
                 if not batch:
                     break
-                raw_products.extend(batch)
+                raw_products.extend((host, item) for item in batch)
             except Exception:
                 break
 
@@ -244,7 +245,7 @@ def main() -> None:
             "image": img_path,
         })
 
-    for p in raw_products:
+    for host, p in raw_products:
         title = p.get("title", "").strip()
         tl = title.lower()
         if any(bad in tl for bad in SKIP_KEYWORDS):
@@ -270,6 +271,7 @@ def main() -> None:
         used_ids.add(iid)
 
         rarity = "Special" if any(w in tl for w in ("luxe", "limited", "christmas", "valentine", "halloween")) else "Regular"
+        handle = p.get("handle", "")
         tasks.append((iid, imgs[0]["src"]))
         items.append({
             "id": iid,
@@ -278,6 +280,8 @@ def main() -> None:
             "series": SERIES_LABEL_BY_ID[col_id],
             "rarity": rarity,
             "image": f"/images/{iid}.webp",
+            "sourceUrl": f"https://{host}/products/{handle}" if handle else f"https://{host}/collections/jellycat",
+            "imageSourceUrl": imgs[0]["src"],
         })
 
     # Keep only non-empty series and update subtitles with counts

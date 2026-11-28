@@ -142,7 +142,14 @@ def main() -> None:
     seen_series_slugs: set[str] = set()
     used_item_ids: set[str] = set()
 
-    def add_item(col_id: str, name: str, series_name: str, rarity: str, img_url: str | None) -> bool:
+    def add_item(
+        col_id: str,
+        name: str,
+        series_name: str,
+        rarity: str,
+        img_url: str | None,
+        source_url: str | None = None,
+    ) -> bool:
         if not img_url:
             return False
         base = f"{col_id}-{slugify(name)}"
@@ -153,14 +160,18 @@ def main() -> None:
             k += 1
         used_item_ids.add(iid)
         tasks.append((iid, img_url))
-        items.append({
+        item: dict = {
             "id": iid,
             "collectionId": col_id,
             "name": name,
             "series": series_name,
             "rarity": rarity,
             "image": f"/images/{iid}.webp",
-        })
+            "imageSourceUrl": img_url,
+        }
+        if source_url:
+            item["sourceUrl"] = source_url
+        items.append(item)
         return True
 
     # 1. Dedicated Skullpanda Blind Box & Plush Pendant Series from Art Toy Familia

@@ -201,7 +201,10 @@ def search_kobee(query: str, must_contain: str) -> list[dict]:
         name = re.sub(r"^" + re.escape(must_contain) + r"\s*[-–:]?\s*", "", name, flags=re.I).strip()
         name = re.sub(r"\s+", " ", name).strip(" -–:")
         if name:
-            out.append({"name": name, "img": img, "price": price})
+            prod_url = p.get("url") or ""
+            if prod_url.startswith("/"):
+                prod_url = "https://store.kobeejapan.net" + prod_url.split("?")[0]
+            out.append({"name": name, "img": img, "price": price, "source_url": prod_url})
     return out
 
 
@@ -466,6 +469,8 @@ def main() -> None:
                     "series": short_name,
                     "rarity": "Regular",
                     "image": f"/images/{iid}.webp",
+                    **({"sourceUrl": hit["source_url"]} if hit.get("source_url") else {}),
+                    "imageSourceUrl": hit["img"],
                 })
 
         # 3. Authoritative Wiki / curated roster with clean themed SVG portraits

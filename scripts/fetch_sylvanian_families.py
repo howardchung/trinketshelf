@@ -187,6 +187,7 @@ def main() -> None:
         used_item_ids.add(iid)
 
         rarity = "Secret" if "secret" in title.lower() else ("Special" if cat == "blind-box" else "Regular")
+        handle = p.get("handle", "")
         tasks.append((iid, imgs[0]["src"]))
         grouped[col_id]["items"].append({
             "id": iid,
@@ -195,6 +196,8 @@ def main() -> None:
             "series": series_name,
             "rarity": rarity,
             "image": f"/images/{iid}.webp",
+            "sourceUrl": f"https://store.kobeejapan.net/products/{handle}" if handle else "https://store.kobeejapan.net/collections/blind-bag",
+            "imageSourceUrl": imgs[0]["src"],
         })
 
     collections: list[dict] = []

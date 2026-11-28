@@ -110,7 +110,14 @@ def main() -> None:
     tasks: list[tuple[str, str]] = []
     used_ids: set[str] = set()
 
-    def add_item(col_id: str, name: str, series: str, rarity: str, img_url: str | None) -> None:
+    def add_item(
+        col_id: str,
+        name: str,
+        series: str,
+        rarity: str,
+        img_url: str | None,
+        source_url: str | None = None,
+    ) -> None:
         if not img_url:
             return
         base = f"{col_id}-{slugify(name)}"
@@ -121,14 +128,18 @@ def main() -> None:
             k += 1
         used_ids.add(iid)
         tasks.append((iid, img_url))
-        items.append({
+        item: dict = {
             "id": iid,
             "collectionId": col_id,
             "name": name,
             "series": series,
             "rarity": rarity,
             "image": f"/images/{iid}.webp",
-        })
+            "imageSourceUrl": img_url,
+        }
+        if source_url:
+            item["sourceUrl"] = source_url
+        items.append(item)
 
     for title, col_id, series_label in [
         ("Tinytiny Prologue Series", "tinytiny-prologue", "Prologue Series"),

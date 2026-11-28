@@ -165,6 +165,7 @@ def main() -> None:
         else:
             price = 1.50 if "RR" in tcg_rarity else 0.25
 
+        pc_url = f"https://www.pricecharting.com/game/pokemon-chinese-csv4c/{p['id']}" if p.get("id") else "https://www.pricecharting.com/console/pokemon-chinese-csv4c"
         cards_out.append({
             "id": f"pkmn-{SET_ID}-{num}",
             "collectionId": COL_ID,
@@ -172,6 +173,8 @@ def main() -> None:
             "series": f"Reward Round (CSV4C) · {tcg_rarity}",
             "rarity": app_rarity,
             "image": img,
+            "sourceUrl": pc_url,
+            "imageSourceUrl": img,
             "price": price,
         })
         est_total += price
