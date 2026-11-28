@@ -5,6 +5,33 @@ export interface ItemImageProvenance {
   url: string;
 }
 
+const HOST_LABELS: Record<string, string> = {
+  'arttoyfamilia.com': 'Art Toy Familia',
+  'toysez.com': 'Toysez',
+  'sonnyangel.com': 'Sonny Angel Official',
+  'store.kobeejapan.net': 'Kobee Japan',
+  'babycubby.com': 'Baby Cubby',
+  'pacifierkids.com': 'Pacifier Kids',
+  'faoschwarz.com': 'FAO Schwarz',
+  'kidly.co.uk': 'Kidly',
+  'activebaby.ca': 'Active Baby',
+  'kolkid.ca': 'Kolkid',
+  'snugglebugz.ca': 'Snuggle Bugz',
+  'indigo.ca': 'Indigo',
+  'us.jellycat.com': 'Jellycat',
+  'pricecharting.com': 'PriceCharting',
+  'github.com': 'Pokémon TCG Data',
+};
+
+function labelForUrl(url: string): string {
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, '');
+    return HOST_LABELS[host] ?? host;
+  } catch {
+    return 'Image Source';
+  }
+}
+
 function cleanQuery(text: string): string {
   return text
     .replace(/^#\S+\s+/, '')
@@ -16,6 +43,13 @@ function cleanQuery(text: string): string {
 export function getItemImageProvenance(item: CatalogItem): ItemImageProvenance | null {
   if (item.image.endsWith('.svg')) {
     return null;
+  }
+
+  if (item.sourceUrl) {
+    return {
+      label: labelForUrl(item.sourceUrl),
+      url: item.sourceUrl,
+    };
   }
 
   const cid = item.collectionId;
